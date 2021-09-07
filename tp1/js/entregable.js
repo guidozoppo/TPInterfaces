@@ -23,6 +23,7 @@ document.getElementById("btnBorrarTodo").addEventListener("click", borrarTodo);
 document.getElementById("color").addEventListener("input", setColor);
 document.getElementById("grosor").addEventListener("input", setGrosor);
 document.getElementById("bw").addEventListener("click", binarizacion);
+document.getElementById("negativo").addEventListener("click", negativo);
 
 function setColor(){
     color = document.getElementById("color").value;
@@ -166,5 +167,38 @@ function binarizacion() {
 
     }
 
+
+    
+    ctx.putImageData(imageData, 0, 0);
+};
+
+function negativo() {
+    let imageData = getImgData();
+    drawRect(imageData, r, g, b, a);
+    
+    function drawRect(imageData, r, g, b, a){
+        for (let x = 0; x < imageData.width; x++) {
+            for (let y = 0; y < imageData.height; y++) {
+                setPixel(imageData, x, y, r, g, b, a);
+            }
+        }
+    }
+
+    function setPixel(imageData, x, y, r, g, b, a) {
+        let index = ((x + y * imageData.width) *4);
+
+        r = imageData.data[index + 0];
+        g = imageData.data[index + 1];
+        b = imageData.data[index + 2];
+        a = imageData.data[index + 3];
+
+        imageData.data[index + 0] = 255 - r;
+        imageData.data[index + 1] = 255 - g;
+        imageData.data[index + 2] = 255 - b;
+
+    }
+
+
+    
     ctx.putImageData(imageData, 0, 0);
 };
