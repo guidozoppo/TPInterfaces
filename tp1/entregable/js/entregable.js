@@ -10,6 +10,11 @@ let grosor = 1;
 let xInicial = 0;
 let yInicial = 0;
 
+let r = 0;
+let g = 0;
+let b = 0;
+let a = 255;
+
 canvas.addEventListener("mousedown", apretoClick);
 canvas.addEventListener("mouseup", soltoClick);
 canvas.addEventListener("mousemove", movioClick);
@@ -17,6 +22,8 @@ document.getElementById("btnBorrar").addEventListener("click", borrar);
 document.getElementById("btnBorrarTodo").addEventListener("click", borrarTodo);
 document.getElementById("color").addEventListener("input", setColor);
 document.getElementById("grosor").addEventListener("input", setGrosor);
+document.getElementById("negativo").addEventListener("click", negativo);
+document.getElementById("gris").addEventListener("click", gris);
 
 function setColor(){
     color = document.getElementById("color").value;
@@ -69,3 +76,67 @@ document.getElementById('file').onchange=function(e){
         }
     }
   }
+
+function getImgData () {
+    return ctx.getImageData(0, 0, canvas.width, canvas.height);
+}
+
+  function negativo() {
+    let imageData = getImgData();
+    drawRect(imageData, r, g, b, a);
+    
+    function drawRect(imageData, r, g, b, a){
+        for (let x = 0; x < imageData.width; x++) {
+            for (let y = 0; y < imageData.height; y++) {
+                setPixel(imageData, x, y, r, g, b, a);
+            }
+        }
+    }
+
+    function setPixel(imageData, x, y, r, g, b, a) {
+        let index = ((x + y * imageData.width) *4);
+
+        r = imageData.data[index + 0];
+        g = imageData.data[index + 1];
+        b = imageData.data[index + 2];
+        a = imageData.data[index + 3];
+
+        imageData.data[index + 0] = 255 - r;
+        imageData.data[index + 1] = 255 - g;
+        imageData.data[index + 2] = 255 - b;
+
+    }
+
+
+    
+    ctx.putImageData(imageData, 0, 0);
+};
+
+function gris() {
+    let imageData = getImgData();
+    drawRect(imageData, r, g, b, a);
+    
+    function drawRect(imageData, r, g, b, a){
+        for (let x = 0; x < imageData.width; x++) {
+            for (let y = 0; y < imageData.height; y++) {
+                setPixel(imageData, x, y, r, g, b, a);
+            }
+        }
+    }
+
+    function setPixel(imageData, x, y, r, g, b, a) {
+        let index = ((x + y * imageData.width) *4);
+
+        r = imageData.data[index + 0];
+        g = imageData.data[index + 1];
+        b = imageData.data[index + 2];
+        a = imageData.data[index + 3];
+
+        let gris = Math.round(((r + g + b) / 3));
+
+        imageData.data[index + 0] = gris;
+        imageData.data[index + 1] = gris;
+        imageData.data[index + 2] = gris;
+    }
+    ctx.putImageData(imageData, 0, 0);
+};
