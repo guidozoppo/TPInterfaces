@@ -9,18 +9,23 @@
 <body>
     <canvas id="myCanvas" width="500" height="500" style="border: 1px solid red"></canvas>
     <input type="file" name="file" id="file" accept=".jpg,.png,.jpeg">
-    <button id="btnBorrar">GOMA DE BORRAR</button>
-    <button id="btnBorrarTodo">BORRAR TODO</button>
-    <button id="negativo">Filtro negativo</button>
-    <button id="gris">Filtro Gris</button>
-    <button id="binarizacion">Filtro Binarizacion</button>
+    <nav>
+        <button id="btnBorrar">GOMA DE BORRAR</button>
+        <button id="btnBorrarTodo">BORRAR TODO</button>
+        <button id="negativo">Filtro negativo</button>
+        <button id="gris">Filtro Gris</button>
+        <button id="binarizacion">Filtro Binarizacion</button>
+        <button id="blur">Filtro Blur</button>
+        <button id="brillo">Filtro Brillo</button>
+        <button id="contraste">Filtro Contraste</button>
+        <input type="color" name="" id="color">
+        <input type="range" min="1" max="50" id="grosor" value="1">
+    </nav>
 
-    <input type="color" name="" id="color">
 
-    <input type="range" min="1" max="50" id="grosor" value="1">
     <!-- <button id="btnDescargar">Descargar</button> -->
 
-<a id="download" download="triangle.png">
+    <a id="download" download="triangle.png">
         <button type="button" onClick="download()">Download</button>
     </a>
 

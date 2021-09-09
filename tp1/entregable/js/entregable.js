@@ -10,7 +10,9 @@ let grosor = 1;
 let xInicial = 0;
 let yInicial = 0;
 let filtroGris = false;
-
+let imgWidth = 0;
+let imgHeight = 0;
+let subioImagen = false;
 let r = 0;
 let g = 0;
 let b = 0;
@@ -26,6 +28,9 @@ document.getElementById("grosor").addEventListener("input", setGrosor);
 document.getElementById("negativo").addEventListener("click", negativo);
 document.getElementById("gris").addEventListener("click", gris);
 document.getElementById("binarizacion").addEventListener("click", binarizacion);
+document.getElementById("blur").addEventListener("click", blur);
+document.getElementById("brillo").addEventListener("click", brillo);
+document.getElementById("contraste").addEventListener("click", contraste);
 
 function setColor(){
     color = document.getElementById("color").value;
@@ -72,19 +77,19 @@ document.getElementById("file").onchange=function(e){
     reader.onload = function(){
         let imagen = new Image();
         imagen.src = reader.result;
-        console.log(imagen.width);
         
         imagen.onload = function(){
-            console.log(imagen.width);
-            //ctx.drawImage(imagen, 0, 0, imagen.width, imagen.height);
             ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+            imgHeight = imagen.height;
+            imgWidth = imagen.width;
+            subioImagen = true;
         }
     }
-}
+};
 
 function getImgData () {
     return ctx.getImageData(0, 0, canvas.width, canvas.height);
-}
+};
 
   function negativo() {
     let imageData = getImgData();
@@ -111,6 +116,38 @@ function getImgData () {
         imageData.data[index + 2] = 255 - b;
 
     }
+
+
+    
+    ctx.putImageData(imageData, 0, 0);
+};
+
+function brillo() {
+    let imageData = getImgData();
+    drawRect(imageData, r, g, b, a);
+    
+    function drawRect(imageData, r, g, b, a){
+        for (let x = 0; x < imageData.width; x++) {
+            for (let y = 0; y < imageData.height; y++) {
+                setPixel(imageData, x, y, r, g, b, a);
+            }
+        }
+    }
+
+    function setPixel(imageData, x, y, r, g, b, a) {
+        let index = ((x + y * imageData.width) *4);
+
+        r = imageData.data[index + 0];
+        g = imageData.data[index + 1];
+        b = imageData.data[index + 2];
+        a = imageData.data[index + 3];
+
+        imageData.data[index + 0] = r + 10;
+        imageData.data[index + 1] = g + 10;
+        imageData.data[index + 2] = b + 10;
+        
+    }
+
 
 
     
@@ -181,21 +218,78 @@ function binarizacion() {
     ctx.putImageData(imageData, 0, 0);
 };
 
+function contraste() {
+    let imageData = getImgData();
+    drawRect(imageData, r, g, b, a);
+    
+     function drawRect(imageData, r, g, b, a){
+         for (let x = 0; x < imageData.width; x++) {
+             for (let y = 0; y < imageData.height; y++) {
+                 setPixel(imageData, x, y, r, g, b, a);
+             }
+         }
+     }
+     
+     function setPixel(imageData, x, y, r, g, b, a) {
+         let index = ((x + y * imageData.width) *4);
+         let color = 0;
+ 
+         r = imageData.data[index + 0];
+         g = imageData.data[index + 1];
+         b = imageData.data[index + 2];
+         a = imageData.data[index + 3];
+ 
+         imageData.data[index + 0] = r + 10;
+         imageData.data[index + 1] = g + 10;
+         imageData.data[index + 2] = b + 10;
+     }
+     ctx.putImageData(imageData, 0, 0);
+ };
 
-/* document.getElementById("btnDescargar").addEventListener("click", () => {
-    // Crear un elemento <a>
-    let enlace = document.createElement('a');
-    // El título
-    enlace.download = "Canvas como imagen.png";
-    // Convertir la imagen a Base64 y ponerlo en el enlace
-    enlace.href = canvas.toDataURL();
-    // Hacer click en él
-    enlace.click();
-}); */
+function blur() {
+    var data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    let btnBlur = document.getElementById("blur")
+    var px = data.data;
+    var tmpPx = new Uint8ClampedArray(px.length);
+    tmpPx.set(px);
+  
+    for (var i = 0, len= px.length; i < len; i++) {
+       if (i % 4 === 3) {continue;}
+  
+       px[i] = ( tmpPx[i] 
+          + (tmpPx[i - 4] || tmpPx[i])
+          + (tmpPx[i + 4] || tmpPx[i]) 
+          + (tmpPx[i - 4 * data.width] || tmpPx[i])
+          + (tmpPx[i + 4 * data.width] || tmpPx[i]) 
+          + (tmpPx[i - 4 * data.width - 4] || tmpPx[i])
+          + (tmpPx[i + 4 * data.width + 4] || tmpPx[i])
+          + (tmpPx[i + 4 * data.width - 4] || tmpPx[i])
+          + (tmpPx[i - 4 * data.width + 4] || tmpPx[i])
+          )/9;
+    };
+    // data.data = px;
+  
+    ctx.putImageData(data,0,0);
+    tmpPx = null;
+    btnBlur.removeAttribute('disabled');
+};
 
-function download() {
-    var download = document.getElementById("download");
-    var image = document.getElementById("myCanvas").toDataURL("image/png").replace("image/png", "image/octet-stream");
-    //download.setAttribute("href", image);
-    download.setAttribute("download","archive.png");
+function download() {    
+    let canvasDownload = canvas;
+    if (subioImagen) {
+        canvasDownload = setOriginalSize();
     }
+    
+    let downloadBtn = document.getElementById("download");
+    downloadBtn.setAttribute("href", canvasDownload.toDataURL("image/png"));
+    downloadBtn.setAttribute("download","archive.png");
+};
+
+function setOriginalSize() {
+    let canvasJS = document.createElement('canvas');
+    canvasJS.width = imgWidth;
+    canvasJS.height = imgHeight;
+    let ctxJS = canvasJS.getContext('2d');
+    ctxJS.drawImage(canvas, 0, 0, canvasJS.width, canvasJS.height);
+    return canvasJS;
+};
