@@ -30,8 +30,9 @@ document.getElementById("gris").addEventListener("click", gris);
 document.getElementById("binarizacion").addEventListener("click", binarizacion);
 document.getElementById("blur").addEventListener("click", blur);
 document.getElementById("brillo").addEventListener("click", brillo);
-document.getElementById("contraste").addEventListener("click", contraste);
-
+document.getElementById("saturacion").addEventListener("click", saturacion);
+document.getElementById("restaurar").addEventListener("click", subirImagen);
+document.getElementById("file").addEventListener("change", subirImagen);
 function setColor(){
     color = document.getElementById("color").value;
 }
@@ -68,9 +69,27 @@ function borrar(){
 function borrarTodo(){
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0,0,canvas.width, canvas.height)
+    subioImagen = false;
+    document.getElementById("file").value = "";
 }
 
-document.getElementById("file").onchange=function(e){
+/* document.getElementById("file").onchange=function(e){
+    let reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    
+    reader.onload = function(){
+        let imagen = new Image();
+        imagen.src = reader.result;
+        
+        imagen.onload = function(){
+            ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+            imgHeight = imagen.height;
+            imgWidth = imagen.width;
+            subioImagen = true;
+        }
+    }
+}; */
+function subirImagen(e){
     let reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     
@@ -91,7 +110,7 @@ function getImgData () {
     return ctx.getImageData(0, 0, canvas.width, canvas.height);
 };
 
-  function negativo() {
+function negativo() {
     let imageData = getImgData();
     drawRect(imageData, r, g, b, a);
     
@@ -218,10 +237,59 @@ function binarizacion() {
     ctx.putImageData(imageData, 0, 0);
 };
 
-function contraste() {
+function saturacion() {
     let imageData = getImgData();
-    drawRect(imageData, r, g, b, a);
+    drawRect(imageData, r, g, b, a);   
+
+    function drawRect(imageData, r, g, b, a){
+        for (let x = 0; x < imageData.width; x++) {
+            for (let y = 0; y < imageData.height; y++) {
+                setPixel(imageData, x, y, r, g, b, a);
+            }
+        }
+    }
     
+    function setPixel(imageData, x, y, r, g, b, a) {
+        let index = ((x + y * imageData.width) *4);
+        let vs = 1.1; // valor saturacion. Si es 0 = se pone en escala de grises, si es 1 = muestra el original
+
+        let luR = 0.6094; // Valor para determinar la luminosidad de rojo
+        let luG = 0.3086; // Valor para determinar la luminosidad de verde
+        let luB = 0.0820; // Valor para determinar la luminosidad de azul
+        
+        //r en pixel
+        let az = (1 - vs)*luR + vs;
+        let bz = (1 - vs)*luG;
+        let cz = (1 - vs)*luB;
+        //g en pixel
+        let dz = (1 - vs)*luR;
+        let ez = (1 - vs)*luG + vs;
+        let fz = (1 - vs)*luB;
+        //b en pixel
+        let gz = (1 - vs)*luR;
+        let hz = (1 - vs)*luG;
+        let iz = (1 - vs)*luB + vs;
+
+        r = imageData.data[index]; //Se guardan los valores originales
+        g = imageData.data[index + 1];
+        b = imageData.data[index + 2];
+
+        let rSaturado = (az*r + bz*g + cz*b); //Se saturan los colores
+        let gSaturado = (dz*r + ez*g + fz*b);
+        let bSaturado = (gz*r + hz*g + iz*b);
+
+        imageData.data[index] = rSaturado; //Se asignan los colores saturados
+        imageData.data[index + 1] = gSaturado;
+        imageData.data[index + 2] = bSaturado;
+    }
+    ctx.putImageData(imageData, 0, 0);
+};
+
+function blur() {
+    /* let imageData = getImgData();
+    drawRect(imageData, r, g, b, a);
+    console.log(imageData.data);
+
      function drawRect(imageData, r, g, b, a){
          for (let x = 0; x < imageData.width; x++) {
              for (let y = 0; y < imageData.height; y++) {
@@ -232,26 +300,31 @@ function contraste() {
      
      function setPixel(imageData, x, y, r, g, b, a) {
          let index = ((x + y * imageData.width) *4);
-         let color = 0;
- 
-         r = imageData.data[index + 0];
-         g = imageData.data[index + 1];
-         b = imageData.data[index + 2];
-         a = imageData.data[index + 3];
- 
-         imageData.data[index + 0] = r + 10;
-         imageData.data[index + 1] = g + 10;
-         imageData.data[index + 2] = b + 10;
+
+         if (index % 4 == 3) {
+         imageData.data[index] = ( imageData.data[index] 
+            + (imageData.data[index - 4] || imageData.data[index])
+            + (imageData.data[index + 4] || imageData.data[index]) 
+            + (imageData.data[index - 4 * imageData.width] || imageData.data[index])
+            + (imageData.data[index + 4 * imageData.width] || imageData.data[index]) 
+            + (imageData.data[index - 4 * imageData.width - 4] || imageData.data[index])
+            + (imageData.data[index + 4 * imageData.width + 4] || imageData.data[index])
+            + (imageData.data[index + 4 * imageData.width - 4] || imageData.data[index])
+            + (imageData.data[index - 4 * imageData.width + 4] || imageData.data[index])
+            ) / 9;
+         }
+
      }
      ctx.putImageData(imageData, 0, 0);
- };
-
-function blur() {
-    var data = ctx.getImageData(0,0,canvas.width,canvas.height);
+ */
+    //var data = ctx.getImageData(0,0,canvas.width,canvas.height);
+    var data = getImgData();
     let btnBlur = document.getElementById("blur")
     var px = data.data;
-    var tmpPx = new Uint8ClampedArray(px.length);
-    tmpPx.set(px);
+    var tmpPx = new Uint8ClampedArray(px.length); //tmpPx es = a imageData.data pero con los valores rgb en 0
+    console.log(tmpPx)
+    tmpPx.set(px); //Aca le asigna los px a tmpPx por lo que termina siendo = a imageData.data
+    console.log(tmpPx) 
   
     for (var i = 0, len= px.length; i < len; i++) {
        if (i % 4 === 3) {continue;}
