@@ -33,7 +33,9 @@ document.getElementById("brillo").addEventListener("click", brillo);
 document.getElementById("restaurar").addEventListener("click", subirImagen);
 document.getElementById("file").addEventListener("change", subirImagen);
 document.getElementById("saturacion").addEventListener("click", saturacion);
-document.getElementById("contraste").addEventListener("click", contraste);
+document.getElementById("sepia").addEventListener("click", sepia);
+document.getElementById("deteccionBordes").addEventListener("click", deteccionBordes);
+//document.getElementById("restaurar").addEventListener("click", restaurarImagen);
 document.getElementById("tono").addEventListener("click", tono);
 
 function setColor(){
@@ -76,22 +78,6 @@ function borrarTodo(){
     document.getElementById("file").value = "";
 }
 
-/* document.getElementById("file").onchange=function(e){
-    let reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    
-    reader.onload = function(){
-        let imagen = new Image();
-        imagen.src = reader.result;
-        
-        imagen.onload = function(){
-            ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
-            imgHeight = imagen.height;
-            imgWidth = imagen.width;
-            subioImagen = true;
-        }
-    }
-}; */
 function subirImagen(e){
     let reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
@@ -100,14 +86,24 @@ function subirImagen(e){
         let imagen = new Image();
         imagen.src = reader.result;
         
-        imagen.onload = function(){
+        imagenOnload(imagen);
+        /* imagen.onload = function(){
             ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
             imgHeight = imagen.height;
             imgWidth = imagen.width;
             subioImagen = true;
-        }
+        } */
     }
 };
+
+function imagenOnload (imagen) {
+    imagen.onload = function(){
+        ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+        imgHeight = imagen.height;
+        imgWidth = imagen.width;
+        subioImagen = true;
+    }
+}
 
 function getImgData () {
     return ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -370,7 +366,6 @@ function setOriginalSize() {
     return canvasJS;
 };
 
-
 function tono() {
     let imageData = getImgData();
     drawRect(imageData, r, g, b, a);
@@ -466,3 +461,82 @@ function HSVtoRGB(h, s, v) {
         b: Math.round(b * 255)
     };
 }
+
+function sepia(){
+    let imageData = getImgData(),
+        pixels = imageData.data,
+        numPixels = imageData.width * imageData.height;
+ 
+    for ( let i = 0; i < numPixels; i++ ) {
+        let r = pixels[ i * 4 ];
+        let g = pixels[ i * 4 + 1 ];
+        let b = pixels[ i * 4 + 2 ];
+ 
+        //PROCESO SIMILAR AL DE NEGATIVIDAD INVIRTIENDO EL VALOR
+        pixels[ i * 4 ] = 255 - r;
+        pixels[ i * 4 + 1 ] = 255 - g;
+        pixels[ i * 4 + 2 ] = 255 - b;
+ 
+        //ALGORITMO DE SEPIA ELEGIDO
+        pixels[ i * 4 ] = ( r * .393 ) + ( g *.769 ) + ( b * .189 );
+        pixels[ i * 4 + 1 ] = ( r * .349 ) + ( g *.686 ) + ( b * .168 );
+        pixels[ i * 4 + 2 ] = ( r * .272 ) + ( g *.534 ) + ( b * .131 );
+    }
+    ctx.putImageData( imageData, 0, 0 );
+}
+
+function conv3x(data, idx, w, matriz){
+    return (
+        /* matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - 4] + matriz[2]*data[idx + w - 4]
+        - matriz[0]*data[idx - w + 4] - matriz[1]*data[idx + 4] - matriz[2]*data[idx + 4 + 4] */
+        matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - 4] + matriz[2]*data[idx + w - 4]
+        - matriz[3]*data[idx - 1] - matriz[4]*data[idx] - matriz[5]*data[idx + 1]
+        + matriz[6]*data[idx - w + 4] + matriz[7]*data[idx + 4] + matriz[8]*data[idx + 4 + 4]
+        );
+  }
+  
+function conv3y(data, idx, w, matriz){
+    return (
+        /* matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - w] + matriz[2]*data[idx - w + 4]
+        -(matriz[0]*data[idx + w - 4] + matriz[1]*data[idx + w] + matriz[2]*data[idx + w + 4]) */
+        matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - w] + matriz[2]*data[idx - w + 4] +
+        matriz[3]*data[idx - 1] + matriz[4]*data[idx] + matriz[5]*data[idx + 1] 
+        + matriz[6]*data[idx + w - 4] + matriz[7]*data[idx + w] + matriz[8]*data[idx + w + 4]
+        );
+  }
+
+  function gradient_internal(imageData, matriz) {
+    var data = imageData.data; 
+    //imageData.data es una Uint8ClampedArrayrepresentación de una matriz unidimensional 
+    //que contiene los datos en el orden RGBA, con valores enteros entre 0 y 255.
+
+    var w = imageData.width * 4; //w viene a ser el ancho de imageData en pixels * 4 (rgba)
+    console.log(w);
+    var l = data.length - w - 4; //data.lengths son los valores que tiene la matriz data totales = alto*ancho *4(rgba) = 1.000.000
+                                 // l = matriz - valores totales del ancho (w) - 4(rgba)
+    console.log(l)
+    var buff = new data.constructor(new ArrayBuffer(data.length));
+    console.log(buff)
+    for (var i = w + 4; i < l; i+=4){ //for que empieza en i = w(2000 + 4) y va hasta l(997.996)
+      var dx = conv3x(data, i, w, matriz);
+      var dy = conv3y(data, i, w, matriz);
+      buff[i] = buff[i + 1] = buff[i + 2] = Math.sqrt(dx*dx + dy*dy);
+      buff[i + 3] = 255;
+    }
+    imageData.data.set(buff);
+  }
+  
+ function gradient(){
+    let imageData = getImgData();//context.getImageData(0, 0, canvas.width,canvas.height);
+    let matriz = [  
+                1, 2, 1, 
+                0, 0, 0,
+                -1, -2, -1
+                ];
+    gradient_internal(imageData, matriz); // Para aplicar el operador sobel
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  function deteccionBordes(){
+      gradient(canvas);
+  }
