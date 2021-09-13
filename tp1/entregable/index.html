@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <h4>Paint</h4>
             <div class="dropdown">
-                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-success dropdown-toggle" title="Aprieta para aplicar filtros" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   Aplicar filtros
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -30,24 +30,24 @@
     
                 </ul>
               </div>
-            <button id="btnBorrarTodo" class="btn btn-success">Borrar todo</button>
-            <button id="restaurar" class="btn btn-success">Restaurar Imagen</button>
+            <button id="btnBorrarTodo" class="btn btn-success" title="Limpia el canvas">Borrar todo</button>
+            <button id="restaurar" class="btn btn-success" title="Carga la imagen original">Restaurar Imagen</button>
             <a id="download" download="triangle.png">
-                <button type="button" onClick="download()" style="background: none; border: none;">
+                <button type="button" onClick="download()" title="Descarga tu canvas" style="background: none; border: none;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" style="color: black;" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                         <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                       </svg>
                 </button>
             </a>
-            <a id="btnBorrar"></s><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-eraser-fill" viewBox="0 0 16 16">
+            <a id="btnBorrar" title="Goma de borrar"></s><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-eraser-fill" viewBox="0 0 16 16">
                 <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
             </svg></a>
-            <a id="lapiz"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-brush-fill" viewBox="0 0 16 16">
+            <a id="lapiz" title="Lapiz"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-brush-fill" viewBox="0 0 16 16">
                 <path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.067 6.067 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.118 8.118 0 0 1-3.078.132 3.659 3.659 0 0 1-.562-.135 1.382 1.382 0 0 1-.466-.247.714.714 0 0 1-.204-.288.622.622 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896.126.007.243.025.348.048.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04z"/>
             </svg></a>
-            <input type="color" name="" id="color">
-            <input type="range" min="1" max="50" id="grosor" value="1">
+            <input type="color" name="" id="color" title="Elige un color">
+            <input type="range" min="1" max="50" id="grosor" value="1" title="Elige un grosor">
 
         </div>
     </nav>
