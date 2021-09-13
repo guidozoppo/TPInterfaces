@@ -82,13 +82,16 @@ function borrarTodo(){
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0,0,canvas.width, canvas.height)
     subioImagen = false; //false para la descarga o muestra de la imagen
-    document.getElementById("file").value = ""; //Se vacia el name del input file, quedando como ningun archivo seleccionado
+    if(imagen) {
+        document.getElementById("file").value = ""; //Se vacia el name del input file, quedando como ningun archivo seleccionado
+        imagen = "";
+        canvas.height = 500;
+    }
 }
 
 function subirImagen(e){
     //El objeto FileReader nos permite leer el file
     let reader = new FileReader();
-    console.log(e.target.files[0])
     //readAsDataURL codifica el dato binario en url
     reader.readAsDataURL(e.target.files[0]);
     
@@ -96,29 +99,26 @@ function subirImagen(e){
         imagen = new Image();
         imagen.src = reader.result;
         
-        imagenOnload(imagen);
-        /* imagen.onload = function(){
+        imagen.onload = function(){ //cargada la imagen, se aplica en canvas
+            if(imagen.height > canvas.height) {
+                canvas.height = imagen.height;
+            }
             ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
-            imgHeight = imagen.height;
-            imgWidth = imagen.width;
+            imgHeight = imagen.height;//Guardamos el alto original para cuando descarguemos la imagen
+            imgWidth = imagen.width;//Guardamos el ancho original para cuando descarguemos la imagen
             subioImagen = true;
-        } */
+        }
     }
 };
 
 function restaurarImagen() {
-    ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
-        imgHeight = imagen.height;
-        imgWidth = imagen.width;
-        subioImagen = true;
-}
-
-function imagenOnload (imagen) {
-    imagen.onload = function(){ //cargada la imagen, se aplica en canvas
+    if(imagen){
         ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
         imgHeight = imagen.height;
         imgWidth = imagen.width;
         subioImagen = true;
+    } else {
+        alert("Al borrar todo tambien has borrado la imagen de memoria. No hay ninguna imagen para restaurar")
     }
 }
 
