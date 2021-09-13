@@ -1,0 +1,20 @@
+#myCanvas {
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#file {
+    margin-top: 5px;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+#btnBorrar:hover {
+    color: rgb(14, 12, 12);
+}
+
+#lapiz:hover {
+    color: rgb(14, 12, 12);
+}
+

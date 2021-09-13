@@ -17,6 +17,7 @@ let r = 0;
 let g = 0;
 let b = 0;
 let a = 255;
+let imagen;
 
 canvas.addEventListener("mousedown", apretoClick);
 canvas.addEventListener("mouseup", soltoClick);
@@ -30,13 +31,14 @@ document.getElementById("gris").addEventListener("click", gris);
 document.getElementById("binarizacion").addEventListener("click", binarizacion);
 document.getElementById("blur").addEventListener("click", blur);
 document.getElementById("brillo").addEventListener("click", brillo);
-document.getElementById("restaurar").addEventListener("click", subirImagen);
+//document.getElementById("restaurar").addEventListener("click", subirImagen);
 document.getElementById("file").addEventListener("change", subirImagen);
 document.getElementById("saturacion").addEventListener("click", saturacion);
 document.getElementById("sepia").addEventListener("click", sepia);
 document.getElementById("deteccionBordes").addEventListener("click", deteccionBordes);
-//document.getElementById("restaurar").addEventListener("click", restaurarImagen);
+document.getElementById("restaurar").addEventListener("click", restaurarImagen);
 document.getElementById("tono").addEventListener("click", tono);
+document.getElementById("lapiz").addEventListener("click", lapiz);
 
 function setColor(){
     color = document.getElementById("color").value;
@@ -71,6 +73,10 @@ function borrar(){
     color = "#FFFFFF";
 }
 
+function lapiz() {
+    color = document.getElementById("color").value;;
+}
+
 function borrarTodo(){
     //Se limpia el canvas
     ctx.fillStyle = '#FFFFFF';
@@ -87,7 +93,7 @@ function subirImagen(e){
     reader.readAsDataURL(e.target.files[0]);
     
     reader.onload = function(){ //se ejecuta una vez cargado
-        let imagen = new Image();
+        imagen = new Image();
         imagen.src = reader.result;
         
         imagenOnload(imagen);
@@ -99,6 +105,13 @@ function subirImagen(e){
         } */
     }
 };
+
+function restaurarImagen() {
+    ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+        imgHeight = imagen.height;
+        imgWidth = imagen.width;
+        subioImagen = true;
+}
 
 function imagenOnload (imagen) {
     imagen.onload = function(){ //cargada la imagen, se aplica en canvas
