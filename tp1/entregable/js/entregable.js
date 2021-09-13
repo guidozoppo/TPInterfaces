@@ -1,5 +1,5 @@
 "use strict";
-
+//FUE PROBADO EN NAVEGADOR GOOGLE CHROME Versión 93.0.4577.63 (Build oficial) (64 bits)
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 let width = canvas.width;
@@ -72,17 +72,21 @@ function borrar(){
 }
 
 function borrarTodo(){
+    //Se limpia el canvas
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0,0,canvas.width, canvas.height)
-    subioImagen = false;
-    document.getElementById("file").value = "";
+    subioImagen = false; //false para la descarga o muestra de la imagen
+    document.getElementById("file").value = ""; //Se vacia el name del input file, quedando como ningun archivo seleccionado
 }
 
 function subirImagen(e){
+    //El objeto FileReader nos permite leer el file
     let reader = new FileReader();
+    console.log(e.target.files[0])
+    //readAsDataURL codifica el dato binario en url
     reader.readAsDataURL(e.target.files[0]);
     
-    reader.onload = function(){
+    reader.onload = function(){ //se ejecuta una vez cargado
         let imagen = new Image();
         imagen.src = reader.result;
         
@@ -97,7 +101,7 @@ function subirImagen(e){
 };
 
 function imagenOnload (imagen) {
-    imagen.onload = function(){
+    imagen.onload = function(){ //cargada la imagen, se aplica en canvas
         ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
         imgHeight = imagen.height;
         imgWidth = imagen.width;
@@ -129,6 +133,7 @@ function negativo() {
         b = imageData.data[index + 2];
         a = imageData.data[index + 3];
 
+        //Se invierten los valores de r,g y b
         imageData.data[index + 0] = 255 - r;
         imageData.data[index + 1] = 255 - g;
         imageData.data[index + 2] = 255 - b;
@@ -154,15 +159,21 @@ function brillo() {
 
     function setPixel(imageData, x, y, r, g, b, a) {
         let index = ((x + y * imageData.width) *4);
+        let aumentoBrillo = 10;
 
         r = imageData.data[index + 0];
         g = imageData.data[index + 1];
         b = imageData.data[index + 2];
         a = imageData.data[index + 3];
 
-        imageData.data[index + 0] = r + 10;
-        imageData.data[index + 1] = g + 10;
-        imageData.data[index + 2] = b + 10;
+        //Mas brillo = mas cerca del blanco
+        //Se le aumenta a r,g y b el valor que tiene la variable aumentoBrillo
+        if(aumentoBrillo < 1){
+            aumentoBrillo = 10;
+        }
+        imageData.data[index + 0] = r + aumentoBrillo;
+        imageData.data[index + 1] = g + aumentoBrillo;
+        imageData.data[index + 2] = b + aumentoBrillo;
         
     }
 
@@ -193,7 +204,7 @@ function gris() {
         a = imageData.data[index + 3];
 
         let gris = Math.round(((r + g + b) / 3));
-        
+        //Se hace un promedio entre los tres valores y se le asigna ese valor a cada uno.
         imageData.data[index + 0] = gris;
         imageData.data[index + 1] = gris;
         imageData.data[index + 2] = gris;
@@ -223,7 +234,7 @@ function binarizacion() {
         a = imageData.data[index + 3];
 
         let gris = ((r+g+b)/3);
-
+        //Se definio el color gris, si es mayor a 255/2 a ese pixel se lo hace blanco, si es menor a 255/2 será negro.
         if(gris > (255/2)){   
             color = 255;
         } else {
@@ -300,7 +311,7 @@ function blur() {
      function setPixel(imageData, x, y, r, g, b, a) {
          let index = ((x + y * imageData.width) *4);
 
-         if (index % 4 == 3) {
+         if (index % 4 !== 3) {
          imageData.data[index] = ( imageData.data[index] 
             + (imageData.data[index - 4] || imageData.data[index])
             + (imageData.data[index + 4] || imageData.data[index]) 
@@ -314,21 +325,22 @@ function blur() {
          }
 
      }
-     ctx.putImageData(imageData, 0, 0);
- */
+     ctx.putImageData(imageData, 0, 0); */
+
     //var data = ctx.getImageData(0,0,canvas.width,canvas.height);
-    var data = getImgData();
-    let btnBlur = document.getElementById("blur")
-    var px = data.data;
-    var tmpPx = new Uint8ClampedArray(px.length); //tmpPx es = a imageData.data pero con los valores rgb en 0
-    console.log(tmpPx)
+    let data = getImgData();
+    //let btnBlur = document.getElementById("blur")
+    let px = data.data;
+    let pxLength = px.length;
+    let tmpPx = new Uint8ClampedArray(pxLength); //tmpPx es = a imageData.data pero con los valores rgb en 0
+
     tmpPx.set(px); //Aca le asigna los px a tmpPx por lo que termina siendo = a imageData.data
-    console.log(tmpPx) 
+
   
-    for (var i = 0, len= px.length; i < len; i++) {
-       if (i % 4 === 3) {continue;}
+    for (let i = 0; i < pxLength; i++) {
+       if (i % 4 === 3) {continue;} //Significa que está en a, por lo tanto que salte la iteración
   
-       px[i] = ( tmpPx[i] 
+        px[i] = ( tmpPx[i] 
           + (tmpPx[i - 4] || tmpPx[i])
           + (tmpPx[i + 4] || tmpPx[i]) 
           + (tmpPx[i - 4 * data.width] || tmpPx[i])
@@ -337,17 +349,18 @@ function blur() {
           + (tmpPx[i + 4 * data.width + 4] || tmpPx[i])
           + (tmpPx[i + 4 * data.width - 4] || tmpPx[i])
           + (tmpPx[i - 4 * data.width + 4] || tmpPx[i])
-          )/9;
+          ) /9;
     };
     // data.data = px;
   
-    ctx.putImageData(data,0,0);
-    tmpPx = null;
-    btnBlur.removeAttribute('disabled');
+    ctx.putImageData(data, 0, 0);
+    //tmpPx = null;
+    //btnBlur.removeAttribute('disabled');
 };
 
 function download() {    
     let canvasDownload = canvas;
+    //Si se subio una imagen, que se descargue con el tamaño que fue subida
     if (subioImagen) {
         canvasDownload = setOriginalSize();
     }
@@ -358,6 +371,7 @@ function download() {
 };
 
 function setOriginalSize() {
+    //Se crea un canvas "paralelo" para guardar el tamaño original de la imagen  
     let canvasJS = document.createElement('canvas');
     canvasJS.width = imgWidth;
     canvasJS.height = imgHeight;
@@ -369,23 +383,22 @@ function setOriginalSize() {
 function tono() {
     let imageData = getImgData();
     drawRect(imageData, r, g, b, a);
-    
-     function drawRect(imageData, r, g, b, a){
-         for (let x = 0; x < imageData.width; x++) {
-             for (let y = 0; y < imageData.height; y++) {
-                 setPixel(imageData, x, y, r, g, b, a);
-             }
-         }
-     }
+
+    function drawRect(imageData, r, g, b, a){
+        for (let x = 0; x < imageData.width; x++) {
+            for (let y = 0; y < imageData.height; y++) {
+                setPixel(imageData, x, y, r, g, b, a);
+            }   
+        }   
+    }
      
-     function setPixel(imageData, x, y, r, g, b, a) {
-         let index = ((x + y * imageData.width) *4);
-         let color = 0;
- 
-         r = imageData.data[index + 0];
-         g = imageData.data[index + 1];
-         b = imageData.data[index + 2];
-         a = imageData.data[index + 3];
+    function setPixel(imageData, x, y, r, g, b, a) {
+        let index = ((x + y * imageData.width) *4);
+
+        r = imageData.data[index + 0];
+        g = imageData.data[index + 1];
+        b = imageData.data[index + 2];
+        a = imageData.data[index + 3];
         let h = 0;
         let s = 0;
         let v = 0;
@@ -405,19 +418,19 @@ function tono() {
         HSV = RGBtoHSV(RGB['r'], RGB['g'], RGB['b']);
         HSV['h']  = HSV['h'] + 0.01;
         RGB = HSVtoRGB(HSV['h'], HSV['s'] ,HSV['v']);
- 
-         imageData.data[index + 0] = RGB['r'];
-         imageData.data[index + 1] = RGB['g'];
-         imageData.data[index + 2] = RGB['b'];
-     }
-     ctx.putImageData(imageData, 0, 0);
+
+        imageData.data[index + 0] = RGB['r'];
+        imageData.data[index + 1] = RGB['g'];
+        imageData.data[index + 2] = RGB['b'];
+    }
+    ctx.putImageData(imageData, 0, 0);
 }
 
 function RGBtoHSV(r, g, b) {
     if (arguments.length === 1) {
         g = r.g, b = r.b, r = r.r;
     }
-    var max = Math.max(r, g, b), min = Math.min(r, g, b),
+    let max = Math.max(r, g, b), min = Math.min(r, g, b),
         d = max - min,
         h,
         s = (max === 0 ? 0 : d / max),
@@ -438,7 +451,7 @@ function RGBtoHSV(r, g, b) {
 }
 
 function HSVtoRGB(h, s, v) {
-    var r, g, b, i, f, p, q, t;
+    let r, g, b, i, f, p, q, t;
     if (arguments.length === 1) {
         s = h.s, v = h.v, h = h.h;
     }
@@ -463,9 +476,9 @@ function HSVtoRGB(h, s, v) {
 }
 
 function sepia(){
-    let imageData = getImgData(),
-        pixels = imageData.data,
-        numPixels = imageData.width * imageData.height;
+    let imageData = getImgData();
+    let pixels = imageData.data;
+    let numPixels = imageData.width * imageData.height;
  
     for ( let i = 0; i < numPixels; i++ ) {
         let r = pixels[ i * 4 ];
@@ -485,17 +498,17 @@ function sepia(){
     ctx.putImageData( imageData, 0, 0 );
 }
 
-function conv3x(data, idx, w, matriz){
+function convolucionx(data, idx, w, matriz){
     return (
         /* matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - 4] + matriz[2]*data[idx + w - 4]
         - matriz[0]*data[idx - w + 4] - matriz[1]*data[idx + 4] - matriz[2]*data[idx + 4 + 4] */
-        matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - 4] + matriz[2]*data[idx + w - 4]
+         matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - 4] + matriz[2]*data[idx + w - 4]
         - matriz[3]*data[idx - 1] - matriz[4]*data[idx] - matriz[5]*data[idx + 1]
         + matriz[6]*data[idx - w + 4] + matriz[7]*data[idx + 4] + matriz[8]*data[idx + 4 + 4]
         );
   }
   
-function conv3y(data, idx, w, matriz){
+function convoluciony(data, idx, w, matriz){
     return (
         /* matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - w] + matriz[2]*data[idx - w + 4]
         -(matriz[0]*data[idx + w - 4] + matriz[1]*data[idx + w] + matriz[2]*data[idx + w + 4]) */
@@ -506,37 +519,37 @@ function conv3y(data, idx, w, matriz){
   }
 
   function gradient_internal(imageData, matriz) {
-    var data = imageData.data; 
+    let data = imageData.data; 
     //imageData.data es una Uint8ClampedArrayrepresentación de una matriz unidimensional 
     //que contiene los datos en el orden RGBA, con valores enteros entre 0 y 255.
 
-    var w = imageData.width * 4; //w viene a ser el ancho de imageData en pixels * 4 (rgba)
-    console.log(w);
-    var l = data.length - w - 4; //data.lengths son los valores que tiene la matriz data totales = alto*ancho *4(rgba) = 1.000.000
-                                 // l = matriz - valores totales del ancho (w) - 4(rgba)
-    console.log(l)
-    var buff = new data.constructor(new ArrayBuffer(data.length));
-    console.log(buff)
-    for (var i = w + 4; i < l; i+=4){ //for que empieza en i = w(2000 + 4) y va hasta l(997.996)
-      var dx = conv3x(data, i, w, matriz);
-      var dy = conv3y(data, i, w, matriz);
-      buff[i] = buff[i + 1] = buff[i + 2] = Math.sqrt(dx*dx + dy*dy);
-      buff[i + 3] = 255;
+    let w = imageData.width * 4; //w viene a ser el ancho de imageData en pixels * 4 (rgba)
+    let l = data.length - w - 4; //data.lengths son los valores totales que tiene la matriz data = alto*ancho *4(rgba) = 1.000.000
+                                 // l = matriz - valores totales del ancho (w) - 4(rgba) para que el for no se pase del total de pixeles
+
+    let data2 = new data.constructor(new ArrayBuffer(data.length));//se crea un objeto ArrayBuffer como lo es la letiable data de largo data.length
+
+    for (let i = w + 4; i < l; i+=4){ //for que empieza en i = w(2000 + 4) y va hasta l(997.996) para recorrer la totalidad del canvas
+        let gx = convolucionx(data, i, w, matriz);
+        let gy = convoluciony(data, i, w, matriz);
+        data2[i] = data2[i + 1] = data2[i + 2] = Math.sqrt(gx*gx + gy*gy);
+        data2[i + 3] = 255;
     }
-    imageData.data.set(buff);
+    imageData.data.set(data2);
   }
   
  function gradient(){
-    let imageData = getImgData();//context.getImageData(0, 0, canvas.width,canvas.height);
+    let imageData = getImgData();
     let matriz = [  
-                1, 2, 1, 
+               -1, -2, -1, 
                 0, 0, 0,
-                -1, -2, -1
+                1, 2, 1
                 ];
+ 
     gradient_internal(imageData, matriz); // Para aplicar el operador sobel
     ctx.putImageData(imageData, 0, 0);
   }
 
   function deteccionBordes(){
-      gradient(canvas);
+      gradient();
   }
