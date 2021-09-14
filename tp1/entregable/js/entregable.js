@@ -7,9 +7,6 @@ let heigth = canvas.height;
 let pintando = false;
 let color = 'black';
 let grosor = 1;
-let xInicial = 0;
-let yInicial = 0;
-let filtroGris = false;
 let imgWidth = 0;
 let imgHeight = 0;
 let subioImagen = false;
@@ -31,7 +28,6 @@ document.getElementById("gris").addEventListener("click", gris);
 document.getElementById("binarizacion").addEventListener("click", binarizacion);
 document.getElementById("blur").addEventListener("click", blur);
 document.getElementById("brillo").addEventListener("click", brillo);
-//document.getElementById("restaurar").addEventListener("click", subirImagen);
 document.getElementById("file").addEventListener("change", subirImagen);
 document.getElementById("saturacion").addEventListener("click", saturacion);
 document.getElementById("sepia").addEventListener("click", sepia);
@@ -69,6 +65,7 @@ function soltoClick(e){
 }
 
 function borrar(){
+    //Le asigna el grosor establecido por el usuario y el color en blanco simulando una goma
     grosor = grosor;
     color = "#FFFFFF";
 }
@@ -86,6 +83,7 @@ function borrarTodo(){
         document.getElementById("file").value = ""; //Se vacia el name del input file, quedando como ningun archivo seleccionado
         imagen = "";
         canvas.height = 500;
+        canvas.width = 500;
     }
 }
 
@@ -98,10 +96,19 @@ function subirImagen(e){
     reader.onload = function(){ //se ejecuta una vez cargado
         imagen = new Image();
         imagen.src = reader.result;
-        
+        canvas.height = 500;
+        canvas.width = 500;
         imagen.onload = function(){ //cargada la imagen, se aplica en canvas
-            if(imagen.height > canvas.height) {
-                canvas.height = imagen.height;
+            //DIFERENTES MEDIDAS DEL CANVAS PARA DIFERENTES MEDIDAS DE IMAGENES
+            if(imagen.height > canvas.height && imagen.height < 854) {
+                canvas.height = 640;
+                canvas.width = 360;
+            } else if (imagen.height > canvas.height && imagen.height < 1280) {
+                canvas.height = 854;
+                canvas.width = 480;
+            } else if (imagen.height > canvas.height && imagen.height > 1280) {
+                canvas.height = 1280;
+                canvas.width = 720;
             }
             ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
             imgHeight = imagen.height;//Guardamos el alto original para cuando descarguemos la imagen
@@ -112,12 +119,12 @@ function subirImagen(e){
 };
 
 function restaurarImagen() {
-    if(imagen){
+    if(imagen){ //Si subió una imagen anteriormente se restaurará
         ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
         imgHeight = imagen.height;
         imgWidth = imagen.width;
         subioImagen = true;
-    } else {
+    } else { //Si presionó borrar todo o nunca subio una imagen no la restaurará
         alert("Al borrar todo tambien has borrado la imagen de memoria. No hay ninguna imagen para restaurar")
     }
 }
@@ -152,9 +159,6 @@ function negativo() {
         imageData.data[index + 2] = 255 - b;
 
     }
-
-
-    
     ctx.putImageData(imageData, 0, 0);
 };
 
@@ -187,12 +191,8 @@ function brillo() {
         imageData.data[index + 0] = r + aumentoBrillo;
         imageData.data[index + 1] = g + aumentoBrillo;
         imageData.data[index + 2] = b + aumentoBrillo;
-        
     }
 
-
-
-    
     ctx.putImageData(imageData, 0, 0);
 };
 
@@ -295,9 +295,9 @@ function saturacion() {
             'b' : b
         }
 
-        HSV = RGBtoHSV(RGB['r'], RGB['g'], RGB['b']);
-        HSV['s']  = HSV['s'] + 0.05;
-        RGB = HSVtoRGB(HSV['h'], HSV['s'] ,HSV['v']);
+        HSV = RGBtoHSV(RGB['r'], RGB['g'], RGB['b']); //Se transforman los valores de rgb en hsv
+        HSV['s']  = HSV['s'] + 0.05; //Se le aumenta la saturacion en 0.05
+        RGB = HSVtoRGB(HSV['h'], HSV['s'] ,HSV['v']); //Se transforman los valores de hsv a rgb
 
         imageData.data[index + 0] = RGB['r'];
         imageData.data[index + 1] = RGB['g'];
@@ -307,66 +307,33 @@ function saturacion() {
 }
 
 function blur() {
-    /* let imageData = getImgData();
-    drawRect(imageData, r, g, b, a);
-    console.log(imageData.data);
-
-     function drawRect(imageData, r, g, b, a){
-         for (let x = 0; x < imageData.width; x++) {
-             for (let y = 0; y < imageData.height; y++) {
-                 setPixel(imageData, x, y, r, g, b, a);
-             }
-         }
-     }
-     
-     function setPixel(imageData, x, y, r, g, b, a) {
-         let index = ((x + y * imageData.width) *4);
-
-         if (index % 4 !== 3) {
-         imageData.data[index] = ( imageData.data[index] 
-            + (imageData.data[index - 4] || imageData.data[index])
-            + (imageData.data[index + 4] || imageData.data[index]) 
-            + (imageData.data[index - 4 * imageData.width] || imageData.data[index])
-            + (imageData.data[index + 4 * imageData.width] || imageData.data[index]) 
-            + (imageData.data[index - 4 * imageData.width - 4] || imageData.data[index])
-            + (imageData.data[index + 4 * imageData.width + 4] || imageData.data[index])
-            + (imageData.data[index + 4 * imageData.width - 4] || imageData.data[index])
-            + (imageData.data[index - 4 * imageData.width + 4] || imageData.data[index])
-            ) / 9;
-         }
-
-     }
-     ctx.putImageData(imageData, 0, 0); */
-
-    //var data = ctx.getImageData(0,0,canvas.width,canvas.height);
     let data = getImgData();
-    //let btnBlur = document.getElementById("blur")
+    //Obtenemos todo los pixeles
     let px = data.data;
+
+    //Sacamos la cantidad de px para el for y crear pxAux
     let pxLength = px.length;
-    let tmpPx = new Uint8ClampedArray(pxLength); //tmpPx es = a imageData.data pero con los valores rgb en 0
+    let pxAux = new Uint8ClampedArray(pxLength); //pxAux es = a imageData.data pero con los valores rgb en 0
 
-    tmpPx.set(px); //Aca le asigna los px a tmpPx por lo que termina siendo = a imageData.data
+    pxAux.set(px); //Aca le asigna los px a pxAux por lo que termina siendo = a imageData.data
 
-  
     for (let i = 0; i < pxLength; i++) {
        if (i % 4 === 3) {continue;} //Significa que está en a, por lo tanto que salte la iteración
   
-        px[i] = ( tmpPx[i] 
-          + (tmpPx[i - 4] || tmpPx[i])
-          + (tmpPx[i + 4] || tmpPx[i]) 
-          + (tmpPx[i - 4 * data.width] || tmpPx[i])
-          + (tmpPx[i + 4 * data.width] || tmpPx[i]) 
-          + (tmpPx[i - 4 * data.width - 4] || tmpPx[i])
-          + (tmpPx[i + 4 * data.width + 4] || tmpPx[i])
-          + (tmpPx[i + 4 * data.width - 4] || tmpPx[i])
-          + (tmpPx[i - 4 * data.width + 4] || tmpPx[i])
+       //Hace el promedio con los valores de alrededor y el de la posicion i, si no lo encuentra toma el valor central
+        px[i] = ( pxAux[i] 
+          + (pxAux[i - 4] || pxAux[i])
+          + (pxAux[i + 4] || pxAux[i]) 
+          + (pxAux[i - 4 * data.width] || pxAux[i])
+          + (pxAux[i + 4 * data.width] || pxAux[i]) 
+          + (pxAux[i - 4 * data.width - 4] || pxAux[i])
+          + (pxAux[i + 4 * data.width + 4] || pxAux[i])
+          + (pxAux[i + 4 * data.width - 4] || pxAux[i])
+          + (pxAux[i - 4 * data.width + 4] || pxAux[i])
           ) /9;
     };
-    // data.data = px;
   
     ctx.putImageData(data, 0, 0);
-    //tmpPx = null;
-    //btnBlur.removeAttribute('disabled');
 };
 
 function download() {    
@@ -375,7 +342,7 @@ function download() {
     if (subioImagen) {
         canvasDownload = setOriginalSize();
     }
-    
+    //Se le asigna el atributo para descarga al boton de descarga.
     let downloadBtn = document.getElementById("download");
     downloadBtn.setAttribute("href", canvasDownload.toDataURL("image/png"));
     downloadBtn.setAttribute("download","archive.png");
@@ -426,16 +393,16 @@ function tono() {
             'b' : b
         }
 
-        HSV = RGBtoHSV(RGB['r'], RGB['g'], RGB['b']);
-        HSV['h']  = HSV['h'] + 0.01;
-        RGB = HSVtoRGB(HSV['h'], HSV['s'] ,HSV['v']);
+        HSV = RGBtoHSV(RGB['r'], RGB['g'], RGB['b']);   //Se transforman los valores de rgb en hsv
+        HSV['h']  = HSV['h'] + 0.01;                    //Se le aumenta el tono en 0.01
+        RGB = HSVtoRGB(HSV['h'], HSV['s'] ,HSV['v']);   //Se transforman los valores de hsv a rgb
 
         imageData.data[index + 0] = RGB['r'];
         imageData.data[index + 1] = RGB['g'];
         imageData.data[index + 2] = RGB['b'];
     }
     ctx.putImageData(imageData, 0, 0);
-}
+};
 
 function RGBtoHSV(r, g, b) {
     if (arguments.length === 1) {
@@ -459,7 +426,7 @@ function RGBtoHSV(r, g, b) {
         s: s,
         v: v
     };
-}
+};
 
 function HSVtoRGB(h, s, v) {
     let r, g, b, i, f, p, q, t;
@@ -484,7 +451,7 @@ function HSVtoRGB(h, s, v) {
         g: Math.round(g * 255),
         b: Math.round(b * 255)
     };
-}
+};
 
 function sepia(){
     let imageData = getImgData();
@@ -507,29 +474,24 @@ function sepia(){
         pixels[ i * 4 + 2 ] = ( r * .272 ) + ( g *.534 ) + ( b * .131 );
     }
     ctx.putImageData( imageData, 0, 0 );
-}
+};
 
 function convolucionx(data, idx, w, matriz){
     return (
-        /* matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - 4] + matriz[2]*data[idx + w - 4]
-        - matriz[0]*data[idx - w + 4] - matriz[1]*data[idx + 4] - matriz[2]*data[idx + 4 + 4] */
+        //Usamos la matriz cargada pero modificando la posicion del data llegamos a los mismos valores que cargando la matriz x
          matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - 4] + matriz[2]*data[idx + w - 4]
-        - matriz[3]*data[idx - 1] - matriz[4]*data[idx] - matriz[5]*data[idx + 1]
         + matriz[6]*data[idx - w + 4] + matriz[7]*data[idx + 4] + matriz[8]*data[idx + 4 + 4]
         );
-  }
+};
   
 function convoluciony(data, idx, w, matriz){
     return (
-        /* matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - w] + matriz[2]*data[idx - w + 4]
-        -(matriz[0]*data[idx + w - 4] + matriz[1]*data[idx + w] + matriz[2]*data[idx + w + 4]) */
         matriz[0]*data[idx - w - 4] + matriz[1]*data[idx - w] + matriz[2]*data[idx - w + 4] +
-        matriz[3]*data[idx - 1] + matriz[4]*data[idx] + matriz[5]*data[idx + 1] 
         + matriz[6]*data[idx + w - 4] + matriz[7]*data[idx + w] + matriz[8]*data[idx + w + 4]
         );
-  }
+};
 
-  function gradient_internal(imageData, matriz) {
+function gradienteInterno(imageData, matriz) {
     let data = imageData.data; 
     //imageData.data es una Uint8ClampedArrayrepresentación de una matriz unidimensional 
     //que contiene los datos en el orden RGBA, con valores enteros entre 0 y 255.
@@ -537,19 +499,20 @@ function convoluciony(data, idx, w, matriz){
     let w = imageData.width * 4; //w viene a ser el ancho de imageData en pixels * 4 (rgba)
     let l = data.length - w - 4; //data.lengths son los valores totales que tiene la matriz data = alto*ancho *4(rgba) = 1.000.000
                                  // l = matriz - valores totales del ancho (w) - 4(rgba) para que el for no se pase del total de pixeles
-
-    let data2 = new data.constructor(new ArrayBuffer(data.length));//se crea un objeto ArrayBuffer como lo es la letiable data de largo data.length
-
+    
+    let data2 = new data.constructor(new ArrayBuffer(data.length));//se crea un objeto ArrayBuffer como lo es la variable data con un largo = data.length
+    
     for (let i = w + 4; i < l; i+=4){ //for que empieza en i = w(2000 + 4) y va hasta l(997.996) para recorrer la totalidad del canvas
-        let gx = convolucionx(data, i, w, matriz);
-        let gy = convoluciony(data, i, w, matriz);
+        let gx = convolucionx(data, i, w, matriz); //Se obtienen los gx a partir de la multiplicacion por la matriz
+        let gy = convoluciony(data, i, w, matriz);//Se obtienen los gy a partir de la multiplicacion por la matriz
         data2[i] = data2[i + 1] = data2[i + 2] = Math.sqrt(gx*gx + gy*gy);
         data2[i + 3] = 255;
     }
+    
     imageData.data.set(data2);
-  }
+};
   
- function gradient(){
+ function gradiente(){
     let imageData = getImgData();
     let matriz = [  
                -1, -2, -1, 
@@ -557,10 +520,10 @@ function convoluciony(data, idx, w, matriz){
                 1, 2, 1
                 ];
  
-    gradient_internal(imageData, matriz); // Para aplicar el operador sobel
+    gradienteInterno(imageData, matriz); // Para aplicar el operador sobel
     ctx.putImageData(imageData, 0, 0);
-  }
+};
 
-  function deteccionBordes(){
-      gradient();
-  }
+function deteccionBordes(){
+    gradiente();
+};
