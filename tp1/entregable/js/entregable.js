@@ -262,51 +262,49 @@ function binarizacion() {
 
 function saturacion() {
     let imageData = getImgData();
-    drawRect(imageData, r, g, b, a);   
+    drawRect(imageData, r, g, b, a);
 
     function drawRect(imageData, r, g, b, a){
         for (let x = 0; x < imageData.width; x++) {
             for (let y = 0; y < imageData.height; y++) {
                 setPixel(imageData, x, y, r, g, b, a);
-            }
-        }
+            }   
+        }   
     }
-    
+     
     function setPixel(imageData, x, y, r, g, b, a) {
         let index = ((x + y * imageData.width) *4);
-        let vs = 1.1; // valor saturacion. Si es 0 = se pone en escala de grises, si es 1 = muestra el original
 
-        let luR = 0.6094; // Valor para determinar la luminosidad de rojo
-        let luG = 0.3086; // Valor para determinar la luminosidad de verde
-        let luB = 0.0820; // Valor para determinar la luminosidad de azul
-        
-        //r en pixel
-        let az = (1 - vs)*luR + vs;
-        let bz = (1 - vs)*luG;
-        let cz = (1 - vs)*luB;
-        //g en pixel
-        let dz = (1 - vs)*luR;
-        let ez = (1 - vs)*luG + vs;
-        let fz = (1 - vs)*luB;
-        //b en pixel
-        let gz = (1 - vs)*luR;
-        let hz = (1 - vs)*luG;
-        let iz = (1 - vs)*luB + vs;
-
-        r = imageData.data[index]; //Se guardan los valores originales
+        r = imageData.data[index + 0];
         g = imageData.data[index + 1];
         b = imageData.data[index + 2];
+        a = imageData.data[index + 3];
+        let h = 0;
+        let s = 0;
+        let v = 0;
 
-        let rSaturado = (az*r + bz*g + cz*b); //Se saturan los colores
-        let gSaturado = (dz*r + ez*g + fz*b);
-        let bSaturado = (gz*r + hz*g + iz*b);
+        let HSV = {
+            'h' : h,
+            's' : s,
+            'v' : v
+        }
 
-        imageData.data[index] = rSaturado; //Se asignan los colores saturados
-        imageData.data[index + 1] = gSaturado;
-        imageData.data[index + 2] = bSaturado;
+        let RGB = {
+            'r' : r,
+            'g' : g,
+            'b' : b
+        }
+
+        HSV = RGBtoHSV(RGB['r'], RGB['g'], RGB['b']);
+        HSV['s']  = HSV['s'] + 0.05;
+        RGB = HSVtoRGB(HSV['h'], HSV['s'] ,HSV['v']);
+
+        imageData.data[index + 0] = RGB['r'];
+        imageData.data[index + 1] = RGB['g'];
+        imageData.data[index + 2] = RGB['b'];
     }
     ctx.putImageData(imageData, 0, 0);
-};
+}
 
 function blur() {
     /* let imageData = getImgData();
