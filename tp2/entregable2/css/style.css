@@ -1,0 +1,58 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: monospace;
+}
+
+#container {
+    text-align: center;
+    border: 1px solid red;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+}
+
+#tablero {
+    position: absolute;
+    width: 75vw;
+    height: 75vw;
+    max-width: 30em;
+    max-height: 30em;
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    transform: translateY(-100%);
+}
+
+#juego {
+    display: block;
+    position: relative;
+    width: 75vw;
+    height: 75vw;
+    max-width: 30em;
+    max-height: 30em;
+}
+
+#reiniciar {
+    width: 100px;
+    height: 50px;
+    border: 0px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    background-color: #8854d0;
+    border-radius: .2em;
+    box-shadow: 0px 0px 2px black;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+#reiniciar:hover {
+    background: white;
+    color: #8854d0;
+    border: 1px solid #8854d0;
+}
