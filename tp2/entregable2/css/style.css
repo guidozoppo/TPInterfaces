@@ -1,58 +1,30 @@
-* {
-    padding: 0px;
-    margin: 0px;
+#game {
+    display: flex;
 }
 
-body {
-    font-family: monospace;
-}
-
-#container {
+.gameIntro {
+    flex-direction: column;
+    width: 30%;
     text-align: center;
-    border: 1px solid red;
-    position: absolute;
-    top: 50vh;
-    left: 50vw;
-    transform: translate(-50%, -50%);
+    margin: auto;
+    transition-duration: 1s;
 }
 
-#tablero {
-    position: absolute;
-    width: 75vw;
-    height: 75vw;
-    max-width: 30em;
-    max-height: 30em;
-    display: block;
-    cursor: pointer;
-    background: transparent;
-    transform: translateY(-100%);
+.gameIntro:hover {
+    -ms-transform: translateY(130px); /* IE 9 */
+    -webkit-transform: translateY(130px); /* Safari */
+    transform: translateY(130px);
 }
 
-#juego {
-    display: block;
-    position: relative;
-    width: 75vw;
-    height: 75vw;
-    max-width: 30em;
-    max-height: 30em;
+#game > * {
+    margin: 20px;
 }
 
-#reiniciar {
-    width: 100px;
-    height: 50px;
-    border: 0px;
-    color: white;
-    font-weight: bold;
-    font-size: 1.2em;
-    background-color: #8854d0;
-    border-radius: .2em;
-    box-shadow: 0px 0px 2px black;
-    margin: 20px 0;
-    cursor: pointer;
+.inicioShow {
+    display: none;
 }
 
-#reiniciar:hover {
-    background: white;
-    color: #8854d0;
-    border: 1px solid #8854d0;
+.dropdown-menu li a {
+    text-decoration: none;
+    color: black;
 }
