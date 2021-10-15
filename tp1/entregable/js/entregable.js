@@ -100,7 +100,7 @@ function subirImagen(e){
         canvas.width = 500;
         imagen.onload = function(){ //cargada la imagen, se aplica en canvas
             //DIFERENTES MEDIDAS DEL CANVAS PARA DIFERENTES MEDIDAS DE IMAGENES
-            let altoImagen = imagen.height;
+           /*  let altoImagen = imagen.height;
             let anchoImagen = imagen.width;
             if(anchoImagen < altoImagen){
                 let proporcion = canvas.height / altoImagen;
@@ -115,7 +115,7 @@ function subirImagen(e){
                 let proporcionAlto = canvas.height  / altoImagen;
                 anchoImagen = anchoImagen * proporcionAncho;
                 altoImagen = altoImagen * proporcionAlto;
-        }
+        } */
             /* if(imagen.height > canvas.height && imagen.height < 854) {
                 canvas.height = 640;
                 canvas.width = 360;
@@ -126,10 +126,10 @@ function subirImagen(e){
                 canvas.height = 1280;
                 canvas.width = 720;
             }  */
-            //canvas.height = imagen.height;
-           // canvas.width = imagen.width;
-            //ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
-            ctx.drawImage(imagen, 0, 0, anchoImagen, altoImagen);
+            canvas.height = imagen.height;
+            canvas.width = imagen.width;
+            ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+            //ctx.drawImage(imagen, 0, 0, anchoImagen, altoImagen);
             imgHeight = imagen.height;//Guardamos el alto original para cuando descarguemos la imagen
             imgWidth = imagen.width;//Guardamos el ancho original para cuando descarguemos la imagen
             subioImagen = true;
