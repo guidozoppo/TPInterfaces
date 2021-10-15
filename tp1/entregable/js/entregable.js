@@ -100,7 +100,23 @@ function subirImagen(e){
         canvas.width = 500;
         imagen.onload = function(){ //cargada la imagen, se aplica en canvas
             //DIFERENTES MEDIDAS DEL CANVAS PARA DIFERENTES MEDIDAS DE IMAGENES
-            if(imagen.height > canvas.height && imagen.height < 854) {
+            let altoImagen = imagen.height;
+            let anchoImagen = imagen.width;
+            if(anchoImagen < altoImagen){
+                let proporcion = canvas.height / altoImagen;
+                anchoImagen = anchoImagen * proporcion;
+                altoImagen = altoImagen * proporcion;
+            } else if (anchoImagen > altoImagen){
+                let proporcion = canvas.width / anchoImagen;
+                anchoImagen = anchoImagen * proporcion;
+                altoImagen = altoImagen * proporcion;
+            } else {
+                let proporcionAncho = canvas.width / anchoImagen;
+                let proporcionAlto = canvas.height  / altoImagen;
+                anchoImagen = anchoImagen * proporcionAncho;
+                altoImagen = altoImagen * proporcionAlto;
+        }
+            /* if(imagen.height > canvas.height && imagen.height < 854) {
                 canvas.height = 640;
                 canvas.width = 360;
             } else if (imagen.height > canvas.height && imagen.height < 1280) {
@@ -109,8 +125,11 @@ function subirImagen(e){
             } else if (imagen.height > canvas.height && imagen.height > 1280) {
                 canvas.height = 1280;
                 canvas.width = 720;
-            }
-            ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+            }  */
+            //canvas.height = imagen.height;
+           // canvas.width = imagen.width;
+            //ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(imagen, 0, 0, anchoImagen, altoImagen);
             imgHeight = imagen.height;//Guardamos el alto original para cuando descarguemos la imagen
             imgWidth = imagen.width;//Guardamos el ancho original para cuando descarguemos la imagen
             subioImagen = true;
@@ -493,22 +512,21 @@ function convoluciony(data, idx, w, matriz){
 
 function gradienteInterno(imageData, matriz) {
     let data = imageData.data; 
+    
     //imageData.data es una Uint8ClampedArrayrepresentación de una matriz unidimensional 
     //que contiene los datos en el orden RGBA, con valores enteros entre 0 y 255.
-
+    //console.log(data)
     let w = imageData.width * 4; //w viene a ser el ancho de imageData en pixels * 4 (rgba)
     let l = data.length - w - 4; //data.lengths son los valores totales que tiene la matriz data = alto*ancho *4(rgba) = 1.000.000
                                  // l = matriz - valores totales del ancho (w) - 4(rgba) para que el for no se pase del total de pixeles
     
     let data2 = new data.constructor(new ArrayBuffer(data.length));//se crea un objeto ArrayBuffer como lo es la variable data con un largo = data.length
-    
     for (let i = w + 4; i < l; i+=4){ //for que empieza en i = w(2000 + 4) y va hasta l(997.996) para recorrer la totalidad del canvas
         let gx = convolucionx(data, i, w, matriz); //Se obtienen los gx a partir de la multiplicacion por la matriz
         let gy = convoluciony(data, i, w, matriz);//Se obtienen los gy a partir de la multiplicacion por la matriz
         data2[i] = data2[i + 1] = data2[i + 2] = Math.sqrt(gx*gx + gy*gy);
         data2[i + 3] = 255;
     }
-    
     imageData.data.set(data2);
 };
   
