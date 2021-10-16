@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+#juego{
+    width: 200vw;
+    height: 100vh;
+    overflow: hidden;
+    background: url('../img/fondo.jpg');
+    background-position: center left;
+}
+
+#tuberia{
+    width: 45px;
+    height: 100vh;
+    background: url('../img/tuberia.jpg');
+    background-position: center;
+    background-size: contain;
+    position: relative;
+}
+
+#espacio {
+    width: 45px;
+    height: 193px;
+    background: url('../img/espacio.jpg');
+    background-size: contain;
+    position: relative;
+    top: -500px;
+    background-repeat: no-repeat;
+}
+
+#tuberia, #espacio {
+    left: 40vw;
+    animation: movimientoTuberias 2s infinite linear;
+}
+
+#puntaje {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+#character {
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    background: url('../img/pajaro.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 20vh;
+    left: 20vw;
+}
+
+@keyframes movimientoTuberias {
+    0%{
+        left: 100vw;
+    }
+    100%{
+        left: -50px;
+    }
+}
