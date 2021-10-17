@@ -36,11 +36,6 @@ body {
     background-repeat: no-repeat;
 }
 
-#tuberia, #espacio {
-    left: 40vw;
-    animation: movimientoTuberias 2s infinite linear;
-}
-
 #puntaje {
     position: fixed;
     top: 20px;
@@ -50,7 +45,7 @@ body {
     font-weight: normal;
 }
 
-#character {
+#pajaro {
     width: 40px;
     height: 30px;
     position: absolute;
@@ -61,11 +56,39 @@ body {
     left: 20vw;
 }
 
+.volar{
+    animation: volar 0.2s;
+    animation-fill-mode: forwards;
+}
+
+.bajar{
+    animation: bajar 0.2s;
+    animation-fill-mode: forwards;
+}
+
 @keyframes movimientoTuberias {
     0%{
         left: 100vw;
     }
     100%{
         left: -50px;
+    }
+}
+
+@keyframes volar {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(-35deg );
+    }
+}
+
+@keyframes bajar {
+    0%{
+        transform: rotate(0deg); 
+    }
+    100%{
+        transform: rotate(35deg );
     }
 }
