@@ -52,6 +52,26 @@ function saltar(){
 function cambiarEstado(diff, direction){
     cambiarAnimationPajaro(direction)
     cambiarPositionPajaro(diff)
+    controlarColisiones()
+}
+
+function controlarColisiones(){
+    const colisionTuberia = detectarChoque(pajaro, tuberia);
+    let extra = {
+        y1: -46,
+        y2: 47
+    }
+    const colisionEspacio = detectarChoque(pajaro, espacio, extra);
+
+    if(colisionTuberia && !colisionEspacio){
+        return perdio()
+    } else if(colisionEspacio){
+
+    }
+}
+
+function perdio(){
+    console.log("perdiste")
 }
 
 function cambiarAnimationPajaro(direction){
@@ -93,6 +113,7 @@ function iniciarJuego(){
 
 function iniciarGravedad(){
     setInterval(_ =>{
+        if(saltando || juegoParado) return;
         cambiarEstado(5, 'down')
     }, 20)
 }
@@ -105,6 +126,22 @@ function getCssProp(element, cssProperty){
     return window
         .getComputedStyle(element)
         .getPropertyValue(cssProperty)
+}
+
+function detectarChoque(el1, el2, extra){
+    const rect1 = el1.getBoundingClientRect();
+    const rect2 = el2.getBoundingClientRect();
+
+    extra = extra || {
+        y1:0, y2:0
+    }
+
+    return (
+        rect1.x < rect2.x + rect2.width &&
+        rect1.x + rect1.width > rect2.x &&
+        rect1.y < rect2.y + rect2.height + extra.y1 &&
+        rect1.y + rect1.height > rect2.y + extra.y2
+    )
 }
 
 iniciarJuego();

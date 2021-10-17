@@ -34,6 +34,12 @@ body {
     position: relative;
     top: -500px;
     background-repeat: no-repeat;
+
+    top: -700px;
+}
+
+#tuberia, #espacio{
+    left: 10vw;
 }
 
 #puntaje {
