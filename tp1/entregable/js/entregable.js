@@ -99,7 +99,7 @@ function subirImagen(e){
         canvas.height = 500;
         canvas.width = 500;
         imagen.onload = function(){ //cargada la imagen, se aplica en canvas
-            //DIFERENTES MEDIDAS DEL CANVAS PARA DIFERENTES MEDIDAS DE IMAGENES
+            //DIFERENTES CONDICIONES PARA QUE NO SE DEFORME LA IMAGEN
             let altoImagen = imagen.height;
             let anchoImagen = imagen.width;
             if(anchoImagen < altoImagen){
