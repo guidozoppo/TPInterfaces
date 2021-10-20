@@ -8,8 +8,12 @@ let puntaje = document.querySelector("#puntaje");
 let cartelHasPerdido = document.querySelector("#cartelHasPerdido");
 let juegoParado = false;
 let saltando = false;
+let puntos = 0;
+let espaciosPasados = 0;
+let soundCount = 0;
+let gravedadParada = false;
 
-function resetearAnimacion(){
+function resetearAnimaciones(){
     const segundos = 2;
     const animacionTuberias = 'movimientoTuberias ' + segundos +"s infinite linear"; 
     tuberia.style.animation = animacionTuberias;
@@ -19,8 +23,19 @@ function resetearAnimacion(){
 function setEventListener(){
     window.addEventListener("resize", _ =>{
         if(juegoParado) return;
-        resetearAnimacion();
+        resetearAnimaciones();
     });
+    cartelHasPerdido.querySelector( 'button' ).addEventListener( 'click', _ => {
+        OcultarCartelGameOver()
+        reiniciarGravedad()
+        resetearAnimaciones()
+        reiniciarPosicionPajaro()
+        reiniciarPuntos()
+        cambiarPuntos()
+        setTimeout(_ => {
+            juegoParado = false
+        })
+    })
     document.body.parentElement.addEventListener("click", _ => {
         if(juegoParado) return;
         saltar();
@@ -32,6 +47,11 @@ function setEventListener(){
             saltar();
         }
     }
+}
+
+function reiniciarPosicionPajaro(){
+    pajaro.style.top = `30vh`
+    pajaro.style.left = `25vw`
 }
 
 function saltar(){
@@ -63,15 +83,57 @@ function controlarColisiones(){
     }
     const colisionEspacio = detectarChoque(pajaro, espacio, extra);
 
-    if(colisionTuberia && !colisionEspacio){
-        return perdio()
-    } else if(colisionEspacio){
+    if (colisionTuberia && !colisionEspacio) {
+        cambiarPuntos();
+        return perdio();
+    } else if (colisionEspacio) {
+        puntos++; 
+        if (puntos > 35) {
+            //play hole sound
+            soundCount = 0;
+        }
 
+        cambiarPuntos();
+        if(juegoParado) return;
+
+        espaciosPasados++;
+        if(espaciosPasados > 150) {
+            espaciosPasados = 0;
+        }
     }
 }
 
 function perdio(){
-    console.log("perdiste")
+    juegoParado = true;
+    cartelGameOver();
+    pararGravedad();
+    pararAnimacionTuberia();
+    //pararAnimacionFondo();
+    console.log("perdiste");
+}
+
+function cartelGameOver(){
+    cartelHasPerdido.style.display = '';
+}
+
+function OcultarCartelGameOver(){
+    cartelHasPerdido.style.display = 'none';
+}
+
+function pararAnimacionTuberia(){
+    const blockLeft = tuberia.getBoundingClientRect().x;
+    tuberia.style.animation = "";
+    espacio.style.animation = "";
+    
+    tuberia.style.left = blockLeft + 'px';
+    espacio.style.left = blockLeft + 'px';
+}
+
+function pararGravedad(){
+    gravedadParada = true;
+}
+function reiniciarGravedad(){
+    gravedadParada = false;
 }
 
 function cambiarAnimationPajaro(direction){
@@ -82,6 +144,16 @@ function cambiarAnimationPajaro(direction){
         pajaro.classList.add('volar')
         pajaro.classList.remove('bajar');
     }
+}
+
+function reiniciarPuntos(){
+    puntos = 0;
+}
+
+function cambiarPuntos(){
+    puntaje.innerText = puntos + ' puntos';
+    document.querySelector(".puntos").innerText = puntaje.innerText;
+
 }
 
 function cambiarPositionPajaro(direction){
@@ -105,7 +177,7 @@ function iniciarEspacios(){
 }
 
 function iniciarJuego(){
-    resetearAnimacion();
+    resetearAnimaciones();
     setEventListener();
     iniciarEspacios();
     iniciarGravedad();

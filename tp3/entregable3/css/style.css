@@ -26,6 +26,43 @@ body {
     position: relative;
 }
 
+#cartelHasPerdido {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#cartelHasPerdido .titulo, 
+#cartelHasPerdido .puntos,
+#cartelHasPerdido button {
+    position: absolute;
+    z-index: 1;
+    left: calc(50% - 102px);
+    top: 40%;
+    width: 205px;
+    text-align: center;
+    color: rgb(255, 255, 74);
+    font-family: 'PixelarRegularW01-Regular';
+    font-weight: normal;
+}
+#cartelHasPerdido .titulo {
+    margin-top: -65px;
+    font-size: 55px;
+}
+#cartelHasPerdido .puntos {
+    font-size: 30px;
+}
+#cartelHasPerdido button {
+    margin-top: 50px;
+    font-size: 24px;
+    color: black;
+    padding: 5px 25px;
+    cursor: pointer;
+    border: 0;
+}
+
 #espacio {
     width: 45px;
     height: 193px;
