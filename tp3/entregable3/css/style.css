@@ -110,6 +110,19 @@ body {
     top: 20vh;
     left: 20vw;
 }
+/* #pajaro {
+    width: 88px;
+    height: 122px;
+    position: relative;
+    background: url('../img/pajaroNegro.png');
+    margin: auto;
+    animation: fly .8s steps(10) infinite;
+    bottom: 34px;
+   /*  background-size: contain;
+    background-repeat: no-repeat;
+    top: 20vh;
+    left: 20vw; 
+} */
 
 .volar{
     animation: volar 0.2s;
@@ -119,6 +132,15 @@ body {
 .bajar{
     animation: bajar 0.2s;
     animation-fill-mode: forwards;
+}
+
+@keyframes fly {
+    0%{
+        background-position: 0;
+    }
+    100%{
+        background-position: -880px;
+    }
 }
 
 @keyframes movimientoTuberias {

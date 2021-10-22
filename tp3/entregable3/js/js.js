@@ -18,6 +18,7 @@ function resetearAnimaciones(){
     const animacionTuberias = 'movimientoTuberias 2s infinite linear'; 
     tuberia.style.animation = animacionTuberias;
     espacio.style.animation = animacionTuberias;
+    //pajaro.style.animation = "fly .8s steps(10) infinite";
     //moneda.style.animation = 'animacionMoneda 3s infinite linear';
 
     if(moneda.style.display !== "none") return;
