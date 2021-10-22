@@ -43,13 +43,14 @@ body {
     top: 40%;
     width: 205px;
     text-align: center;
-    color: rgb(255, 255, 74);
+    color: red;
     font-family: 'PixelarRegularW01-Regular';
     font-weight: normal;
 }
 #cartelHasPerdido .titulo {
-    margin-top: -65px;
-    font-size: 55px;
+    margin-top: -50px;
+    font-size: 40px;
+    color: red;
 }
 #cartelHasPerdido .puntos {
     font-size: 30px;
@@ -100,7 +101,7 @@ body {
     left: 20vw; */
 }
 
-#pajaro {
+/* #pajaro {
     width: 40px;
     height: 30px;
     position: absolute;
@@ -109,20 +110,29 @@ body {
     background-repeat: no-repeat;
     top: 20vh;
     left: 20vw;
-}
-/* #pajaro {
-    width: 88px;
-    height: 122px;
-    position: relative;
-    background: url('../img/pajaroNegro.png');
-    margin: auto;
-    animation: fly .8s steps(10) infinite;
-    bottom: 34px;
-   /*  background-size: contain;
-    background-repeat: no-repeat;
-    top: 20vh;
-    left: 20vw; 
 } */
+#pajaro {
+    /*JUGANDO CON WIDTH:40 Y HEIGH 30 ANDA BIEN*/
+    width: 40px;
+    height: 30px;
+    /* width: 109.8px;
+    height: 150px; */
+   
+  /* background-size: contain; */
+ /*  background-repeat: no-repeat; */
+  /* top: 20vh;
+  left: 20vw;  */
+  background: url('../img/pajaroNegroprueba.png') repeat-x; 
+  animation: fly .8s steps(10) infinite;
+  /* 
+  background: url('../img/pajaro.png');
+  bottom: 34px;
+  */
+  margin: auto;
+  position: absolute;
+  filter: brightness(1.1);
+  mix-blend-mode: multiply;
+}
 
 .volar{
     animation: volar 0.2s;
@@ -139,7 +149,7 @@ body {
         background-position: 0;
     }
     100%{
-        background-position: -880px;
+        background-position: -400px;
     }
 }
 

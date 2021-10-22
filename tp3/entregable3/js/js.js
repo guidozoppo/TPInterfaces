@@ -11,14 +11,13 @@ let juegoParado = false;
 let saltando = false;
 let puntos = 0;
 let espaciosPasados = 0;
-let soundCount = 0;
 let gravedadParada = false;
 
 function resetearAnimaciones(){
     const animacionTuberias = 'movimientoTuberias 2s infinite linear'; 
     tuberia.style.animation = animacionTuberias;
     espacio.style.animation = animacionTuberias;
-    //pajaro.style.animation = "fly .8s steps(10) infinite";
+    pajaro.style.animation = "fly .8s steps(10) infinite";
     //moneda.style.animation = 'animacionMoneda 3s infinite linear';
 
     if(moneda.style.display !== "none") return;
@@ -112,8 +111,6 @@ function controlarColisiones(){
     } else if (colisionEspacio) {
         puntos++; 
         if (puntos > 35) {
-            //play hole sound
-            soundCount = 0;
         }
 
         cambiarPuntos();
@@ -197,6 +194,7 @@ function cambiarPositionPajaro(direction){
         return;
     } else if (changeTop > window.innerHeight){
         //return console.log("perdiste");
+        return perdio();
     }
     pajaro.style.top = changeTop + "px"; 
 }
@@ -223,7 +221,7 @@ function mostrarMoneda() {
     if(moneda.style.display !== "none") return;
 
     moneda.style.display = "";
-    moneda.style.top = getRandomNumber(20,70)+"%";
+    moneda.style.top = getRandomNumber(20,80)+"%";
     console.log(moneda.style.top)
 }
 
@@ -232,6 +230,7 @@ function iniciarJuego(){
     setEventListener();
     iniciarEspacios();
     iniciarGravedad();
+    cambiarPositionPajaro(-900)
     //cambiarPosMoneda();
 }
 
