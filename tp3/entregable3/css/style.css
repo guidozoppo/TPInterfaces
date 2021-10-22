@@ -94,9 +94,10 @@ body {
     position: absolute;
     background: url('../img/moneda.png');
     background-size: contain;
-    background-repeat: no-repeat;
+    background-position: center;
+    /* background-repeat: no-repeat;
     top: 20vh;
-    left: 20vw;
+    left: 20vw; */
 }
 
 #pajaro {
@@ -131,18 +132,18 @@ body {
 
 @keyframes animacionMoneda {
     0%{
-        left: 200vw;
+        left: 50vw;
     }
     100%{
-        left: 0px;
+        left: -50px;
     }
 }
 
-@keyframes agarroMoneda {
+/* @keyframes agarroMoneda {
     100%{
         transform: translateY(-700px);
     }
-}
+} */
 
 
 @keyframes volar {

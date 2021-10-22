@@ -15,11 +15,13 @@ let soundCount = 0;
 let gravedadParada = false;
 
 function resetearAnimaciones(){
-    const segundos = 2;
-    const animacionTuberias = 'movimientoTuberias ' + segundos +"s infinite linear"; 
+    const animacionTuberias = 'movimientoTuberias 2s infinite linear'; 
     tuberia.style.animation = animacionTuberias;
     espacio.style.animation = animacionTuberias;
-    moneda.style.animation = 'animacionMoneda 3s infinite linear';
+    //moneda.style.animation = 'animacionMoneda 3s infinite linear';
+
+    if(moneda.style.display !== "none") return;
+    moneda.style.animation = "animacionMoneda 3s infinite linear"
 }
 
 function setEventListener(){
@@ -79,13 +81,20 @@ function cambiarEstado(diff, direction){
 }
 
 function agarroMoneda() {
+    if(moneda.style.display == "none") return;
+    
     let agarroMoneda = detectarChoque(pajaro, moneda);
-    if(agarroMoneda && juegoParado == false) {
-        puntos+=1;
+    if(agarroMoneda/*  && juegoParado == false */) {
+        puntos+=1000;
+        ocultarMoneda();
         cambiarPuntos();
-        moneda.style.animation = 'agarroMoneda 4s infinite linear';
+        //moneda.style.animation = 'agarroMoneda 4s infinite linear';
     }
 
+}
+
+function ocultarMoneda(){
+    moneda.style.display = "none";
 }
 
 function controlarColisiones(){
@@ -112,6 +121,11 @@ function controlarColisiones(){
         espaciosPasados++;
         if(espaciosPasados > 150) {
             espaciosPasados = 0;
+
+            mostrarMoneda();
+            setTimeout(_ => 
+                ocultarMoneda(), 1500)
+
         }
     }
 }
@@ -122,6 +136,7 @@ function perdio(){
     pararGravedad();
     pararAnimacionTuberia();
     pararAnimacionMoneda();
+    ocultarMoneda();
     //pararAnimacionFondo();
     console.log("perdiste");
 }
@@ -191,17 +206,24 @@ function iniciarEspacios(){
         const toHeigth = 95 * window.innerHeight/100;
         const randomTop = getRandomNumber(fromHeight, toHeigth);
         espacio.style.top = '-' + randomTop + 'px';
-        console.log("A");
     })
 }
 
-function cambiarPosMoneda() {
+/* function cambiarPosMoneda() {
     moneda.addEventListener('animationiteration', _ => {
         const x = getRandomNumber(0, 600);
         moneda.style.top = x + 'px';
         console.log("AAAAAAAAAAAAaa");
         moneda.style.animation = 'animacionMoneda 3s infinite linear';
     })
+} */
+
+function mostrarMoneda() {
+    if(moneda.style.display !== "none") return;
+
+    moneda.style.display = "";
+    moneda.style.top = getRandomNumber(20,70)+"%";
+    console.log(moneda.style.top)
 }
 
 function iniciarJuego(){
@@ -209,7 +231,7 @@ function iniciarJuego(){
     setEventListener();
     iniciarEspacios();
     iniciarGravedad();
-    cambiarPosMoneda();
+    //cambiarPosMoneda();
 }
 
 function iniciarGravedad(){
