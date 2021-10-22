@@ -157,8 +157,8 @@ function cambiarPuntos(){
 }
 
 function cambiarPositionPajaro(direction){
-    const positionTop = parseInt (getCssProp(pajaro, 'top'))
-    const changeTop = positionTop + direction
+    const positionTop = parseInt (getCssProp(pajaro, 'top'));
+    const changeTop = positionTop + direction;
     if(changeTop < 0) {
         return;
     } else if (changeTop > window.innerHeight){
@@ -201,8 +201,8 @@ function getCssProp(element, cssProperty){
 }
 
 function detectarChoque(el1, el2, extra){
-    const rect1 = el1.getBoundingClientRect();
-    const rect2 = el2.getBoundingClientRect();
+    const rect1 = el1.getBoundingClientRect(); //obtengo la posicion del el1 pajaro
+    const rect2 = el2.getBoundingClientRect(); //obtengo la posicion del el2 tuberia
 
     extra = extra || {
         y1:0, y2:0
