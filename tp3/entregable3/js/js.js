@@ -6,6 +6,7 @@ let espacio = document.querySelector("#espacio");
 let pajaro = document.querySelector("#pajaro");
 let puntaje = document.querySelector("#puntaje");
 let cartelHasPerdido = document.querySelector("#cartelHasPerdido");
+let moneda = document.querySelector("#moneda");
 let juegoParado = false;
 let saltando = false;
 let puntos = 0;
@@ -18,6 +19,7 @@ function resetearAnimaciones(){
     const animacionTuberias = 'movimientoTuberias ' + segundos +"s infinite linear"; 
     tuberia.style.animation = animacionTuberias;
     espacio.style.animation = animacionTuberias;
+    moneda.style.animation = 'animacionMoneda 3s infinite linear';
 }
 
 function setEventListener(){
@@ -73,6 +75,17 @@ function cambiarEstado(diff, direction){
     cambiarAnimationPajaro(direction)
     cambiarPositionPajaro(diff)
     controlarColisiones()
+    agarroMoneda();
+}
+
+function agarroMoneda() {
+    let agarroMoneda = detectarChoque(pajaro, moneda);
+    if(agarroMoneda && juegoParado == false) {
+        puntos+=1;
+        cambiarPuntos();
+        moneda.style.animation = 'agarroMoneda 4s infinite linear';
+    }
+
 }
 
 function controlarColisiones(){
@@ -108,6 +121,7 @@ function perdio(){
     cartelGameOver();
     pararGravedad();
     pararAnimacionTuberia();
+    pararAnimacionMoneda();
     //pararAnimacionFondo();
     console.log("perdiste");
 }
@@ -127,6 +141,10 @@ function pararAnimacionTuberia(){
     
     tuberia.style.left = blockLeft + 'px';
     espacio.style.left = blockLeft + 'px';
+}
+
+function pararAnimacionMoneda() {
+    moneda.style.animation = "";
 }
 
 function pararGravedad(){
@@ -173,6 +191,16 @@ function iniciarEspacios(){
         const toHeigth = 95 * window.innerHeight/100;
         const randomTop = getRandomNumber(fromHeight, toHeigth);
         espacio.style.top = '-' + randomTop + 'px';
+        console.log("A");
+    })
+}
+
+function cambiarPosMoneda() {
+    moneda.addEventListener('animationiteration', _ => {
+        const x = getRandomNumber(0, 600);
+        moneda.style.top = x + 'px';
+        console.log("AAAAAAAAAAAAaa");
+        moneda.style.animation = 'animacionMoneda 3s infinite linear';
     })
 }
 
@@ -181,6 +209,7 @@ function iniciarJuego(){
     setEventListener();
     iniciarEspacios();
     iniciarGravedad();
+    cambiarPosMoneda();
 }
 
 function iniciarGravedad(){
