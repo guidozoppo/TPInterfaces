@@ -169,11 +169,13 @@ function reiniciarGravedad(){
 
 function cambiarAnimationPajaro(direction){
     if(direction === 'down'){
-        pajaro.classList.remove('volar');
-        pajaro.classList.add('bajar')
+        /* pajaro.classList.remove('volar');
+        pajaro.classList.add('bajar') */
+        pajaro.style.animation = "fly .8s steps(10) infinite, bajar 0.2s forwards"
     } else if(direction === 'up'){
-        pajaro.classList.add('volar')
-        pajaro.classList.remove('bajar');
+        /* pajaro.classList.add('volar')
+        pajaro.classList.remove('bajar'); */
+        pajaro.style.animation = "fly .8s steps(10) infinite, subir 0.2s forwards"
     }
 }
 
