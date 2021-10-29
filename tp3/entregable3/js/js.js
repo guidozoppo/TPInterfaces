@@ -18,33 +18,30 @@ function resetearAnimaciones(){
     tuberia.style.animation = animacionTuberias;
     espacio.style.animation = animacionTuberias;
     pajaro.style.animation = "fly .8s steps(10) infinite";
-    //moneda.style.animation = 'animacionMoneda 3s infinite linear';
 
     if(moneda.style.display !== "none") return;
     moneda.style.animation = "animacionMoneda 3s infinite linear"
 }
 
 function setEventListener(){
-    window.addEventListener("resize", _ =>{
+    window.addEventListener("resize", _ =>{ //para controlar el tamaño de la pantalla
         if(juegoParado) return;
         resetearAnimaciones();
     });
-    cartelHasPerdido.querySelector( 'button' ).addEventListener( 'click', _ => {
-        OcultarCartelGameOver()
-        reiniciarGravedad()
-        resetearAnimaciones()
-        reiniciarPosicionPajaro()
-        reiniciarPuntos()
-        cambiarPuntos()
-        setTimeout(_ => {
-            juegoParado = false
-        })
+    cartelHasPerdido.querySelector( 'button' ).addEventListener( 'click', _ => { //Para volver a jugar
+        OcultarCartelGameOver();
+        reiniciarGravedad();
+        resetearAnimaciones();
+        reiniciarPosicionPajaro();
+        reiniciarPuntos();
+        cambiarPuntos();
+        juegoParado = false
     })
-    document.body.parentElement.addEventListener("click", _ => {
+    document.body.parentElement.addEventListener("click", _ => { //Cada vez que se hace click salta
         if(juegoParado) return;
         saltar();
     })
-    document.onkeypress = function (e) {
+    document.onkeypress = function (e) { //Lo mismo pero con la barra, cuando se aprieta la barra, salta
         e = e || window.event
         if(e.keyCode === 32) {
             if(juegoParado) return;
@@ -53,7 +50,7 @@ function setEventListener(){
     }
 }
 
-function reiniciarPosicionPajaro(){
+function reiniciarPosicionPajaro(){ //Se posiciona al pajaro en las posiciones establecidas
     pajaro.style.top = `30vh`
     pajaro.style.left = `25vw`
 }
@@ -63,32 +60,32 @@ function saltar(){
     let contadorSaltos = 0; 
     const intervaloSaltos = setInterval( _ => {
         cambiarEstado(-3,'up')
-
-        if(contadorSaltos > 20) {
+        
+        if(contadorSaltos > 20) { //para que el pajaro no se mantenga arriba
             clearInterval(intervaloSaltos)
             saltando = false;
             contadorSaltos = 0;
         }
-        contadorSaltos++;
+        contadorSaltos++; 
     }, 10)
+    
 }
 
 function cambiarEstado(diff, direction){
-    cambiarAnimationPajaro(direction)
-    cambiarPositionPajaro(diff)
-    controlarColisiones()
+    cambiarAnimationPajaro(direction) //dependiendo la direccion la animacion del pajaro va a cambiar
+    cambiarPositionPajaro(diff) 
+    controlarColisiones() //cuand cambio el estado debo controlar que no se choque nada o que haya pasado por las tuberias o agarrado la moneda
     agarroMoneda();
 }
 
 function agarroMoneda() {
-    if(moneda.style.display == "none") return;
+    if(moneda.style.display == "none") return; //si la monead está oculta no la puede agarrar -> return;
     
     let agarroMoneda = detectarChoque(pajaro, moneda);
-    if(agarroMoneda/*  && juegoParado == false */) {
+    if(agarroMoneda) { //si agarro moneda se la oculta y se modifica el puntaje
         puntos+=1000;
         ocultarMoneda();
         cambiarPuntos();
-        //moneda.style.animation = 'agarroMoneda 4s infinite linear';
     }
 
 }
@@ -97,7 +94,7 @@ function ocultarMoneda(){
     moneda.style.display = "none";
 }
 
-function controlarColisiones(){
+function controlarColisiones(){ //detecto si choco la tuberia o si paso por el espacio
     const colisionTuberia = detectarChoque(pajaro, tuberia);
     let extra = {
         y1: -46,
@@ -105,25 +102,21 @@ function controlarColisiones(){
     }
     const colisionEspacio = detectarChoque(pajaro, espacio, extra);
 
-    if (colisionTuberia && !colisionEspacio) {
+    if (colisionTuberia && !colisionEspacio) { //choco tuberia
         cambiarPuntos();
         return perdio();
-    } else if (colisionEspacio) {
+    } else if (colisionEspacio) { //paso por el espacio
         puntos++; 
-        if (puntos > 35) {
-        }
-
         cambiarPuntos();
+
         if(juegoParado) return;
-
         espaciosPasados++;
-        if(espaciosPasados > 150) {
-            espaciosPasados = 0;
 
+        if(espaciosPasados > 120) { //cada tantos espacios pasados mostrar moneda
+            espaciosPasados = 0;
             mostrarMoneda();
             setTimeout(_ => 
-                ocultarMoneda(), 1500)
-
+                ocultarMoneda(), 2000) //visibilidad de la moneda 2 segundos
         }
     }
 }
@@ -136,6 +129,7 @@ function perdio(){
     pararAnimacionMoneda();
     ocultarMoneda();
     //pararAnimacionFondo();
+    pajaro.style.animation = "none";
     console.log("perdiste");
 }
 
@@ -147,13 +141,13 @@ function OcultarCartelGameOver(){
     cartelHasPerdido.style.display = 'none';
 }
 
-function pararAnimacionTuberia(){
-    const blockLeft = tuberia.getBoundingClientRect().x;
+function pararAnimacionTuberia(){ //cuando se choca la tuberia se queda quieta
+    const posicion = tuberia.getBoundingClientRect().x; //obtengo la posicion de la tuberia
     tuberia.style.animation = "";
     espacio.style.animation = "";
     
-    tuberia.style.left = blockLeft + 'px';
-    espacio.style.left = blockLeft + 'px';
+    tuberia.style.left = posicion + 'px';
+    espacio.style.left = posicion + 'px';
 }
 
 function pararAnimacionMoneda() {
@@ -167,7 +161,7 @@ function reiniciarGravedad(){
     gravedadParada = false;
 }
 
-function cambiarAnimationPajaro(direction){
+function cambiarAnimationPajaro(direction){ //segun la direccion el pajaro va a aletear y subir o bajar
     if(direction === 'down'){
         /* pajaro.classList.remove('volar');
         pajaro.classList.add('bajar') */
@@ -190,22 +184,21 @@ function cambiarPuntos(){
 }
 
 function cambiarPositionPajaro(direction){
-    const positionTop = parseInt (getCssProp(pajaro, 'top'));
+    const positionTop = parseInt (getCssProp(pajaro, 'top')); //obtiene la posicion "top" del pajaro
     const changeTop = positionTop + direction;
     if(changeTop < 0) {
-        return;
-    } else if (changeTop > window.innerHeight){
-        //return console.log("perdiste");
+        return; //controla que no vyaa mas arriba del borde superior
+    } else if (changeTop > window.innerHeight){ //controla que si choca el piso pierda
         return perdio();
     }
-    pajaro.style.top = changeTop + "px"; 
+    pajaro.style.top = changeTop + "px";  //cambia la posicion del pajaro
 }
 
 function iniciarEspacios(){
     espacio.addEventListener('animationiteration', _ => {
-        const fromHeight = 60 * window.innerHeight/100;
-        const toHeigth = 95 * window.innerHeight/100;
-        const randomTop = getRandomNumber(fromHeight, toHeigth);
+        const fromHeight = 60 * window.innerHeight/100; //saco un porcentaje de la altura del viewport
+        const toHeigth = 95 * window.innerHeight/100; //fromHeigth y toHeigth sirven para buscar una posicion aleatoria del espacio
+        const randomTop = getRandomNumber(fromHeight, toHeigth); //obtengo una posicion al azar para los espacios 
         espacio.style.top = '-' + randomTop + 'px';
     })
 }
@@ -236,7 +229,7 @@ function iniciarJuego(){
     //cambiarPosMoneda();
 }
 
-function iniciarGravedad(){
+function iniciarGravedad(){ //cada 20ms si el juego no está parado o el personaje no está saltando se aplicará gravedad y bajará de posicion
     setInterval(_ =>{
         if(saltando || juegoParado) return;
         cambiarEstado(5, 'down')
@@ -249,8 +242,8 @@ function getRandomNumber(min, max) {
 
 function getCssProp(element, cssProperty){
     return window
-        .getComputedStyle(element)
-        .getPropertyValue(cssProperty)
+        .getComputedStyle(element) //obtengo las propiedades y valores css del elemento
+        .getPropertyValue(cssProperty) //obtengo el valor de la propiedad css que recibe por parametro
 }
 
 function detectarChoque(el1, el2, extra){
