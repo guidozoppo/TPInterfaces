@@ -7,6 +7,7 @@
 body {
     margin: 0;
     overflow: hidden;
+    /* background-color: black; */
 }
 
 /*#juego{
@@ -168,7 +169,8 @@ body {
  /*  background-repeat: no-repeat; */
   /* top: 20vh;
   left: 20vw;  */
-  background: url('../img/pajaroNegroprueba.png') repeat-x; 
+ background: url('../img/pajaroNegroprueba1.png') repeat-x; 
+  
   animation: fly .8s steps(10) infinite;
   /* 
   background: url('../img/pajaro.png');
@@ -177,7 +179,7 @@ body {
   margin: auto;
   position: absolute;
   filter: brightness(1.1);
-  mix-blend-mode: multiply;
+  mix-blend-mode: difference;
 }
 
 .volar{
