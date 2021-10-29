@@ -9,7 +9,7 @@ body {
     overflow: hidden;
 }
 
-.layer {
+.layer { /* Clase comun de todas las capas */
     width: 100%;
     height: 100%;
     background-size: auto;
@@ -17,6 +17,7 @@ body {
     position: absolute;
 }
 
+/*Efecto Parallax con 7 capas diferentes */
 .l1 {
     background-image: url('../img/layer_07_2048\ x\ 1546.png');
   }
@@ -47,7 +48,7 @@ body {
 
 #tuberia{
     width: 45px;
-    height: 100vh;
+    height: 100vh; /*Tuberia con altura del total de la pantalla */
     background: url('../img/tuberia.jpg');
     background-position: center;
     background-size: contain;
@@ -141,17 +142,17 @@ body {
 
 }
 
-.volar{
+.volar{ /* Inclinacion del pajaro hacia arriba */
     animation: volar 0.2s;
     animation-fill-mode: forwards;
 }
 
-.bajar{
+.bajar{ /*Inclinacion del pajaro hacia abajo*/
     animation: bajar 0.2s;
     animation-fill-mode: forwards;
 }
 
-@keyframes fly {
+@keyframes fly { /*Animacion movimiento del pajaro */
     0%{
         background-position: 0;
     }
@@ -160,7 +161,7 @@ body {
     }
 }
 
-@keyframes movimientoTuberias {
+@keyframes movimientoTuberias { /*Animacion moviento de las tuberias */
     0%{
         left: 100vw;
     }
@@ -169,7 +170,7 @@ body {
     }
 }
 
-@keyframes animacionMoneda {
+@keyframes animacionMoneda { /*Animacion movimiento de la moneda */
     0%{
         left: 50vw;
     }
@@ -196,7 +197,7 @@ body {
     }
 }
 
-@keyframes movebg {
+@keyframes movebg { /* Animacion del fondo con efecto parallaz */
     0% {
         background-position: 0;
     }
