@@ -7,6 +7,7 @@ let pajaro = document.querySelector("#pajaro");
 let puntaje = document.querySelector("#puntaje");
 let cartelHasPerdido = document.querySelector("#cartelHasPerdido");
 let moneda = document.querySelector("#moneda");
+let layers = document.querySelectorAll(".layer");
 let juegoParado = false;
 let saltando = false;
 let puntos = 0;
@@ -18,6 +19,9 @@ function resetearAnimaciones(){
     tuberia.style.animation = animacionTuberias;
     espacio.style.animation = animacionTuberias;
     pajaro.style.animation = "fly .8s steps(10) infinite";
+    for (let i = 1; i < layers.length; i++) {
+        layers[i].style.animation = "movebg "+ parseInt(8-i)+"s infinite linear";
+    }
 
     if(moneda.style.display !== "none") return;
     moneda.style.animation = "animacionMoneda 3s infinite linear"
@@ -128,9 +132,10 @@ function perdio(){
     pararAnimacionTuberia();
     pararAnimacionMoneda();
     ocultarMoneda();
-    //pararAnimacionFondo();
+    layers.forEach(l => {
+        l.style.animation = "none";
+    });
     pajaro.style.animation = "none";
-    console.log("perdiste");
 }
 
 function cartelGameOver(){
@@ -225,7 +230,7 @@ function iniciarJuego(){
     setEventListener();
     iniciarEspacios();
     iniciarGravedad();
-    cambiarPositionPajaro(-900)
+    cambiarPositionPajaro(-700)
     //cambiarPosMoneda();
 }
 
