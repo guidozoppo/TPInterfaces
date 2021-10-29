@@ -14,6 +14,7 @@ let puntos = 0;
 let espaciosPasados = 0;
 let gravedadParada = false;
 
+document.querySelector("#play").addEventListener("click", iniciarJuego);
 function resetearAnimaciones(){
     const animacionTuberias = 'movimientoTuberias 2s infinite linear'; 
     tuberia.style.animation = animacionTuberias;
@@ -36,6 +37,7 @@ function setEventListener(){
         OcultarCartelGameOver();
         reiniciarGravedad();
         resetearAnimaciones();
+        iniciarEspacios();
         reiniciarPosicionPajaro();
         reiniciarPuntos();
         cambiarPuntos();
@@ -71,7 +73,7 @@ function saltar(){
             contadorSaltos = 0;
         }
         contadorSaltos++; 
-    }, 10)
+    }, 5)
     
 }
 
@@ -230,15 +232,16 @@ function iniciarJuego(){
     setEventListener();
     iniciarEspacios();
     iniciarGravedad();
-    cambiarPositionPajaro(-700)
+    cambiarPositionPajaro(-700);
+    document.querySelector(".informativo").style.display = "none";
     //cambiarPosMoneda();
 }
 
 function iniciarGravedad(){ //cada 20ms si el juego no está parado o el personaje no está saltando se aplicará gravedad y bajará de posicion
     setInterval(_ =>{
         if(saltando || juegoParado) return;
-        cambiarEstado(5, 'down')
-    }, 20)
+        cambiarEstado(10, 'down')
+    }, 10)
 }
 
 function getRandomNumber(min, max) {
@@ -267,4 +270,4 @@ function detectarChoque(el1, el2, extra){
     )
 }
 
-iniciarJuego();
+//iniciarJuego();

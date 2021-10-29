@@ -33,32 +33,32 @@ body {
 
 .l2 {
     background-image: url('../img/layer_06_2048\ x\ 1546.png'); 
-    animation: movebg 7s infinite linear;
+    /*animation: movebg 7s infinite linear;*/
   }
 
 .l3 {
     background-image: url('../img/layer_05_2048\ x\ 1546.png');
-    animation: movebg 6s infinite linear;
+    /*animation: movebg 6s infinite linear;*/
     }
 
 .l4 {
     background-image: url('../img/layer_04_2048\ x\ 1546.png');
-    animation: movebg 5s infinite linear;
+    /*animation: movebg 5s infinite linear;*/
     }
 
 .l5 {
     background-image: url('../img/layer_03_2048\ x\ 1546.png');
-    animation: movebg 4s infinite linear;
+    /*animation: movebg 4s infinite linear;*/
     }
 
 .l6 {
     background-image: url('../img/layer_02_2048\ x\ 1546.png');
-    animation: movebg 3s infinite linear;
+    /*animation: movebg 3s infinite linear;*/
     }
 
 .l7 {
     background-image: url('../img/layer_01_2048\ x\ 1546.png');
-    animation: movebg 2s infinite linear;
+    /*animation: movebg 2s infinite linear;*/
     }
 
 #tuberia{
