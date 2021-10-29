@@ -1,42 +1,64 @@
 <!DOCTYPE html>
+<!-- PROBADO EN CHROME Versión 95.0.4638.69 (Build oficial) (64 bits) -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>Document</title>
 </head>
 <body>
-    <div id="juego">
-        <div class="informativo">
-            <p>Esquiva todas las tuberias, pasando por el espacio que tienen entre medio
-                y recolectá todas las monedas posibles!
-            </p>
-            <button id="play"><p>PLAY</p></button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">INSTRUCCIONES</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="l1 layer"></div>
-        <div class="l2 layer"></div>
-        <div class="l3 layer"></div>
-        <div class="l4 layer"></div>
-        <div class="l5 layer"></div>
-        <div class="l6 layer"></div>
-        <div class="l7 layer"></div>
-        <div id="tuberia"></div>
-        <div id="espacio"></div>
-        <div id="pajaro"></div>
-        <div id="puntaje">0 puntos</div>
+          <div class="modal-body">
+              Esquiva todas las tuberias, pasando por el espacio que tienen entre medio
+            y recolectá todas las monedas posibles! <br>
+            Durante el juego se observarán en diferentes momentos las siguientes animaciones animaciones keyframe: <br>
+            Durante todo el juego excepto cuando el usuario haya perdido, se observará que el avatar aletea. <br>
+            Cuando el avatar está descendiendo de altura se observará que está inclinado hacia abajo y caso contrario se va a observar cuando el pajaro esté ganando altura, que estará inclinado hacia arriba
+          </div>
+          <h5 class="modal-title" id="exampleModalLabel">ELEGI AVATAR</h5>
+          <div>  
+              <input type="radio" id="avatarNaranja" value="'../img/pajaroNaranja.png'"  name="avatar" checked><Label>Pajaro Naranja</label>
+            </div>
+          <div>  
+              <input type="radio" id="avatarVerde" value="'../img/pajaroVerde.png'" name="avatar"><Label>Pajaro Verde</label>
+            </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="play" data-bs-dismiss="modal">JUGAR</button>
+            </div>
+        </div>
+      </div>
+    </div>  
+
+    <div id="juego">
+    <div class="l1 layer"></div>
+    <div class="l2 layer"></div>
+    <div class="l3 layer"></div>
+    <div class="l4 layer"></div>
+    <div class="l5 layer"></div>
+    <div class="l6 layer"></div>
+    <div class="l7 layer"></div>
+    <div id="tuberia"></div>
+    <div id="espacio"></div>
+    <div id="pajaro"></div>
+    <div id="puntaje">0 puntos</div>
+        <button type="button" class="btn btn-primary informativo" data-bs-toggle="modal" data-bs-target="#exampleModal">?</button>
         <div id="moneda" style="display: none;"></div>
         <div id="cartelHasPerdido" style="display: none;">
             <h1 class="titulo"> Has perdido</h1>
             <h3 class="puntos">Score 0</h3>
             <button>Jugar de nuevo</button>
-            <!-- <p id="puntajeFinal">asdasda</p> 
-            <button>Jugar de nuevo</button>
-            <h3>asdasdas</h3>-->
         </div>
     </div>
-
     <script src="js/js.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -14,7 +14,25 @@ let puntos = 0;
 let espaciosPasados = 0;
 let gravedadParada = false;
 
+document.querySelector(".informativo").addEventListener("click", seccionInfo);
 document.querySelector("#play").addEventListener("click", iniciarJuego);
+cartelHasPerdido.querySelector( 'button' ).addEventListener( "click", volverJugar);
+//iniciarJuego();
+function seccionInfo(){
+    perdio();
+}
+
+function volverJugar(){
+    OcultarCartelGameOver();
+    reiniciarGravedad();
+    resetearAnimaciones();
+    iniciarEspacios();
+    reiniciarPosicionPajaro();
+    reiniciarPuntos();
+    cambiarPuntos();
+    juegoParado = false
+}
+
 function resetearAnimaciones(){
     const animacionTuberias = 'movimientoTuberias 2s infinite linear'; 
     tuberia.style.animation = animacionTuberias;
@@ -33,16 +51,8 @@ function setEventListener(){
         if(juegoParado) return;
         resetearAnimaciones();
     });
-    cartelHasPerdido.querySelector( 'button' ).addEventListener( 'click', _ => { //Para volver a jugar
-        OcultarCartelGameOver();
-        reiniciarGravedad();
-        resetearAnimaciones();
-        iniciarEspacios();
-        reiniciarPosicionPajaro();
-        reiniciarPuntos();
-        cambiarPuntos();
-        juegoParado = false
-    })
+    volverJugar();
+
     document.body.parentElement.addEventListener("click", _ => { //Cada vez que se hace click salta
         if(juegoParado) return;
         saltar();
@@ -118,7 +128,7 @@ function controlarColisiones(){ //detecto si choco la tuberia o si paso por el e
         if(juegoParado) return;
         espaciosPasados++;
 
-        if(espaciosPasados > 120) { //cada tantos espacios pasados mostrar moneda
+        if(espaciosPasados > 1) { //cada tantos espacios pasados mostrar moneda
             espaciosPasados = 0;
             mostrarMoneda();
             setTimeout(_ => 
@@ -210,21 +220,11 @@ function iniciarEspacios(){
     })
 }
 
-/* function cambiarPosMoneda() {
-    moneda.addEventListener('animationiteration', _ => {
-        const x = getRandomNumber(0, 600);
-        moneda.style.top = x + 'px';
-        console.log("AAAAAAAAAAAAaa");
-        moneda.style.animation = 'animacionMoneda 3s infinite linear';
-    })
-} */
-
 function mostrarMoneda() {
     if(moneda.style.display !== "none") return;
 
     moneda.style.display = "";
     moneda.style.top = getRandomNumber(20,80)+"%";
-    console.log(moneda.style.top)
 }
 
 function iniciarJuego(){
@@ -233,14 +233,17 @@ function iniciarJuego(){
     iniciarEspacios();
     iniciarGravedad();
     cambiarPositionPajaro(-700);
-    document.querySelector(".informativo").style.display = "none";
-    //cambiarPosMoneda();
+    if(document.querySelector("#avatarNaranja").checked){
+        pajaro.style.background = "url('img/pajaroNaranja.png') repeat-x";
+    } else {
+        pajaro.style.background = "url('img/pajaroVerde.png') repeat-x";
+    }
 }
 
-function iniciarGravedad(){ //cada 20ms si el juego no está parado o el personaje no está saltando se aplicará gravedad y bajará de posicion
+function iniciarGravedad(){ //cada 10ms si el juego no está parado o el personaje no está saltando se aplicará gravedad y bajará de posicion
     setInterval(_ =>{
         if(saltando || juegoParado) return;
-        cambiarEstado(10, 'down')
+        cambiarEstado(5, 'down')
     }, 10)
 }
 
@@ -270,4 +273,3 @@ function detectarChoque(el1, el2, extra){
     )
 }
 
-//iniciarJuego();

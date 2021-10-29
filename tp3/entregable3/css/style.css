@@ -7,16 +7,7 @@
 body {
     margin: 0;
     overflow: hidden;
-    /* background-color: black; */
 }
-
-/*#juego{
-    width: 200vw;
-    height: 100vh;
-    overflow: hidden;
-    background: url('../img/fondo.jpg');
-    background-position: center left;
-}*/
 
 .layer {
     width: 100%;
@@ -28,37 +19,30 @@ body {
 
 .l1 {
     background-image: url('../img/layer_07_2048\ x\ 1546.png');
-    
   }
 
 .l2 {
     background-image: url('../img/layer_06_2048\ x\ 1546.png'); 
-    /*animation: movebg 7s infinite linear;*/
   }
 
 .l3 {
     background-image: url('../img/layer_05_2048\ x\ 1546.png');
-    /*animation: movebg 6s infinite linear;*/
     }
 
 .l4 {
     background-image: url('../img/layer_04_2048\ x\ 1546.png');
-    /*animation: movebg 5s infinite linear;*/
     }
 
 .l5 {
     background-image: url('../img/layer_03_2048\ x\ 1546.png');
-    /*animation: movebg 4s infinite linear;*/
     }
 
 .l6 {
     background-image: url('../img/layer_02_2048\ x\ 1546.png');
-    /*animation: movebg 3s infinite linear;*/
     }
 
 .l7 {
     background-image: url('../img/layer_01_2048\ x\ 1546.png');
-    /*animation: movebg 2s infinite linear;*/
     }
 
 #tuberia{
@@ -118,8 +102,6 @@ body {
     background-repeat: no-repeat;
     opacity: 0.6;
     filter: sepia(50%);
-    
-
     top: -700px;
 }
 
@@ -127,13 +109,17 @@ body {
     left: 10vw;
 }
 
-#puntaje {
+#puntaje, .informativo {
     position: fixed;
     top: 20px;
     left: 20px;
     color: white;
     font-size: 30px;
     font-weight: normal;
+}
+
+.informativo {
+    left: 200px;
 }
 
 #moneda {
@@ -143,43 +129,16 @@ body {
     background: url('../img/moneda.png');
     background-size: contain;
     background-position: center;
-    /* background-repeat: no-repeat;
-    top: 20vh;
-    left: 20vw; */
 }
 
-/* #pajaro {
-    width: 40px;
-    height: 30px;
-    position: absolute;
-    background: url('../img/pajaro.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    top: 20vh;
-    left: 20vw;
-} */
 #pajaro {
-    /*JUGANDO CON WIDTH:40 Y HEIGH 30 ANDA BIEN*/
     width: 40px;
     height: 30px;
-    /* width: 109.8px;
-    height: 150px; */
-   
-  /* background-size: contain; */
- /*  background-repeat: no-repeat; */
-  /* top: 20vh;
-  left: 20vw;  */
- background: url('../img/pajaroNegroprueba1.png') repeat-x; 
-  
-  animation: fly .8s steps(10) infinite;
-  /* 
-  background: url('../img/pajaro.png');
-  bottom: 34px;
-  */
-  margin: auto;
-  position: absolute;
-  filter: brightness(1.1);
-  mix-blend-mode: difference;
+    background: url('../img/pajaroNaranja.png') repeat-x; 
+    animation: fly .8s steps(10) infinite;
+    margin: auto;
+    position: absolute;
+
 }
 
 .volar{
@@ -218,13 +177,6 @@ body {
         left: -50px;
     }
 }
-
-/* @keyframes agarroMoneda {
-    100%{
-        transform: translateY(-700px);
-    }
-} */
-
 
 @keyframes volar {
     0%{
