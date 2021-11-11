@@ -14,13 +14,13 @@ let puntos = 0;
 let espaciosPasados = 0;
 let gravedadParada = false;
 
-document.querySelector(".informativo").addEventListener("click", seccionInfo);
+//document.addEventListener("DOMContentLoaded", seccionInfo);
+puntaje.style.display = "none";
 document.querySelector("#play").addEventListener("click", iniciarJuego);
-cartelHasPerdido.querySelector( 'button' ).addEventListener( "click", volverJugar);
-//iniciarJuego();
-function seccionInfo(){
-    perdio();
-}
+document.querySelector(".replay").addEventListener( "click", volverJugar);
+document.querySelector(".config").addEventListener("click", function(){
+    location.reload()
+});
 
 function volverJugar(){
     OcultarCartelGameOver();
@@ -83,8 +83,27 @@ function saltar(){
             contadorSaltos = 0;
         }
         contadorSaltos++; 
-    }, 5)
+    }, 10)
     
+}
+
+function iniciarGravedad(){ //cada 10ms si el juego no está parado o el personaje no está saltando se aplicará gravedad y bajará de posicion
+    console.log("iniciogravedad")
+    setInterval(() =>{
+        if(saltando || juegoParado) return;
+        cambiarEstado(5, 'down')
+    }, 20)
+}
+
+function cambiarPositionPajaro(direction){
+    const positionTop = parseInt (getCssProp(pajaro, 'top')); //obtiene la posicion "top" del pajaro
+    const changeTop = positionTop + direction;
+    if(changeTop < 0) {
+        return; //controla que no vyaa mas arriba del borde superior
+    } else if (changeTop > window.innerHeight){ //controla que si choca el piso pierda
+        return perdio();
+    }
+    pajaro.style.top = changeTop + "px";  //cambia la posicion del pajaro
 }
 
 function cambiarEstado(diff, direction){
@@ -100,6 +119,7 @@ function agarroMoneda() {
     let agarroMoneda = detectarChoque(pajaro, moneda);
     if(agarroMoneda) { //si agarro moneda se la oculta y se modifica el puntaje
         puntos+=1000;
+        //pajaro.style.animation = "cambiarColor .8s steps(10) infinite";
         ocultarMoneda();
         cambiarPuntos();
     }
@@ -108,6 +128,26 @@ function agarroMoneda() {
 
 function ocultarMoneda(){
     moneda.style.display = "none";
+}
+
+function detectarChoque(el1, el2, extra){
+    const rect1 = el1.getBoundingClientRect(); //obtengo la posicion del el1 pajaro
+    //console.log("pajaro " + rect1.height)
+    //console.log("RECT1 Y " + rect1.y)
+    const rect2 = el2.getBoundingClientRect(); //obtengo la posicion del el2 tuberia
+    //console.log("tuberia " + rect2.height)
+    //console.log("RECT2 Y " + rect2.y)
+
+    extra = extra || {
+        y1:0, y2:0
+    }
+
+    return (
+        rect1.x < rect2.x + rect2.width &&
+        rect1.x + rect1.width > rect2.x &&
+        rect1.y < rect2.y + rect2.height + extra.y1 &&
+        rect1.y + rect1.height > rect2.y + extra.y2
+    )
 }
 
 function controlarColisiones(){ //detecto si choco la tuberia o si paso por el espacio
@@ -128,11 +168,11 @@ function controlarColisiones(){ //detecto si choco la tuberia o si paso por el e
         if(juegoParado) return;
         espaciosPasados++;
 
-        if(espaciosPasados > 1) { //cada tantos espacios pasados mostrar moneda
+        if(espaciosPasados > /* 10 */1) { //cada tantos espacios pasados mostrar moneda
             espaciosPasados = 0;
             mostrarMoneda();
             setTimeout(_ => 
-                ocultarMoneda(), 2000) //visibilidad de la moneda 2 segundos
+                ocultarMoneda(), 1500) //visibilidad de la moneda 5 segundos
         }
     }
 }
@@ -147,7 +187,7 @@ function perdio(){
     layers.forEach(l => {
         l.style.animation = "none";
     });
-    pajaro.style.animation = "none";
+    pajaro.style.animation = "rip 0.3s forwards";
 }
 
 function cartelGameOver(){
@@ -200,17 +240,6 @@ function cambiarPuntos(){
 
 }
 
-function cambiarPositionPajaro(direction){
-    const positionTop = parseInt (getCssProp(pajaro, 'top')); //obtiene la posicion "top" del pajaro
-    const changeTop = positionTop + direction;
-    if(changeTop < 0) {
-        return; //controla que no vyaa mas arriba del borde superior
-    } else if (changeTop > window.innerHeight){ //controla que si choca el piso pierda
-        return perdio();
-    }
-    pajaro.style.top = changeTop + "px";  //cambia la posicion del pajaro
-}
-
 function iniciarEspacios(){
     espacio.addEventListener('animationiteration', _ => {
         const fromHeight = 60 * window.innerHeight/100; //saco un porcentaje de la altura del viewport
@@ -224,11 +253,14 @@ function mostrarMoneda() {
     if(moneda.style.display !== "none") return;
 
     moneda.style.display = "";
-    moneda.style.top = getRandomNumber(20,80)+"%";
+    moneda.style.top = getRandomNumber(30,70)+"%";
 }
 
 function iniciarJuego(){
     resetearAnimaciones();
+    //document.querySelector(".informativo").style.display = "none";
+    document.querySelector(".modal").classList.remove("show");
+    puntaje.style.display = "";
     setEventListener();
     iniciarEspacios();
     iniciarGravedad();
@@ -238,14 +270,10 @@ function iniciarJuego(){
     } else {
         pajaro.style.background = "url('img/pajaroVerde.png') repeat-x";
     }
+    pajaro.classList.remove("pajaro")
 }
 
-function iniciarGravedad(){ //cada 10ms si el juego no está parado o el personaje no está saltando se aplicará gravedad y bajará de posicion
-    setInterval(_ =>{
-        if(saltando || juegoParado) return;
-        cambiarEstado(5, 'down')
-    }, 10)
-}
+
 
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -257,19 +285,5 @@ function getCssProp(element, cssProperty){
         .getPropertyValue(cssProperty) //obtengo el valor de la propiedad css que recibe por parametro
 }
 
-function detectarChoque(el1, el2, extra){
-    const rect1 = el1.getBoundingClientRect(); //obtengo la posicion del el1 pajaro
-    const rect2 = el2.getBoundingClientRect(); //obtengo la posicion del el2 tuberia
 
-    extra = extra || {
-        y1:0, y2:0
-    }
-
-    return (
-        rect1.x < rect2.x + rect2.width &&
-        rect1.x + rect1.width > rect2.x &&
-        rect1.y < rect2.y + rect2.height + extra.y1 &&
-        rect1.y + rect1.height > rect2.y + extra.y2
-    )
-}
 

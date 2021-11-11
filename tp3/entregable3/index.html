@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -36,7 +37,45 @@
             </div>
         </div>
       </div>
-    </div>  
+    </div> -->
+
+<!-- Modal -->
+<div class="modal show" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">INSTRUCCIONES JUEGO VOLADOR!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Esquiva todas las tuberias, pasando por el espacio que tienen entre medio
+          y recolectá todas las monedas posibles! <br>
+          Durante el juego se observarán en diferentes momentos las siguientes animaciones animaciones keyframe: <br>
+          Durante todo el juego excepto cuando el usuario haya perdido, se observará que el avatar aletea. <br>
+          Cuando el avatar está descendiendo de altura se observará que está inclinado hacia abajo y caso contrario 
+          se va a observar cuando el pajaro esté ganando altura, que estará inclinado hacia arriba
+        </p>
+      </div>
+      <h5 class="modal-title" id="exampleModalLabel">ELEGI AVATAR</h5>
+          <div>  
+              <input type="radio" id="avatarNaranja" value="'../img/pajaroNaranja.png'"  name="avatar" checked><Label>Pajaro Naranja</label>
+            </div>
+          <div>  
+              <input type="radio" id="avatarVerde" value="'../img/pajaroVerde.png'" name="avatar"><Label>Pajaro Verde</label>
+            </div>
+              <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="play" data-bs-dismiss="modal">JUGAR</button>
+            </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="play" data-dismiss="modal">JUGAR</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+</div>
 
     <div id="juego">
     <div class="l1 layer"></div>
@@ -50,15 +89,19 @@
     <div id="espacio"></div>
     <div id="pajaro"></div>
     <div id="puntaje">0 puntos</div>
-        <button type="button" class="btn btn-primary informativo" data-bs-toggle="modal" data-bs-target="#exampleModal">?</button>
+        <!-- <button type="button" class="btn btn-primary informativo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Instrucciones y configuracion</button> -->
         <div id="moneda" style="display: none;"></div>
         <div id="cartelHasPerdido" style="display: none;">
-            <h1 class="titulo"> Has perdido</h1>
-            <h3 class="puntos">Score 0</h3>
-            <button>Jugar de nuevo</button>
+          <h1 class="titulo"> Has perdido</h1>
+          <h3 class="puntos">Score 0</h3>
+          <button class="config">Configuraciones</button>
+          <button class="replay">Jugar de nuevo</button>
         </div>
     </div>
     <script src="js/js.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

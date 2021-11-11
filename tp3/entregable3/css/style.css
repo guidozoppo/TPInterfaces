@@ -19,32 +19,32 @@ body {
 
 /*Efecto Parallax con 7 capas diferentes */
 .l1 {
-    background-image: url('../img/layer_07_2048\ x\ 1546.png');
+    background-image: url('../img/layer_07_2048\ x\ 1546.png'); /* luna */
   }
 
 .l2 {
-    background-image: url('../img/layer_06_2048\ x\ 1546.png'); 
+    background-image: url('../img/layer_06_2048\ x\ 1546.png'); /* estrellas */
   }
-
+/* 
 .l3 {
     background-image: url('../img/layer_05_2048\ x\ 1546.png');
     }
 
 .l4 {
     background-image: url('../img/layer_04_2048\ x\ 1546.png');
-    }
+    } */
 
 .l5 {
-    background-image: url('../img/layer_03_2048\ x\ 1546.png');
+    background-image: url('../img/layer_03_2048\ x\ 1546.png'); /* arboles negros */
     }
 
-.l6 {
+/* .l6 {
     background-image: url('../img/layer_02_2048\ x\ 1546.png');
-    }
+    } */
 
-.l7 {
+/* .l7 {
     background-image: url('../img/layer_01_2048\ x\ 1546.png');
-    }
+    } */
 
 #tuberia{
     width: 45px;
@@ -65,7 +65,8 @@ body {
 
 #cartelHasPerdido .titulo, 
 #cartelHasPerdido .puntos,
-#cartelHasPerdido button {
+#cartelHasPerdido .config,
+#cartelHasPerdido .replay {
     position: absolute;
     z-index: 1;
     left: calc(50% - 102px);
@@ -84,8 +85,16 @@ body {
 #cartelHasPerdido .puntos {
     font-size: 30px;
 }
-#cartelHasPerdido button {
-    margin-top: 50px;
+#cartelHasPerdido .config {
+    margin-top: 60px;
+    font-size: 18px;
+    color: black;
+    padding: 5px 25px;
+    cursor: pointer;
+    border: 0;
+}
+#cartelHasPerdido .replay {
+    margin-top: 100px;
     font-size: 24px;
     color: black;
     padding: 5px 25px;
@@ -130,6 +139,7 @@ body {
     background: url('../img/moneda.png');
     background-size: contain;
     background-position: center;
+    animation: animacionMoneda .1s infinite;
 }
 
 #pajaro {
@@ -152,6 +162,15 @@ body {
     animation-fill-mode: forwards;
 }
 
+@keyframes cambiarColor { /*Animacion movimiento del pajaro */
+    0%{
+        background: url('../img/pajaroNaranja.png');
+    }
+    100%{
+        background-position: -400px;    
+    }
+}
+
 @keyframes fly { /*Animacion movimiento del pajaro */
     0%{
         background-position: 0;
@@ -170,12 +189,14 @@ body {
     }
 }
 
-@keyframes animacionMoneda { /*Animacion movimiento de la moneda */
+@keyframes animacionMoneda { /*Animacion posicionamiento de la moneda */
     0%{
         left: 50vw;
+        transform: rotate(0deg);
     }
     100%{
         left: -50px;
+        transform: rotate(180deg);
     }
 }
 
@@ -203,5 +224,26 @@ body {
     }
     100%{
         background-position: -2048px;
+    }
+}
+
+@keyframes rip {
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform:rotate(90deg);
+    }
+    50%{
+        transform:rotate(180deg);
+    }
+    75%{
+        transform:rotate(270deg);
+    }
+    100%{
+        transform:rotate(360deg);
+        height:40px;
+        background-image: url(../img/muerte.png);
+        background-size: cover;
     }
 }
