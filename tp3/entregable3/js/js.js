@@ -41,7 +41,9 @@ function resetearAnimaciones(){
     for (let i = 1; i < layers.length; i++) {
         layers[i].style.animation = "movebg "+ parseInt(8-i)+"s infinite linear";
     }
+}
 
+function resetearAnimacionesMoneda() {
     if(moneda.style.display !== "none") return;
     moneda.style.animation = "animacionMoneda 3s infinite linear"
 }
@@ -114,13 +116,16 @@ function cambiarEstado(diff, direction){
 }
 
 function agarroMoneda() {
+    resetearAnimacionesMoneda();
     if(moneda.style.display == "none") return; //si la monead está oculta no la puede agarrar -> return;
-    
+
     let agarroMoneda = detectarChoque(pajaro, moneda);
     if(agarroMoneda) { //si agarro moneda se la oculta y se modifica el puntaje
         puntos+=1000;
         //pajaro.style.animation = "cambiarColor .8s steps(10) infinite";
-        ocultarMoneda();
+        moneda.style.top = 3+"%";
+        moneda.style.left = 30+"%";
+        moneda.style.animation = 'agarroMoneda 0.5s 1 linear';
         cambiarPuntos();
     }
 
@@ -226,7 +231,7 @@ function cambiarAnimationPajaro(direction){ //segun la direccion el pajaro va a 
     } else if(direction === 'up'){
         /* pajaro.classList.add('volar')
         pajaro.classList.remove('bajar'); */
-        pajaro.style.animation = "fly .8s steps(10) infinite, subir 0.2s forwards"
+        pajaro.style.animation = "fly .8s steps(10) infinite, volar 0.2s forwards"
     }
 }
 
