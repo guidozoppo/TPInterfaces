@@ -122,7 +122,7 @@ function agarroMoneda() {
     let agarroMoneda = detectarChoque(pajaro, moneda);
     if(agarroMoneda) { //si agarro moneda se la oculta y se modifica el puntaje
         puntos+=1000;
-        //pajaro.style.animation = "cambiarColor .8s steps(10) infinite";
+        document.querySelector("#sonidoMoneda").play();
         moneda.style.top = 3+"%";
         moneda.style.left = 30+"%";
         moneda.style.animation = 'agarroMoneda 0.5s 1 linear';
@@ -169,6 +169,7 @@ function controlarColisiones(){ //detecto si choco la tuberia o si paso por el e
     } else if (colisionEspacio) { //paso por el espacio
         puntos++; 
         cambiarPuntos();
+        document.querySelector("#pasoEspacio").play();
 
         if(juegoParado) return;
         espaciosPasados++;
@@ -184,6 +185,7 @@ function controlarColisiones(){ //detecto si choco la tuberia o si paso por el e
 
 function perdio(){
     juegoParado = true;
+    document.querySelector("#perdio").play();
     cartelGameOver();
     pararGravedad();
     pararAnimacionTuberia();
