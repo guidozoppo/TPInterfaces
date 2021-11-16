@@ -25,11 +25,11 @@ body {
 .l2 {
     background-image: url('../img/layer_06_2048\ x\ 1546.png'); /* estrellas */
   }
-/* 
+
 .l3 {
     background-image: url('../img/layer_05_2048\ x\ 1546.png');
     }
-
+/*
 .l4 {
     background-image: url('../img/layer_04_2048\ x\ 1546.png');
     } */
@@ -38,16 +38,13 @@ body {
     background-image: url('../img/layer_03_2048\ x\ 1546.png'); /* arboles negros */
     }
 
-/* .l6 {
-    background-image: url('../img/layer_02_2048\ x\ 1546.png');
-    } */
-
-/* .l7 {
+/*  .l7 {
     background-image: url('../img/layer_01_2048\ x\ 1546.png');
-    } */
+    }  */
 
 #tuberia{
-    width: 45px;
+    /* width: 45px; */
+    width: 50px;
     height: 100vh; /*Tuberia con altura del total de la pantalla */
     background: url('../img/tuberia.jpg');
     background-position: center;
@@ -103,8 +100,9 @@ body {
 }
 
 #espacio {
-    width: 45px;
-    height: 193px;
+    /* width: 45px; */
+    width: 50px;
+    height: 211px;
     background: url('../img/espacio.jpg');
     background-size: cover;
     position: relative;
@@ -142,14 +140,23 @@ body {
     animation: animacionMoneda .1s infinite;
 }
 
-#pajaro {
+/* #pajaro {
     width: 40px;
     height: 30px;
     background: url('../img/pajaroNaranja.png') repeat-x; 
     animation: fly .8s steps(10) infinite;
     margin: auto;
     position: absolute;
+} */
 
+#pajaro {
+    width: 60px;
+    height: 42px;
+    background: url('../img/pajaroAzul.png') repeat-x; 
+    animation: fly 0.6s steps(5) infinite;
+    margin: auto;
+    position: absolute;
+    background-size: cover;
 }
 
 .volar{ /* Inclinacion del pajaro hacia arriba */
@@ -176,7 +183,8 @@ body {
         background-position: 0;
     }
     100%{
-        background-position: -400px;
+        /* background-position: -400px; */
+        background-position: -300px;
     }
 }
 

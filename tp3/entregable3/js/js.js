@@ -13,7 +13,7 @@ let saltando = false;
 let puntos = 0;
 let espaciosPasados = 0;
 let gravedadParada = false;
-
+console.log(layers)
 //document.addEventListener("DOMContentLoaded", seccionInfo);
 puntaje.style.display = "none";
 document.querySelector("#play").addEventListener("click", iniciarJuego);
@@ -34,13 +34,16 @@ function volverJugar(){
 }
 
 function resetearAnimaciones(){
-    const animacionTuberias = 'movimientoTuberias 2s infinite linear'; 
+    const animacionTuberias = 'movimientoTuberias 3s infinite linear'; 
     tuberia.style.animation = animacionTuberias;
     espacio.style.animation = animacionTuberias;
-    pajaro.style.animation = "fly .8s steps(10) infinite";
-    for (let i = 1; i < layers.length; i++) {
+    //cambiar pajaro.style.animation = "fly .8s steps(10) infinite";
+    pajaro.style.animation = "fly 0.6s steps(5) infinite";
+    /* for (let i = 1; i < layers.length; i++) {
         layers[i].style.animation = "movebg "+ parseInt(8-i)+"s infinite linear";
-    }
+    } */
+    layers[2].style.animation = "movebg 5s infinite linear";
+    layers[4].style.animation = "movebg 6s infinite linear";
 }
 
 function resetearAnimacionesMoneda() {
@@ -121,10 +124,12 @@ function agarroMoneda() {
 
     let agarroMoneda = detectarChoque(pajaro, moneda);
     if(agarroMoneda) { //si agarro moneda se la oculta y se modifica el puntaje
-        puntos+=1000;
+        puntos+=10;
+        //console.log(moneda.style.left.split("%"))
         document.querySelector("#sonidoMoneda").play();
-        moneda.style.top = 3+"%";
+        //moneda.style.top = monedaTop - 2 + "%";
         moneda.style.left = 30+"%";
+        //console.log(monedaTop);
         moneda.style.animation = 'agarroMoneda 0.5s 1 linear';
         cambiarPuntos();
     }
@@ -135,17 +140,21 @@ function ocultarMoneda(){
     moneda.style.display = "none";
 }
 
-function detectarChoque(el1, el2, extra){
+function detectarChoque(el1, el2){
     const rect1 = el1.getBoundingClientRect(); //obtengo la posicion del el1 pajaro
-    //console.log("pajaro " + rect1.height)
-    //console.log("RECT1 Y " + rect1.y)
-    const rect2 = el2.getBoundingClientRect(); //obtengo la posicion del el2 tuberia
-    //console.log("tuberia " + rect2.height)
-    //console.log("RECT2 Y " + rect2.y)
+    const rect2 = el2.getBoundingClientRect(); //obtengo la posicion del el2 tuberia o moneda
 
-    extra = extra || {
-        y1:0, y2:0
-    }
+    return (
+        rect1.x < rect2.x + rect2.width &&
+        rect1.x + rect1.width > rect2.x &&
+        rect1.y < rect2.y + rect2.height &&
+        rect1.y + rect1.height > rect2.y
+    )
+}
+
+function pasoPorEspacio(el1, el2, extra) {
+    const rect1 = el1.getBoundingClientRect(); //obtengo la posicion del el1 pajaro
+    const rect2 = el2.getBoundingClientRect(); //obtengo la posicion del el2 tuberia
 
     return (
         rect1.x < rect2.x + rect2.width &&
@@ -155,13 +164,16 @@ function detectarChoque(el1, el2, extra){
     )
 }
 
+
+
 function controlarColisiones(){ //detecto si choco la tuberia o si paso por el espacio
     const colisionTuberia = detectarChoque(pajaro, tuberia);
+    //const colisionTuberia = chocoTuberia(pajaro, tuberia);
     let extra = {
         y1: -46,
         y2: 47
     }
-    const colisionEspacio = detectarChoque(pajaro, espacio, extra);
+    const colisionEspacio = pasoPorEspacio(pajaro, espacio, extra);
 
     if (colisionTuberia && !colisionEspacio) { //choco tuberia
         cambiarPuntos();
@@ -229,11 +241,13 @@ function cambiarAnimationPajaro(direction){ //segun la direccion el pajaro va a 
     if(direction === 'down'){
         /* pajaro.classList.remove('volar');
         pajaro.classList.add('bajar') */
-        pajaro.style.animation = "fly .8s steps(10) infinite, bajar 0.2s forwards"
+        //CAMBIAR pajaro.style.animation = "fly .8s steps(10) infinite, bajar 0.2s forwards"
+        pajaro.style.animation = "fly 0.6s steps(5) infinite, bajar 0.2s forwards"
     } else if(direction === 'up'){
         /* pajaro.classList.add('volar')
         pajaro.classList.remove('bajar'); */
-        pajaro.style.animation = "fly .8s steps(10) infinite, volar 0.2s forwards"
+        //CAMBIAR pajaro.style.animation = "fly .8s steps(10) infinite, volar 0.2s forwards"
+        pajaro.style.animation = "fly 0.6s steps(5) infinite, volar 0.2s forwards"
     }
 }
 
@@ -272,10 +286,10 @@ function iniciarJuego(){
     iniciarEspacios();
     iniciarGravedad();
     cambiarPositionPajaro(-700);
-    if(document.querySelector("#avatarNaranja").checked){
-        pajaro.style.background = "url('img/pajaroNaranja.png') repeat-x";
+    if(document.querySelector("#avatarAzul").checked){
+        pajaro.style.background = "url('img/pajaroAzul.png') repeat-x";
     } else {
-        pajaro.style.background = "url('img/pajaroVerde.png') repeat-x";
+        pajaro.style.background = "url('img/pajaroRojo.png') repeat-x";
     }
     pajaro.classList.remove("pajaro")
 }
