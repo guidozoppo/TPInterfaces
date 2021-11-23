@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* ESTILOS GENERALES */
+body{
+    font-family: sans-serif;
+    background-color: #DAD9D9;
+}
+
+nav {
+    background-color: #8447FF;
+    padding: 5px 20px;
+    /* height: 50px; */
+}
+
+ul {
+    list-style-type: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;   
+    align-items: center;
+}
+
+.menu li {
+    white-space: nowrap;
+}
+
+li img {
+    height: 50px;
+}
+
+/* MOBILE */
+#imgMensaje{
+    display: none;
+}
+
+/* DESKTOP */
+@media all and (min-width: 900px) {
+    #imgMensaje{
+        display: inline;
+    }
+}
