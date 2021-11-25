@@ -1,0 +1,266 @@
+/* ESTRUCTURA */
+.home {
+    display: flex;
+    flex-direction: row;
+}
+
+.publicidad {
+    width: 25%;
+}
+
+.sugerencias {
+    width: 25%;
+}
+
+.publicidad, .sugerencias {
+    border: 1px solid red;
+}
+
+.crearPost { 
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid grey;
+}
+
+/* DIV CENTRAL, PUBLICACIONES Y CREAR */
+.publicaciones{
+    width: 50%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: height 0.2s ease;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+   .publicaciones .container{
+    display: flex;
+  }
+
+  .publicaciones .container section{
+    width: 500px;
+    width: 35vw;
+    background: #fff;
+  }
+
+  .publicaciones img{
+    cursor: pointer;
+  }
+
+   .crearPost header{
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #bfbfbf;
+  }
+
+  .crearPost form{
+    margin: 20px 25px;
+  }
+
+  .crearPost form .headerPublicacion, .list li {
+    display: flex;
+    align-items: center;
+  }
+
+  .crearPost form .headerPublicacion img{
+    cursor: default;
+    max-width: 52px;
+  }
+
+  .crearPost form .headerPublicacion .details{
+    margin: -3px 0 0 12px;
+  }
+
+  form .headerPublicacion .details p{
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .headerPublicacion .details .privacy{
+    display: flex;
+    height: 25px;
+    cursor: pointer;
+    padding: 0 10px;
+    font-size: 11px;
+    margin-top: 3px;
+    border-radius: 5px;
+    align-items: center;
+    max-width: 98px;
+    background: #E4E6EB;
+    justify-content: space-between;
+  }
+
+  .details .privacy span{
+    font-size: 13px;
+    margin-top: 1px;
+    font-weight: 500;
+  }
+
+  .details .privacy i:last-child{
+    font-size: 13px;
+    margin-left: 1px;
+  }
+
+  form :where(textarea, button){
+    width: 100%;
+    outline: none;
+    border: none;
+  }
+
+  form textarea{
+    resize: none;
+    font-size: 18px;
+    margin-top: 30px;
+    min-height: 70px;
+  }
+
+  form textarea::placeholder{
+    color: #858585;
+  }
+
+  form textarea:focus::placeholder{
+    color: #b3b3b3;
+  }
+  
+  form :where(.adicionales){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  form .adicionales{
+    height: 57px;
+    margin: 15px 0;
+    padding: 0 15px;
+    border-radius: 7px;
+    border: 1px solid #B9B9B9;
+    box-shadow: 0 1px 2px rgba(51, 49, 49, 0.1);
+  }
+
+  form .adicionales :where(.list, li),
+  /* .audience */ :where(.arrow-back, .icon, li .radio){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  form .adicionales p{
+    color: #595959;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: default;
+  }
+
+  form .adicionales .list{
+    list-style: none;
+  }
+
+  .adicionales .list li{
+    height: 42px;
+    width: 42px;
+    margin: 0 -1px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .adicionales .list li:hover{
+    background: #f0f1f4;
+  }
+
+  .adicionales .list li img{
+    width: 23px;
+  }
+
+  form button{
+    height: 53px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #BCC0C4;
+    cursor: no-drop;
+    border-radius: 7px;
+    background: #e2e5e9;
+    transition: all 0.3s ease;
+  }
+
+  form textarea:valid ~ button{
+    color: #fff;
+    cursor: pointer;
+    background: #4599FF;
+  }
+
+  form textarea:valid ~ button:hover{
+    background: #1a81ff;
+  }
+
+
+  /* PUBLICACIONES DE AMIGOS  */
+.contenido {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 0 0;
+}
+
+.contenido .imgPublicacion, video {
+  width: 30vw;
+  display: block;
+  margin: auto;
+}
+
+form :where(.reacciones .list){
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form .reacciones{
+  height: auto;
+  margin: 15px 0;
+  padding: 0 15px;
+  border-radius: 7px;
+  border: 1px solid #B9B9B9;
+  box-shadow: 0 1px 2px rgba(51, 49, 49, 0.1);
+}
+
+form .reacciones :where(.list, li),
+ :where(.arrow-back, .icon, li .radio){
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+form .reacciones p{
+  color: #595959;
+  font-size: 15px;
+  padding: 0 0 0 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+form .reacciones .list{
+  list-style: none;
+}
+
+.reacciones .list li{
+  height: 42px;
+  width: auto;
+  margin: 0 -1px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.reacciones .list li:hover{
+  background: #e5e5e5;
+}
+
+.reacciones .list li img, video{
+  width: 23px;
+  height: auto;
+}
+
