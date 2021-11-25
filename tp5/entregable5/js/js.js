@@ -1,21 +1,31 @@
 window.addEventListener("DOMContentLoaded", _=>{
 
 document.querySelector("#imgPerfil").addEventListener("click", desplegablePerfil);
-document.querySelector("#like").addEventListener("click", like);
+let publicaciones = document.querySelectorAll("#like");
+
+publicaciones.forEach(e => {
+  e.addEventListener("click", like)
+});
 
     //DESPLEGAR INFORMACION PERFIL
     function desplegablePerfil() {
         document.getElementById("desplegablePerfil").classList.toggle("show");
     }
     
-    function like(){
-      if(document.querySelector("#like").childNodes[2].innerHTML == "Me gusta"){
-        document.querySelector("#like").childNodes[2].innerHTML = "No me gusta";
-        document.querySelector("#like").childNodes[0].src = "img/like.png";
+    function like(e){
+      let texto = e.path[1].childNodes[2];
+      let imagen = e.path[1].childNodes[0].attributes[0];
+
+      /* console.log(e.path[1].childNodes[0].attributes[0].nodeValue)
+      console.log(imagen)
+      console.log(texto) */
+     if(texto.innerHTML == "Me gusta"){
+        texto.innerHTML = "No me gusta";
+        imagen.nodeValue = "img/like.png";
       } else {
-        document.querySelector("#like").childNodes[2].innerHTML = "Me gusta";
-        document.querySelector("#like").childNodes[0].src = "img/dislike.png";
-      }
+        texto.innerHTML = "Me gusta";
+        imagen.nodeValue = "img/dislike.png";
+      }  
       
     }
    
