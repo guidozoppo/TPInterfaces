@@ -433,3 +433,34 @@ form .reacciones .list{
 	margin-left: 10px;
 	border-radius: 3px;
 }
+
+.comment-content textarea:valid ~ button{
+  color: #ffffff; /* letra texto boton */
+  cursor: pointer;
+  background: #4599FF;
+}
+
+.comment-content textarea:valid ~ button:hover{
+  background: #1a81ff;
+}
+
+.comment-content :where(textarea, button){
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+.comment-content textarea{
+  resize: none;
+  font-size: 18px;
+  margin-top: 30px;
+  min-height: 40px;
+}
+
+.comment-content textarea::placeholder{
+  color: #858585;
+}
+
+.comment-content textarea:focus::placeholder{
+  color: #b3b3b3;
+}
