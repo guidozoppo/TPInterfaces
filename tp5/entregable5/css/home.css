@@ -207,7 +207,7 @@
   margin: 10px 0 0 0;
 }
 
-.contenido .imgPublicacion, video {
+.contenido .imgPublicacion, video, iframe {
   width: 30vw;
   display: block;
   margin: auto;
