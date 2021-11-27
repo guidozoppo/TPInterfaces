@@ -4,11 +4,7 @@
     flex-direction: row;
 }
 
-.publicidad {
-    width: 25%;
-}
-
-.sugerencias {
+.publicidad, .sugerencias {
     width: 25%;
 }
 
@@ -23,7 +19,7 @@
 }
 
 /* DIV CENTRAL, PUBLICACIONES Y CREAR */
-.publicaciones{
+.publicaciones {
     width: 50%;
     height: auto;
     overflow: hidden;
@@ -36,21 +32,21 @@
     align-items: center;
   }
 
-   .publicaciones .container{
+   .publicaciones .container {
     display: flex;
   }
 
-  .publicaciones .container section{
+  .publicaciones .container section {
     width: 500px;
     width: 35vw;
-    background: #fff;
+    background: #ffffff;
   }
 
-  .publicaciones img{
+  img {
     cursor: pointer;
   }
 
-   .crearPost header{
+   .crearPost header {
     font-size: 22px;
     font-weight: 600;
     padding: 10px 0;
@@ -58,8 +54,12 @@
     border-bottom: 1px solid #bfbfbf;
   }
 
-  .crearPost form{
-    margin: 20px 25px;
+  .crearPost form {
+    margin: 0;
+  }
+
+  .headerPublicacion {
+    margin: 15px;
   }
 
   .crearPost form .headerPublicacion, .list li {
@@ -67,21 +67,29 @@
     align-items: center;
   }
 
-  .crearPost form .headerPublicacion img{
+  .crearPost form .headerPublicacion img {
     cursor: default;
     max-width: 52px;
   }
 
-  .crearPost form .headerPublicacion .details{
+  .crearPost form .headerPublicacion .details {
     margin: -3px 0 0 12px;
   }
 
-  form .headerPublicacion .details p{
+  form .headerPublicacion .details p {
     font-size: 17px;
     font-weight: 500;
   }
+ 
+  /* form .headerPublicacion .contenido p {
+    margin: 0 15px;
+  } */
+  
+  form .headerPublicacion .contenido img {
+    margin: 0;
+  }
 
-  .headerPublicacion .details .privacy{
+  .headerPublicacion .details .privacy {
     display: flex;
     height: 25px;
     cursor: pointer;
@@ -95,45 +103,45 @@
     justify-content: space-between;
   }
 
-  .details .privacy span{
+  .details .privacy span {
     font-size: 13px;
     margin-top: 1px;
     font-weight: 500;
   }
 
-  .details .privacy i:last-child{
+  .details .privacy i:last-child {
     font-size: 13px;
     margin-left: 1px;
   }
 
-  form :where(textarea, button){
+  form :where(textarea, button) {
     width: 100%;
     outline: none;
     border: none;
   }
 
-  form textarea{
+  form textarea {
     resize: none;
     font-size: 18px;
     margin-top: 30px;
     min-height: 70px;
   }
 
-  form textarea::placeholder{
+  form textarea::placeholder {
     color: #858585;
   }
 
-  form textarea:focus::placeholder{
+  form textarea:focus::placeholder {
     color: #b3b3b3;
   }
   
-  form :where(.adicionales){
+  form :where(.adicionales) {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   
-  form .adicionales{
+  form .adicionales {
     height: 57px;
     margin: 15px 0;
     padding: 0 15px;
@@ -143,24 +151,24 @@
   }
 
   form .adicionales :where(.list, li),
-  /* .audience */ :where(.arrow-back, .icon, li .radio){
+  /* .audience */ :where(.arrow-back, .icon, li .radio) {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  form .adicionales p{
+  form .adicionales p {
     color: #595959;
     font-size: 15px;
     font-weight: 500;
     cursor: default;
   }
 
-  form .adicionales .list{
+  form .adicionales .list {
     list-style: none;
   }
 
-  .adicionales .list li{
+  .adicionales .list li {
     height: 42px;
     width: 42px;
     margin: 0 -1px;
@@ -168,15 +176,15 @@
     border-radius: 50%;
   }
 
-  .adicionales .list li:hover{
+  .adicionales .list li:hover {
     background: #f0f1f4;
   }
 
-  .adicionales .list li img{
+  .adicionales .list li img {
     width: 23px;
   }
 
-  form button{
+  form button {
     height: 53px;
     color: #fff;
     font-size: 18px;
@@ -189,13 +197,13 @@
     transition: all 0.3s ease;
   }
 
-  form textarea:valid ~ button{
+  form textarea:valid ~ button { 
     color: #fff;
     cursor: pointer;
     background: #4599FF;
   }
 
-  form textarea:valid ~ button:hover{
+  form textarea:valid ~ button:hover {
     background: #1a81ff;
   }
 
@@ -207,35 +215,38 @@
   margin: 10px 0 0 0;
 }
 
+form .contenido p {
+  margin-left: 15px;
+}
+
 .contenido .imgPublicacion, video, iframe {
-  width: 30vw;
+  width: 100%;
   display: block;
   margin: auto;
 }
 
-form :where(.reacciones .list){
+form :where(.reacciones .list) {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-form .reacciones{
+form .reacciones {
   height: auto;
   margin: 15px 0;
   padding: 0 15px;
-  border-radius: 7px;
-  border: 1px solid #B9B9B9;
-  box-shadow: 0 1px 2px rgba(51, 49, 49, 0.1);
+  border-top: 1px solid #B9B9B9;
+  border-bottom: 1px solid #B9B9B9;
 }
 
 form .reacciones :where(.list, li),
- :where(.arrow-back, .icon, li .radio){
+ :where(.arrow-back, .icon, li .radio) {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-form .reacciones p{
+form .reacciones p {
   color: #595959;
   font-size: 15px;
   padding: 0 0 0 4px;
@@ -243,11 +254,11 @@ form .reacciones p{
   cursor: pointer;
 }
 
-form .reacciones .list{
+form .reacciones .list {
   list-style: none;
 }
 
-.reacciones .list li{
+.reacciones .list li {
   height: 42px;
   width: auto;
   margin: 0 -1px;
@@ -255,11 +266,11 @@ form .reacciones .list{
   border-radius: 50%;
 }
 
-.reacciones .list li:hover{
+.reacciones .list li:hover {
   background: #e5e5e5;
 }
 
-.reacciones .list li img, video{
+.reacciones .list li img, video {
   width: 23px;
   height: auto;
 }
@@ -267,200 +278,136 @@ form .reacciones .list{
 
 /*---------------- COMENTARIOS ----------------*/
 
-/** ====================
- * Lista de Comentarios
- =======================*/
  .comments-container {
 	margin: auto;
-	width: 350px;
 }
 
-/**
- * Lineas / Detalles
- -----------------------*/
+.comment-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #e5e5e5;
+  border-radius: 5px;
+}
 
-/* .reply-list:before, .reply-list:after {display: none;}
-.reply-list li:before {
-	content: '';
-	width: 60px;
-	height: 2px;
-	background: #c7cacb;
-	background: red;
-	position: absolute;
-	top: 25px;
-	left: -55px;
-} */
+.comment-content {
+  display: flex;
+  flex-direction: column;
+}
 
+.comment-content p {
+  padding-bottom: 5px;
+}
+
+.infoComentario {
+  background-color: #ffffff;
+  padding-left: 5px;
+}
 
 .comments-list li {
+  border-radius: 4px;
 	margin-bottom: 15px;
-	display: block;
+	display: flex;
 	position: relative;
 }
-
-/* .comments-list li:after {
-	content: '';
-	display: block;
-	clear: both;
-	height: 0;
-	width: 0;
-} */
-
-/* .reply-list {
-	padding-left: 88px;
-	clear: both;
-	margin-top: 15px;
-} */
 
 /**  * Avatar */
 .comments-list .comment-avatar {
-	width: 65px;
-	height: 65px;
+	height: auto;
 	position: relative;
 	z-index: 99;
 	float: left;
-	border: 3px solid #FFF;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-	overflow: hidden;
 }
 
 .comments-list .comment-avatar img {
-	width: 100%;
-	height: 100%;
+  max-width: 52px;
+	height: auto;
+  margin: 5px;
+  padding-top: 10px;
 }
 
-.reply-list .comment-avatar {
-	width: 50px;
-	height: 50px;
-}
-
-.comment-main-level:after {
-	content: '';
-	width: 0;
-	height: 0;
-	display: block;
-	clear: both;
-}
-
-/**
- * Caja del Comentario */
-.comments-list .comment-box {
-	position: relative;
-	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-}
-
-.comments-list .comment-box:before, .comments-list .comment-box:after {
-	content: '';
-	height: 0;
-	width: 0;
-	position: absolute;
-	display: block;
-	border-width: 10px 12px 10px 0;
-	border-style: solid;
-	border-color: transparent #FCFCFC;
-	top: 8px;
-	left: -11px;
-}
-
-.comments-list .comment-box:before {
-	border-width: 11px 13px 11px 0;
-	border-color: transparent rgba(0,0,0,0.05);
-	left: -12px;
-}
-
-.reply-list .comment-box {
-	width: 610px;
-}
 .comment-box .comment-head {
-	background: #FCFCFC;
-	padding: 10px 12px;
-	border-bottom: 1px solid #E5E5E5;
-	overflow: hidden;
-	border-radius: 4px 4px 0 0;
+	padding: 10px 10px 5px 5px;
 }
 
-.comment-box .comment-head i {
-	float: right;
+.comment-box .infoComentario i { /* Iconos mg y reply del comentario. ACA TENDRIA LOS ICONOS JUNTO CON EL COMENTARIO*/
 	margin-left: 14px;
-	position: relative;
 	top: 2px;
-	color: #A6A6A6;
+	color: #8447FF;
 	cursor: pointer;
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
 }
 
-.comment-box .comment-head i:hover {
-	color: #03658c;
+.comment-box .infoComentario i:hover {
+	color: #3e1e7e;
 }
 
-.comment-box .comment-name {
-	color: #283035;
-	font-size: 14px;
-	font-weight: 700;
+.comment-box .infoComentario span { /* Informacion de "hace 10 minutos" ACA TENDRIA LA INFORMACION JUNTO CON EL COMENTARIO*/
 	float: left;
-	margin-right: 10px;
-}
-
-.comment-box .comment-name a {
-	color: #283035;
-}
-
-.comment-box .comment-head span {
-	float: left;
-	color: #999;
-	font-size: 13px;
+	font-size: 12px;
+  color: #858585;
 	position: relative;
 	top: 1px;
 }
 
-.comment-box .comment-content {
-	background: #FFF;
-	padding: 12px;
+.comment-box .comment-content { /* Contenido del comentario */
+	padding: 0 0 0 5px;
 	font-size: 15px;
-	color: #595959;
+	color: black;
 	border-radius: 0 0 4px 4px;
 }
 
-.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
-.comment-box .comment-name.by-author:after {
-	content: 'autor';
-	background: #03658c;
-	color: #FFF;
-	font-size: 12px;
-	padding: 3px 5px;
-	font-weight: 700;
-	margin-left: 10px;
-	border-radius: 3px;
-}
-
-.comment-content textarea:valid ~ button{
-  color: #ffffff; /* letra texto boton */
+.comment-content textarea:valid ~ button { /* Boton de publicar comentario cuando está habilitado */
+  color: #ffffff; 
   cursor: pointer;
   background: #4599FF;
 }
 
-.comment-content textarea:valid ~ button:hover{
+.comment-content textarea:valid ~ button:hover { /* Hover boton de publicar comentario */
   background: #1a81ff;
 }
 
-.comment-content :where(textarea, button){
+.comment-content :where(textarea, button) { /* Detalles del textarea y boton de publicar comentario */
   width: 100%;
   outline: none;
   border: none;
 }
 
-.comment-content textarea{
+.comment-content textarea { /* textarea para publicar comentario */
   resize: none;
-  font-size: 18px;
-  margin-top: 30px;
+  font-size: 15px;
   min-height: 40px;
 }
 
-.comment-content textarea::placeholder{
+.comment-content textarea::placeholder {  /* Placeholder del textarea */
   color: #858585;
 }
 
-.comment-content textarea:focus::placeholder{
+.comment-content textarea:focus::placeholder { /* Color del placeholder cuando se clickea en textarea */
   color: #b3b3b3;
+}
+
+
+
+
+/*--------------      PUBLICIDAD      -------------------------------------*/
+.publicidad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+}
+
+.publicidad div {
+  height: auto;
+}
+
+.imgPublicidad {
+  border: 1px solid green;
+}
+
+.imgPublicidad{
+  height: 50%;
+  width: auto;
 }
