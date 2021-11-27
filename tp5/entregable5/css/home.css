@@ -121,9 +121,9 @@
   }
 
   form textarea {
+    padding-left: 5px;
     resize: none;
     font-size: 18px;
-    margin-top: 30px;
     min-height: 70px;
   }
 
@@ -143,7 +143,7 @@
   
   form .adicionales {
     height: 57px;
-    margin: 15px 0;
+    margin: 0 5px;
     padding: 0 15px;
     border-radius: 7px;
     border: 1px solid #B9B9B9;
@@ -185,6 +185,9 @@
   }
 
   form button {
+    display: block;
+    margin: 5px auto;
+    width: 50%;
     height: 53px;
     color: #fff;
     font-size: 18px;
@@ -280,6 +283,7 @@ form .reacciones .list {
 
  .comments-container {
 	margin: auto;
+  display: none;
 }
 
 .comment-box {
@@ -357,37 +361,98 @@ form .reacciones .list {
 	border-radius: 0 0 4px 4px;
 }
 
-.comment-content textarea:valid ~ button { /* Boton de publicar comentario cuando está habilitado */
+/*------------------------- CREAR COMENTARIO --------------------- */
+
+.create-comment-box .comment-head {
+	padding: 10px 10px 5px 5px;
+}
+
+.create-comment-box .infoComentario i { /* Iconos mg y reply del comentario. ACA TENDRIA LOS ICONOS JUNTO CON EL COMENTARIO*/
+	margin-left: 14px;
+	top: 2px;
+	color: #8447FF;
+	cursor: pointer;
+	-o-transition: color 0.3s ease;
+	transition: color 0.3s ease;
+}
+
+.create-comment-box .infoComentario i:hover {
+	color: #3e1e7e;
+}
+
+.create-comment-box .infoComentario span { /* Informacion de "hace 10 minutos" ACA TENDRIA LA INFORMACION JUNTO CON EL COMENTARIO*/
+	float: left;
+	font-size: 12px;
+  color: #858585;
+	position: relative;
+	top: 1px;
+}
+
+.create-comment-box .comment-content { /* Contenido del comentario */
+	padding: 0 0 0 5px;
+	font-size: 15px;
+	color: black;
+	border-radius: 0 0 4px 4px;
+}
+
+.create-comment-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.create-comment-content p {
+  padding-bottom: 5px;
+}
+
+.comment-box .create-comment-content { /* Contenido del comentario */
+	padding: 0 0 0 5px;
+	font-size: 15px;
+	color: black;
+	border-radius: 0 0 4px 4px;
+}
+
+.create-comment-content textarea:valid ~ button { /* Boton de publicar comentario cuando está habilitado */
   color: #ffffff; 
   cursor: pointer;
-  background: #4599FF;
+  background: #8447FF;
 }
 
-.comment-content textarea:valid ~ button:hover { /* Hover boton de publicar comentario */
-  background: #1a81ff;
+.create-comment-content textarea:valid ~ button:hover { /* Hover boton de publicar comentario */
+  background: #57349e;
 }
 
-.comment-content :where(textarea, button) { /* Detalles del textarea y boton de publicar comentario */
+.create-comment-content :where(button) { /* Detalles del boton de publicar comentario */
   width: 100%;
   outline: none;
   border: none;
 }
 
-.comment-content textarea { /* textarea para publicar comentario */
+.create-comment-content textarea { /* textarea para publicar comentario */
+  width: 27vw;
+  background-color: #e5e5e5;
+  outline: none;
+  border: none;
   resize: none;
   font-size: 15px;
-  min-height: 40px;
+  min-height: 14px;
+  padding-left: 5px;
 }
 
-.comment-content textarea::placeholder {  /* Placeholder del textarea */
+.create-comment-content textarea::placeholder {  /* Placeholder del textarea */
+  padding-left: 5px;
   color: #858585;
 }
 
-.comment-content textarea:focus::placeholder { /* Color del placeholder cuando se clickea en textarea */
+.create-comment-content textarea:focus::placeholder { /* Color del placeholder cuando se clickea en textarea */
+  padding-left: 5px;
   color: #b3b3b3;
 }
 
-
+.show {
+  display: block;
+}
 
 
 /*--------------      PUBLICIDAD      -------------------------------------*/

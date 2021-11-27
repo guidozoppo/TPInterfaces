@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", _=>{
 document.querySelector("#imgPerfil").addEventListener("click", desplegablePerfil);
 let likes = document.querySelectorAll("#like");
 let dislikes = document.querySelectorAll("#dislike");
+let comentar = document.querySelectorAll(".comentar");
 
 likes.forEach(e => {
   e.addEventListener("click", like);
@@ -10,6 +11,10 @@ likes.forEach(e => {
 
 dislikes.forEach(e => {
   e.addEventListener("click", dislike);
+})
+
+comentar.forEach(e => {
+  e.addEventListener("click", mostrarComentarios);
 })
 
     //DESPLEGAR INFORMACION PERFIL
@@ -67,6 +72,9 @@ dislikes.forEach(e => {
       
     }
    
+    function mostrarComentarios(e){
+      e.path[5].childNodes[5].classList.toggle("show");
+    }
 
 
 
