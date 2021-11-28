@@ -82,22 +82,21 @@ button {
     cursor: pointer;
 }
 
-.asd {
+.botonActivado/* , #btn-iniciar-sesion */ {
     color: white;
     background-color: #8447FF;
-
 }
 
-.asdHover {
+.botonActivado:hover/* ,#btn-iniciar-sesion:hover */ {
     background-color: #4912CB;
 }
 
-#btn-ingresar {
+#btn-ingresar, #btn-registrar {
     color: #474747;
     background-color: #8CFFDA;
 }
 
-#btn-ingresar {
+#btn-ingresar:hover, #btn-registrar:hover {
     background-color: #57CBA8;
 }
 

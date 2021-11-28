@@ -18,23 +18,23 @@
                 <h2>¡Registrate!</h2>
                 <form>
                     <div class="input">
-                        <label>Nombre</label>
-                        <input type="text">
+                        <label>Nombre *</label>
+                        <input id="input-nombre" type="text">
                     </div>
                     <div class="input">
-                        <label>Apellido</label>
-                        <input type="text">
+                        <label>Apellido *</label>
+                        <input id="input-apellido" type="text">
                     </div>
                     <div class="input">
-                        <label>Fecha de nacimiento</label>
-                        <input type="text">
+                        <label>Fecha de nacimiento *</label>
+                        <input id="input-fechaNac" type="text">
                     </div>
                     <div class="input">
-                        <label>Email</label>
-                        <input type="email">
+                        <label>Email *</label>
+                        <input id="input-email" type="email">
                     </div>
                     <div class="input">
-                        <label>Contraseña</label>
+                        <label>Contraseña *</label>
                         <input id="input-contraseña" minlength="8" required type="password">
                         <p id="requisitoContraseña">- Minimo 8 caracteres</p>
                     </div>
@@ -43,8 +43,9 @@
             </div>
             <div class="registrar">
                 <a href="login.html" target="_blank"><p>¿Ya tienes cuenta?</p></a>
-                <button id="btn-ingresar">Ingresa</button>
+                <a href="login.html"><button id="btn-ingresar">Ingresa</button></a>
             </div>
+            <h4>* Campos Obligatorios</h4>
         </div>
     </div>
 </body>
