@@ -1,0 +1,109 @@
+.conteiner-gral-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../img/fondoLogin.png");
+    width: 100%;
+    height: 100vh;
+}
+
+.conteiner-login {
+/*     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    height: auto;
+    width: 30%;
+    background: rgba(102, 96, 107, 0.62);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.conteiner-form, .registrar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteiner-form {
+    padding-bottom: 15px;
+}
+
+.conteiner-login img {
+    margin-top: 10px;
+    max-width: 50px;
+}
+
+.conteiner-login form {
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, label, p {
+    color: white;
+}
+
+.conteiner-login .conteiner-form h2 {
+    margin: 15px 0;
+}
+
+.registrar {
+    margin: 10px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2px;
+    margin-bottom: 15px;
+}
+
+#msj-error {
+    display: none;
+    color: red;
+}
+
+#requisitoContraseña{
+    list-style: circle;
+    color: red;
+}
+
+/* BOTONES */
+button {
+    height: 30px;
+    width: 200px;
+    filter: drop-shadow(7px 7px 4px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
+}
+
+.asd {
+    color: white;
+    background-color: #8447FF;
+
+}
+
+.asdHover {
+    background-color: #4912CB;
+}
+
+#btn-ingresar {
+    color: #474747;
+    background-color: #8CFFDA;
+}
+
+#btn-ingresar {
+    background-color: #57CBA8;
+}
+
+/* INPUTS */
+input {
+    outline: none;
+    width: 200px;
+    height: 25px;        
+}

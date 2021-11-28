@@ -4,9 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/register.js"></script>
+    <title>Garolfa - Register</title>
 </head>
 <body>
-    
+    <div class="conteiner-gral-login">
+        <div class="conteiner-login">
+            <div class="conteiner-form">
+                <img src="img/logo.png" alt="">
+                <h1>BIENVENIDO A GAROLFA</h1>
+                <h2>¡Registrate!</h2>
+                <form>
+                    <div class="input">
+                        <label>Nombre</label>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <label>Apellido</label>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <label>Fecha de nacimiento</label>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <label>Email</label>
+                        <input type="email">
+                    </div>
+                    <div class="input">
+                        <label>Contraseña</label>
+                        <input id="input-contraseña" minlength="8" required type="password">
+                        <p id="requisitoContraseña">- Minimo 8 caracteres</p>
+                    </div>
+                    <button id="btn-crear-cuenta" disabled>Crear Cuenta</button>
+                </form>
+            </div>
+            <div class="registrar">
+                <a href="login.html" target="_blank"><p>¿Ya tienes cuenta?</p></a>
+                <button id="btn-ingresar">Ingresa</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

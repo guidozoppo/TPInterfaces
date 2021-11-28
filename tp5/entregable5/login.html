@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/login.js"></script>
+    <title>Garolfa - Login</title>
 </head>
 <body>
-    
+    <div class="conteiner-gral-login">
+        <div class="conteiner-login">
+            <div class="conteiner-form">
+                <img src="img/logo.png" alt="">
+                <h1>BIENVENIDO A GAROLFA</h1>
+                <h2>¡Ingresa!</h2>
+                <form>
+                    <div class="input">
+                        <label>Usuario</label>
+                        <input type="text">
+                    </div>
+                    <div class="input">
+                        <label>Contraseña</label>
+                        <input id="input-contraseña" type="password">
+                        <p id="msj-error">Contraseña Incorrecta</p>
+                    </div>
+                    <button id="btn-iniciar-sesion">Iniciar Sesion</button>
+                    <a href=""><p>¿Olvidaste tu contraseña?</p></a>
+                </form>
+            </div>
+            <div class="registrar">
+                <a href="register.html" target="_blank"><p>¿No tienes cuenta?</p></a>
+                <button>Registrate</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

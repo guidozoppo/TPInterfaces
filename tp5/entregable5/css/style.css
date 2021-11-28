@@ -83,16 +83,16 @@ li a #imgMensaje {
 
 
 /*--------------------------------------- MOBILE ------------------------------------- */
-#imgMensaje{
+/* #imgMensaje{
     display: none;
-}
+} */
 
 
 /*--------------------------------------- DESKTOP ------------------------------------- */
-@media all and (min-width: 900px) {
+/* @media all and (min-width: 900px) {
     #imgMensaje{
         display: inline;
     }
 
     
-}
+} */
