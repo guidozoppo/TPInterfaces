@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/busqueda.css">
     <link rel="stylesheet" href="css/publicacion.css">
-    <script src="js/js.js"></script>
+    
     <title>Document</title>
 </head>
 <body>
     <nav>
         <ul class="menu">
             <li>
-                <a href="home.html"><img src="img/logo.png" alt="Logo"></a>
+                <a onclick="spinnerConteiner('home')"><img src="img/logo.png" alt="Logo"></a>
             </li>
             <li>
                 <!--   -->
-                <input type="text" placeholder="Buscar">
+                <input class="input-buscar" type="text" placeholder="Buscar">
             </li>
             <li>
                 <section>
-                    <a href="chat.html"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                    <a onclick="spinnerConteiner('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
                     <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
                     <div id="desplegablePerfil" class="dropdown-content">
-                        <a href="#">Perfil</a>
+                        <a onclick="spinnerConteiner('perfil')">Perfil</a>
                         <a href="#">Configuracion</a>
-                        <a href="index.html">Cerrar sesion</a>
+                        <a onclick="spinnerConteiner('index')">Cerrar sesion</a>
                     </div>
                 </section>
             </li>
@@ -138,5 +138,8 @@
             </div>
         </div>
     </div>
+    <div class="spinner"></div>
+
+    <script src="js/busqueda.js"></script>
 </body>
 </html>

@@ -1,5 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    background-color: #DAD9D9;
+}
+
+/*---------- NAV ------------*/
+nav {
+    background-color: #8447FF;
+    padding: 5px 20px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;   
+    align-items: center;
+}
+
+.menu li {
+    white-space: nowrap;
+    display: flex;
+}
+
+li img {
+    height: 50px;
+    cursor: pointer;
+}
+
+li input {
+    height: 25px;
+    border-radius: 10px;
+    border: 0;
+    width: 200px;
+    /* font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    text-align: center; */
+}
+
+li a #imgMensaje {
+    padding: 0 0 0 10px;
+}
+
+/*------- DESPLEGABLE PERFIL--------*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fdfdff;
+    min-width: 180px;
+    box-shadow: 0px 1px 6px 0px #6a6e6f;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.show {
+    display: block;
+}
+
+#desplegablePerfil {
+    z-index: 1000;
+}
+
+#desplegablePerfil a:hover {
+    color: white;
+    background-color: #8447FF;
+}
+
+/*------- SPINNER -------*/
+.spinner {
+    border: 10px solid rgba(0, 0, 0, 0.1);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border-left-color: #8447FF;
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    animation: spin 1s ease infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+
+/*----- SECCION CHAT -------*/
+
 .container {
     display: flex;
+    height: calc(100vh - 60px);
+    width: 100%;
+    overflow-y: auto;
+    border: 1px;
 }
 
 .chat img {
@@ -38,13 +156,14 @@
 .listadoChats {
     /* display: flex;
     flex-direction: column; */
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    /* height: 100%; */
     background-color: white;
-    position: relative;
-    left: 50px;
-    overflow-y:scroll;
-    overflow-x: hidden;
+    /* left: 50px; */
+    /* overflow-y:scroll; */
+    /*overflow-x: hidden; */
+    /* overflow: hidden; */
+    overflow: auto;
 }
 
 .listadoChats h4 {
@@ -58,7 +177,7 @@
 
 .chat {
     width: 100%;
-    height: 10%;
+    height: 80px;
     position: relative;
 }
 
@@ -70,18 +189,19 @@
     background-color: #8447ff62;
 }
 
-.nav {
-    background-color: red;
+.chat .icon-send {
+    left: 60%;
+    height: auto;
+    max-width: 30px;
 }
 
-/*---------------- CHAT INDIVIDUAL -------------------*/
+/*------- CHAT INDIVIDUAL MOBILE ---------------*/
 .chatIndividual {
     display: none;
-    width: 650px;
+    width: 100%;
     height: 580px;
     background-color: white;
     position: relative;
-    left: 200px;
 } 
 
 .headerChat {
@@ -99,13 +219,150 @@
 .headerChat #imgPerfil {
     width: 60px;
     height: auto;
-    padding: 5px 0;
 }
 
 .headerChat .imgVideoLlamada {
     width: 30px;
     height: auto;
 }
+
+.bodyChat {
+    height: 80%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.mensaje {
+    display: flex;
+    padding: 20px;
+}
+
+.mensajeEnviado {
+    justify-content: end;
+}
+
+.mensaje p {
+    margin: 0px 5px 0px 5px;
+    padding: 10px;
+    border-radius: 5%;
+    max-width: 50%;
+}
+
+.mensajeEnviado p{
+    background-color: #57CBA8;
+}
+
+.mensajeRecibido p{
+    background-color: #C9C9C9;
+}
+
+.mensaje #imgPerfil {
+    width: 35px;
+    height: 35px;
+}
+
+.footerChat {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footerChat .escribirMensaje img {
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+}
+
+.footerChat #imgPerfil {
+    display: none;
+}
+
+.footerChat .escribirMensaje {
+    background-color: #c4c4c4;
+    border-radius: 5%;
+    height: 70%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.escribirMensaje input {
+    background: none;
+    border: none;
+}
+
+nav ul .li-back {
+    display: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+html{
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.headerContacto {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.headerContacto h4 {
+    padding-left: 15px;
+}
+
+@media only screen and (min-width: 900px) {
+/*---------------- CHAT INDIVIDUAL -------------------*/
+.chatIndividual {
+    display: none;
+    width: 650px;
+    height: 580px;
+    background-color: white;
+    position: relative;
+    left: 200px;
+} 
+
+.headerChat .volverListado {
+    display: none;
+}
+
+.headerChat {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #e5e5e5;
+   /*  margin-top: 5px;
+    margin-bottom: 5px; */
+}
+
+.headerContacto {
+    width: calc(65% - 30px);
+    justify-content: space-between;
+}
+
+.headerChat #imgPerfil {
+    width: 60px;
+    height: auto;
+}
+
+.headerChat .imgVideoLlamada {
+    width: 30px;
+    height: auto;
+}
+
+
 
 .bodyChat {
     height: 80%;
@@ -175,10 +432,6 @@
     border: none;
 }
 
-@media only screen and (min-width: 900px) {
-    body {
-        background-color: red;
-    }
 
     .listadoChats {
         /* display: flex;
@@ -194,5 +447,9 @@
 
     .chatIndividual {
         display: block;
+    }
+
+    .chat .icon-send {
+        display: none;
     }
 }

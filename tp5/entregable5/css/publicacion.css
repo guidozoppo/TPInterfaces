@@ -255,9 +255,9 @@ form .reacciones .list {
 .reacciones .list li {
   height: 42px;
   width: auto;
-  margin: 0 -1px;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 8px;
+  padding: 0 5px;
 }
 
 .reacciones .list li:hover {

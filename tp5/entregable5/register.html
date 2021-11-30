@@ -38,15 +38,17 @@
                         <input id="input-contraseña" minlength="8" required type="password">
                         <p id="requisitoContraseña">- Minimo 8 caracteres</p>
                     </div>
-                    <button id="btn-crear-cuenta" disabled>Crear Cuenta</button>
+                    <button onclick="spinnerConteiner('confirmaMail')" id="btn-crear-cuenta" disabled>Crear Cuenta</button>
                 </form>
             </div>
-            <div class="registrar">
-                <a href="index.html" target="_blank"><p>¿Ya tienes cuenta?</p></a>
-                <a href="index.html"><button id="btn-ingresar">Ingresa</button></a>
+            <div onclick="spinnerConteiner('index')" class="registrar">
+                <a><p>¿Ya tienes cuenta?</p></a>
+                <a ><button id="btn-ingresar">Ingresa</button></a>
             </div>
             <h4>* Campos Obligatorios</h4>
         </div>
     </div>
+    <div class="spinner"></div>
+
 </body>
 </html>

@@ -9,28 +9,27 @@
     <link rel="stylesheet" href="css/publicacion.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="js/js.js"></script>
     <title>Garolfa</title>
 </head>
 <body>
     <nav>
         <ul class="menu">
             <li>
-                <a href="home.html"><img src="img/logo.png" alt="Logo"></a>
+                <a onclick="spinnerHome('home')"><img src="img/logo.png" alt="Logo"></a>
             </li>
             <li>
-                <form action="">
+                <!-- <form action=""> -->
                   <input class="input-buscar" type="text" placeholder="Buscar">
-                </form>
+                <!-- </form> -->
             </li>
             <li>
                 <section>
-                    <a href="chat.html"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                    <a onclick="spinnerHome('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
                     <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
                     <div id="desplegablePerfil" class="dropdown-content">
-                        <a href="#">Perfil</a>
+                        <a href="#" onclick="spinnerHome('perfil')">Perfil</a>
                         <a href="#">Configuracion</a>
-                        <a href="index.html">Cerrar sesion</a>
+                        <a href="index.html" onclick="spinnerHome('index')">Cerrar sesion</a>
                     </div>
                 </section>
             </li>
@@ -41,13 +40,13 @@
       
       <div class="publicidad">
         <div>
-          <img class="imgPublicidad" src="img/publicidad.jpg" alt="">
+          <img class="imgPublicidad" src="img/publicidad/publicidad.jpg" alt="Publicdad Dog Chow">
         </div>
         <div >
-          <img class="imgPublicidad" src="img/publicidad1.jpg" alt="">
+          <img class="imgPublicidad" src="img/publicidad/publicidad1.jpg" alt="Publicidad Pedrigree">
         </div>
         <div >
-          <img class="imgPublicidad" src="img/publicidad3.jpeg" alt="">
+          <img class="imgPublicidad" src="img/publicidad/publicidadWhiskas.jpg" alt="Publicidad Whiskas">
         </div>
       </div>
 
@@ -240,10 +239,10 @@
                   <p> Amigos, aca les dejo un videito de un gran colega, el Doctor Romero, 
                     que habla sobre que hacer cuando nuestros perros muerden
                   </p>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/j3ORnB_0CCw" 
+                  <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/j3ORnB_0CCw" 
                   title="YouTube video player" frameborder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen></iframe>
+                  allowfullscreen></iframe> -->
                 </div>
                 <div class="reacciones">
                   <ul class="list">
@@ -323,7 +322,7 @@
                       <span class="dot" onclick="currentSlide(3)"></span> 
                     </div>
                 
-                <div class="reacciones">
+                  <div class="reacciones">
                   <ul class="list">
                     <li id="like"><img src="img/likeoff.jpg" alt="gallery">
                       <p>15</p>
@@ -426,33 +425,9 @@
         </div>
         </div>
     </div>
-    <script>
-      var slideIndex = 1;
-    showSlides(slideIndex);
+    <div class="spinner"></div>
     
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-    
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
-    
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("dot");
-      if (n > slides.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";  
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";  
-      dots[slideIndex-1].className += " active";
-    }
-    </script>
+    <script src="js/js.js"></script>
+    <script src="js/publicacion.js"></script>
 </body>
 </html>

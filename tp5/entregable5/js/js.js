@@ -5,11 +5,7 @@ let btnSeguir = document.querySelectorAll(".btn-seguir");
 let likes = document.querySelectorAll("#like");
 let dislikes = document.querySelectorAll("#dislike");
 let comentar = document.querySelectorAll(".comentar");
-let inputsBuscar = document.querySelectorAll(".input-buscar");
-
-inputsBuscar.forEach(e => {
-  e.addEventListener("submit", buscar);
-});
+document.querySelector(".input-buscar").addEventListener("keydown", buscar);
 
 btnSeguir.forEach(e => {
   e.addEventListener("click", seguir);
@@ -83,12 +79,7 @@ comentar.forEach(e => {
     }
    
     function mostrarComentarios(e){
-      //const object1 = e.path[5];
-
-      console.log(e.path);
-      //console.log(e.path.findIndex("div.reacciones"))
-      
-      e.path[5].childNodes[5].classList.toggle("show");
+      e.target.closest(".crearPost").querySelector(".comments-container").classList.toggle("show");
     }
 
     function seguir(e) {
@@ -101,6 +92,37 @@ comentar.forEach(e => {
     }
 
     function buscar(e) {
-      console.log(e)
+      if(e.code === "Enter") {
+        if(e.target.value.toLowerCase() === "jorge") {
+          e.target.value = "";
+          spinnerHome("busqueda");
+        } else {
+          console.log("redidrigir a busqueda sin resultados");
+        }
+      }
     }
+
+    
+
+    
 })
+
+function spinnerHome(seccion) {
+  document.querySelector(".home").style.display = "none";
+  document.querySelector(".spinner").style.display = "block";
+  // Con esta función logramos que se ejecute despues de 2 segundos (2000 milisegundos)}
+  let direccion = seccion + ".html";
+  setTimeout(function () {
+    window.location.href = direccion;
+  }, 300);
+}
+
+function spinnerConteiner(seccion) {
+  document.querySelector(".container").style.display = "none";
+  document.querySelector(".spinner").style.display = "block";
+  // Con esta función logramos que se ejecute despues de 2 segundos (2000 milisegundos)}
+  let direccion = seccion + ".html";
+  setTimeout(function () {
+    window.location.href = direccion;
+  }, 300);
+}
