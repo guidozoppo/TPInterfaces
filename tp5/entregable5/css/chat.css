@@ -38,8 +38,8 @@
 .listadoChats {
     /* display: flex;
     flex-direction: column; */
-    width: 300px;
-    height: 580px;
+    width: 100vw;
+    height: 100vh;
     background-color: white;
     position: relative;
     left: 50px;
@@ -70,9 +70,13 @@
     background-color: #8447ff62;
 }
 
+.nav {
+    background-color: red;
+}
 
 /*---------------- CHAT INDIVIDUAL -------------------*/
 .chatIndividual {
+    display: none;
     width: 650px;
     height: 580px;
     background-color: white;
@@ -169,4 +173,26 @@
 .escribirMensaje input {
     background: none;
     border: none;
+}
+
+@media only screen and (min-width: 900px) {
+    body {
+        background-color: red;
+    }
+
+    .listadoChats {
+        /* display: flex;
+        flex-direction: column; */
+        width: 300px;
+        height: 580px;
+        background-color: white;
+        position: relative;
+        left: 50px;
+        overflow-y:scroll;
+        overflow-x: hidden;
+    }
+
+    .chatIndividual {
+        display: block;
+    }
 }
