@@ -83,9 +83,12 @@ comentar.forEach(e => {
     }
    
     function mostrarComentarios(e){
-      console.log(e.path.findIndex("div.reacciones"))
+      //const object1 = e.path[5];
+
+      console.log(e.path);
+      //console.log(e.path.findIndex("div.reacciones"))
       
-      //e.path[5].childNodes[5].classList.toggle("show");
+      e.path[5].childNodes[5].classList.toggle("show");
     }
 
     function seguir(e) {
