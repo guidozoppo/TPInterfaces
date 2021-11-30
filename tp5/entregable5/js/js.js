@@ -1,9 +1,19 @@
 window.addEventListener("DOMContentLoaded", _=>{
 
 document.querySelector("#imgPerfil").addEventListener("click", desplegablePerfil);
+let btnSeguir = document.querySelectorAll(".btn-seguir");
 let likes = document.querySelectorAll("#like");
 let dislikes = document.querySelectorAll("#dislike");
 let comentar = document.querySelectorAll(".comentar");
+let inputsBuscar = document.querySelectorAll(".input-buscar");
+
+inputsBuscar.forEach(e => {
+  e.addEventListener("submit", buscar);
+});
+
+btnSeguir.forEach(e => {
+  e.addEventListener("click", seguir);
+});
 
 likes.forEach(e => {
   e.addEventListener("click", like);
@@ -73,9 +83,21 @@ comentar.forEach(e => {
     }
    
     function mostrarComentarios(e){
-      e.path[5].childNodes[5].classList.toggle("show");
+      console.log(e.path.findIndex("div.reacciones"))
+      
+      //e.path[5].childNodes[5].classList.toggle("show");
     }
 
+    function seguir(e) {
+      let txtButton = e.path[0].childNodes[0];
+      if (txtButton.nodeValue == "Seguir") {
+        txtButton.nodeValue = "Dejar de seguir";
+      } else {
+        txtButton.nodeValue = "Seguir";
+      }
+    }
 
-
+    function buscar(e) {
+      console.log(e)
+    }
 })
