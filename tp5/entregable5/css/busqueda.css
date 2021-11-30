@@ -1,0 +1,105 @@
+.container {
+    margin: 5px;
+    display: flex;
+}
+
+h3 {
+    border-bottom: 2px solid black;
+    margin-top: 20px;
+}
+
+h5 {
+    text-align: center;
+}
+
+.filtros {
+    background-color: white;
+    height: 400px;
+    width: 20%;
+    position: relative;
+    top: 50px;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 7px 7px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input input {
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding-left: 5px;
+}
+
+.input .filtro {
+    margin-top: 5px;
+    display: flex;
+    background-color: #bb77ff5d;
+    border-radius: 10px;
+    width: 50%;
+    padding: 3px;
+}
+
+.filtro img {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+
+.resultados {
+    background-color: white;
+    width: 50%;
+    height: 500px;
+    position: relative;
+    left: 150px;
+    top: 25px;
+    overflow-y: scroll;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 7px 7px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.sugerencia {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c4c4c477;
+    width: 50%;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.sugerencia #imgPerfil {
+    width: 50px;
+    height: 50px;
+}
+
+.sugerencia img, label, p {
+    margin: 0px 5px 0px 2px;
+}
+
+.personas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fotosVideos {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.fotosVideos img {
+    width: 300px;
+    height: 150px;
+    margin: 10px;
+}
