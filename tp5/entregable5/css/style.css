@@ -51,10 +51,10 @@ li img {
 }
 
 li input {
-    height: 25px;
+    height: 35px;
     border-radius: 10px;
     border: 0;
-    width: 200px;
+    width: 300px;
     padding: 10px;
     /* font-family: "Font Awesome 5 Free"; 
     font-weight: 900;
@@ -101,7 +101,6 @@ li a #imgMensaje {
     color: white;
     background-color: #8447FF;
 }
-
 /*------- SPINNER -------*/
 .spinner {
     border: 10px solid rgba(0, 0, 0, 0.1);
