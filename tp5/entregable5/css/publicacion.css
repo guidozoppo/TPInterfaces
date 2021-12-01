@@ -204,6 +204,7 @@
 
 form .contenido p {
   margin-left: 15px;
+  margin-bottom: 10px;
 }
 
 .contenido .imgPublicacion, video, iframe {

@@ -1,12 +1,13 @@
 header {
     background-image: url('../img/fotoPortada.jpg');
     background-size: cover;
-    height: 250px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
+    filter: drop-shadow(10px 7px 4px rgba(0, 0, 0, 0.40));
 
 }
 
@@ -54,6 +55,7 @@ header {
     background-color: white;
     border-radius: 15px;
     padding: 20px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.658);
 }
 
 .informacionPersonal h3 {
