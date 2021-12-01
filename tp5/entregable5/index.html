@@ -10,33 +10,42 @@
     <title>Garolfa - Ingresar</title>
 </head>
 <body>
-    <div class="conteiner-gral-login">
-        <div class="conteiner-login">
-            <div class="conteiner-form">
-                <img src="img/logo.png" alt="Logo Garolfa">
-                <h1>BIENVENIDO A GAROLFA</h1>
-                <h2>¡Ingresa!</h2>
-                <form>
-                    <div class="input">
-                        <label>Usuario</label>
-                        <input id="input-usuario" type="text">
+    <div class="l0 layer">
+        <div class="l1 layer">
+            <div class="l2 layer">
+                <div class="conteiner-gral-login">
+                    <div class="conteiner-login">
+                        <div class="conteiner-form">
+                            <img src="img/logo.png" alt="Logo Garolfa">
+                            <h1>BIENVENIDO A GAROLFA</h1>
+                            <h2>¡Ingresa!</h2>
+                            <form>
+                                <div class="input">
+                                    <label>Usuario</label>
+                                    <input id="input-usuario" type="text">
+                                </div>
+                                <div class="input">
+                                    <label>Contraseña</label>
+                                    <input id="input-contraseña" type="password">
+                                    <p id="msj-error">Contraseña Incorrecta</p>
+                                </div>
+                                <a id="link-home" href="" target="_blank"><button id="btn-iniciar-sesion" disabled>Iniciar Sesion</button></a>
+                                <a href=""><p>¿Olvidaste tu contraseña?</p></a>
+                            </form>
+                        </div>
+                        <div class="registrar">
+                            <p>¿No tienes cuenta?</p>
+                            <a onclick="spinnerConteiner('register')" target="_blank"><button id="btn-registrar">Registrate</button></a>
+                        </div>
                     </div>
-                    <div class="input">
-                        <label>Contraseña</label>
-                        <input id="input-contraseña" type="password">
-                        <p id="msj-error">Contraseña Incorrecta</p>
-                    </div>
-                    <a id="link-home" href="" target="_blank"><button id="btn-iniciar-sesion" disabled>Iniciar Sesion</button></a>
-                    <a href=""><p>¿Olvidaste tu contraseña?</p></a>
-                </form>
-            </div>
-            <div class="registrar">
-                <p>¿No tienes cuenta?</p>
-                <a onclick="spinnerConteiner('register')" target="_blank"><button id="btn-registrar">Registrate</button></a>
+                </div>
             </div>
         </div>
+        
     </div>
+    
+    
     <div class="spinner"></div>
-
+<script src="js/parallax.js"></script>
 </body>
 </html>

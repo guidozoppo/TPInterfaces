@@ -3,10 +3,34 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    
+}
+
+.layer { /* Clase comun de todas las capas */
+    width: 100%;
+    height: 100%;
+    background-size: auto;
+    background-repeat: repeat-x;
+    position: absolute;
+}
+
+.l0 {
     background-image: url("../img/fondoLogin.png");
+    background-size: cover;
     width: 100%;
     height: 100vh;
 }
+
+.l1 {
+    background-image: url('../img/capa1.png'); 
+  }
+
+.l2 {
+    background-image: url('../img/capa2.png'); 
+  }
+
+
 
 .conteiner-login {
 /*     display: flex;
@@ -18,6 +42,7 @@
     background: rgba(102, 96, 107, 0.62);
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+    margin-top: 10%;
 }
 
 .conteiner-form, .registrar {
@@ -105,4 +130,22 @@ input {
     outline: none;
     width: 200px;
     height: 25px;        
+}
+
+@keyframes movebgIzquierda { /* Animacion del fondo con efecto parallaz */
+    0% {
+        background-position: 0;
+    }
+    100%{
+        background-position: -2048px;
+    }
+}
+
+@keyframes movebgDerecha { /* Animacion del fondo con efecto parallaz */
+    0% {
+        background-position: -2048px;
+    }
+    100%{
+        background-position: 0;
+    }
 }
