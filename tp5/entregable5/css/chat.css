@@ -1,118 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body{
     display: flex;
     flex-direction: column;
     max-height: 100vh;
     overflow: hidden;
-    font-family: sans-serif;
-    background-color: #DAD9D9;
 }
-
-/*---------- NAV ------------*/
-nav {
-    background-color: #8447FF;
-    padding: 5px 20px;
-}
-
-nav ul {
-    list-style-type: none;
-}
-
-.menu {
-    display: flex;
-    justify-content: space-between;   
-    align-items: center;
-}
-
-.menu li {
-    white-space: nowrap;
-    display: flex;
-}
-
-li img {
-    height: 50px;
-    cursor: pointer;
-}
-
-li input {
-    height: 25px;
-    border-radius: 10px;
-    border: 0;
-    width: 200px;
-    /* font-family: "Font Awesome 5 Free"; 
-    font-weight: 900;
-    text-align: center; */
-}
-
-li a #imgMensaje {
-    padding: 0 0 0 10px;
-}
-
-/*------- DESPLEGABLE PERFIL--------*/
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fdfdff;
-    min-width: 180px;
-    box-shadow: 0px 1px 6px 0px #6a6e6f;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.show {
-    display: block;
-}
-
-#desplegablePerfil {
-    z-index: 1000;
-}
-
-#desplegablePerfil a:hover {
-    color: white;
-    background-color: #8447FF;
-}
-
-/*------- SPINNER -------*/
-.spinner {
-    border: 10px solid rgba(0, 0, 0, 0.1);
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border-left-color: #8447FF;
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    animation: spin 1s ease infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-
-
 
 /*----- SECCION CHAT -------*/
 
@@ -195,12 +86,6 @@ li a #imgMensaje {
 
 .chat:hover {
     background-color: #8447ff62;
-}
-
-.chat .icon-send {
-    left: 60%;
-    height: auto;
-    max-width: 30px;
 }
 
 /*------- CHAT INDIVIDUAL MOBILE ---------------*/
@@ -357,9 +242,5 @@ html {
 
     .chatIndividual {
         display: block;
-    }
-
-    .chat .icon-send {
-        display: none;
     }
 }

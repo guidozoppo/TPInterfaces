@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/publicacion.css">
     <link rel="stylesheet" href="css/busqueda.css">
-    
-    
-    <title>Document</title>
+    <title>Garolfa - Buscar</title>
 </head>
 <body>
     <nav>
@@ -40,7 +38,7 @@
                 <h4>Ciudad</h4>
                 <input type="text" placeholder="Ciudad" value="Tandil">
                 <div class="filtro">
-                  <img src="img/iconoPinche.png" alt="">
+                  <img src="img/iconoPinche.png" alt="Filtro fijado">
                   <h5>Tandil</h5>
                 </div>
             </div>
@@ -50,7 +48,7 @@
             </div>
             <div class="input">
                 <h4>Año de graduacion</h4>
-                <input type="number" placeholder="Año de graduacion">
+                <input id="filtro-anio" type="number" placeholder="Año de graduacion">
             </div>
             <button class="boton">Filtrar</button>
         </div>
@@ -87,10 +85,10 @@
                           <p> Amigos, aca les dejo un videito de un gran colega, el Doctor Romero, 
                             que habla sobre que hacer cuando nuestros perros muerden
                           </p>
-                          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/j3ORnB_0CCw" 
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/j3ORnB_0CCw" 
                           title="YouTube video player" frameborder="0" 
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                          allowfullscreen></iframe> -->
+                          allowfullscreen></iframe>
                         </div>
                         <div class="reacciones">
                           <ul class="list">
@@ -117,7 +115,7 @@
                         <ul id="comments-list" class="comments-list">
                           <li>
                             <div class="comment-avatar">
-                              <img src="img/fotoPerfil.png" alt="">
+                              <img src="img/fotoPerfil.png" alt="Foto de perfil">
                             </div>
                             <div class="create-comment-box">
                               <div class="create-comment-content">
@@ -134,10 +132,13 @@
 
             <h3>Fotos/Videos</h4>
             <div class="fotosVideos">
-                <img src="img/fotoPublicacion.jpg" alt="">
-                <img src="img/fotoPublicacion1.jpg" alt="">
+                <img src="img/fotoPublicacion.jpg" alt="Foto resultado">
+                <img src="img/fotoPublicacion1.jpg" alt="Foto resultado">
             </div>
         </div>
+<!--         <div class="sin-resultados">
+            <h5>No se han encontrado resultados</h5>
+        </div> -->
     </div>
     <div class="spinner"></div>
 

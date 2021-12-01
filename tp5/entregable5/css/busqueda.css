@@ -44,6 +44,10 @@ h5 {
     padding: 3px;
 }
 
+/* #filtro-anio {
+    width: 10px;
+} */
+
 .filtro img {
     width: 15px;
     height: 15px;
@@ -106,4 +110,8 @@ h5 {
 
 .publicaciones {
     box-shadow: none;
+}
+
+.fotosVideos img {
+    cursor: pointer;
 }

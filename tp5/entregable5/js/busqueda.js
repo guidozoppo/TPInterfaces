@@ -1,5 +1,4 @@
 document.querySelector(".input-buscar").addEventListener("keydown", buscar);
-document.querySelector("#imgPerfil").addEventListener("click", desplegablePerfil);
 
 function buscar(e) {
     if(e.code === "Enter") {
@@ -21,7 +20,3 @@ function buscar(e) {
       window.location.href = direccion;
     }, 300);
   }
-
-  function desplegablePerfil() {
-    document.getElementById("desplegablePerfil").classList.toggle("show");
-}
