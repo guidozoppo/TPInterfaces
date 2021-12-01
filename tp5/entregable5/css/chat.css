@@ -5,6 +5,10 @@
 }
 
 body{
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    overflow: hidden;
     font-family: sans-serif;
     background-color: #DAD9D9;
 }
@@ -127,12 +131,12 @@ li a #imgMensaje {
     left: 3px;
 }
 
-.estado{
+.estado {
     display: flex;
     align-items: center;
 }
 
-.chat .estado,h5 {
+.chat .estado, h5 {
     position: relative;
     left: 45px;
     top: 7px;
@@ -254,11 +258,11 @@ li a #imgMensaje {
     max-width: 50%;
 }
 
-.mensajeEnviado p{
+.mensajeEnviado p {
     background-color: #57CBA8;
 }
 
-.mensajeRecibido p{
+.mensajeRecibido p {
     background-color: #C9C9C9;
 }
 
@@ -268,11 +272,11 @@ li a #imgMensaje {
 }
 
 .footerChat {
-    height: 10%;
+    /* height: 60px; */
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 
 .footerChat .escribirMensaje img {
@@ -288,7 +292,7 @@ li a #imgMensaje {
 .footerChat .escribirMensaje {
     background-color: #c4c4c4;
     border-radius: 15px;
-    height: 70%;
+    height: 35px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -301,18 +305,7 @@ li a #imgMensaje {
     border: none;
 }
 
-nav ul .li-back {
-    display: none;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    max-height: 100vh;
-    overflow: hidden;
-}
-
-html{
+html {
     max-height: 100vh;
     overflow: hidden;
 }
@@ -330,11 +323,7 @@ html{
 @media only screen and (min-width: 900px) {
 /*---------------- CHAT INDIVIDUAL -------------------*/
 .chatIndividual {
-    display: none;
     width: 650px;
-    height: 580px;
-    background-color: white;
-    position: relative;
     left: 200px;
 } 
 
@@ -342,110 +331,24 @@ html{
     display: none;
 }
 
-.headerChat {
-    height: 10%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: #e5e5e5;
-   /*  margin-top: 5px;
-    margin-bottom: 5px; */
-}
+
 
 .headerContacto {
     width: calc(65% - 30px);
     justify-content: space-between;
 }
 
-.headerChat #imgPerfil {
-    width: 60px;
-    height: auto;
-}
-
-.headerChat .imgVideoLlamada {
-    width: 30px;
-    height: auto;
-}
-
-
-
-.bodyChat {
-    height: 80%;
-    width: 100%;
-    overflow-y: scroll;
-}
-
-.mensaje {
-    display: flex;
-    padding: 20px;
-}
-
-.mensajeEnviado {
-    justify-content: end;
-}
-
-.mensaje p {
-    margin: 0px 5px 0px 5px;
-    padding: 10px;
-    border-radius: 5%;
-    max-width: 50%;
-}
-
-.mensajeEnviado p{
-    background-color: #57CBA8;
-}
-
-.mensajeRecibido p{
-    background-color: #C9C9C9;
-}
-
-.mensaje #imgPerfil {
-    width: 35px;
-    height: 35px;
-}
-
 .footerChat {
-    height: 10%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.footerChat .escribirMensaje img {
-    width: 25px;
-    height: 25px;
-}
-
-.footerChat #imgPerfil {
-    width: 40px;
-    height: 40px;
+    padding-bottom: 10px;
 }
 
 .footerChat .escribirMensaje {
-    background-color: #c4c4c4;
-    border-radius: 15px;
-    height: 70%;
     width: 60%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
 }
-
-.escribirMensaje input {
-    background: none;
-    border: none;
-}
-
 
     .listadoChats {
-        /* display: flex;
-        flex-direction: column; */
         width: 300px;
         height: 580px;
-        background-color: white;
         position: relative;
         left: 50px;
         overflow-y:scroll;
