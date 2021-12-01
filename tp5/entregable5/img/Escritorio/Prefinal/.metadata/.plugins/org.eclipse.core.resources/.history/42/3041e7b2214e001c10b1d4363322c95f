@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+
+public abstract class VideoAbstracto {
+
+	private String titulo;
+
+	
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	
+	public abstract ArrayList<Video> buscar(Filtro f);
+	
+}

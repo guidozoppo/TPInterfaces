@@ -1,0 +1,85 @@
+header {
+    background-image: url('../img/fotoPortada.jpg');
+    background-size: cover;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+
+}
+
+.Perfil {
+    background-color: rgba(173, 173, 173, 0.473);
+    border-radius: 15px;
+    width: 40%;
+    display: flex;
+    padding: 5px;
+}
+
+.Perfil img {
+    margin: 5px 15px 5px 5px;
+}
+
+.informacionPerfil {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.informacionPerfil div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.informacionPerfil div p {
+    margin-right: 15px;
+}
+
+.container{
+    display: flex;
+    margin-top: 10px;
+}
+
+.informacionPersonal {
+    position: relative;
+    left: 100px;
+    top: 50px;
+    width: 20%;
+    height: 100%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.informacionPersonal h3 {
+    border-bottom: 2px solid black;
+}
+
+.informacionPersonal h4 {
+    margin-top: 20px;
+}
+
+.editarPerfil {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 150px;
+    bottom: 20px;
+}
+
+.editarPerfil img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.publicaciones {
+    position: relative;
+    left: 200px;
+    
+}

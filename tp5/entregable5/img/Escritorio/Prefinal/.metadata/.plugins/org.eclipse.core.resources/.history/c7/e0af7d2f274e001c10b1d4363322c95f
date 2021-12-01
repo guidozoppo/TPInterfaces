@@ -1,0 +1,10 @@
+import java.util.Comparator;
+
+public class ComparadorNombreUsuario implements Comparator<Video>{
+
+	@Override
+	public int compare(Video arg0, Video arg1) {
+		return arg0.getUsuario().getNombreUsuario().compareTo(arg1.getUsuario().getNombreUsuario());
+	}
+
+}

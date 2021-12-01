@@ -129,6 +129,7 @@ li a #imgMensaje {
 
 .estado{
     display: flex;
+    align-items: center;
 }
 
 .chat .estado,h5 {
@@ -143,6 +144,7 @@ li a #imgMensaje {
     height: 15px;
     width: 15px;
     border-radius: 50%;
+    margin-right: 5px;
 }
 
 .circuloVerde {
@@ -169,10 +171,12 @@ li a #imgMensaje {
 .listadoChats h4 {
     background-color: rgb(175, 175, 175);
     text-align: center;
+    padding: 10px;
 }
 
 .listadoChats input {
     width: 100%;
+    padding: 10px;
 }
 
 .chat {
@@ -230,6 +234,8 @@ li a #imgMensaje {
     height: 80%;
     width: 100%;
     overflow-y: scroll;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .mensaje {
@@ -266,6 +272,7 @@ li a #imgMensaje {
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 10px;
 }
 
 .footerChat .escribirMensaje img {
@@ -280,7 +287,7 @@ li a #imgMensaje {
 
 .footerChat .escribirMensaje {
     background-color: #c4c4c4;
-    border-radius: 5%;
+    border-radius: 15px;
     height: 70%;
     width: 100%;
     display: flex;
@@ -418,7 +425,7 @@ html{
 
 .footerChat .escribirMensaje {
     background-color: #c4c4c4;
-    border-radius: 5%;
+    border-radius: 15px;
     height: 70%;
     width: 60%;
     display: flex;

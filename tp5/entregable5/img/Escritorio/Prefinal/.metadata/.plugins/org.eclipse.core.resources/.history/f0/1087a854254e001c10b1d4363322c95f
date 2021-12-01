@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+
+public class GrupoSponsoreado extends Grupo {
+
+	private Video video;
+	
+	public GrupoSponsoreado(int demoraCarga, Video video) {
+		super(demoraCarga);
+		this.video = video;
+	}
+	
+	@Override
+	public ArrayList<Video> buscar(Filtro f) {
+		ArrayList<Video> aRetornar = new ArrayList<>();
+		if(video != null) {
+			aRetornar.add(video);
+		}
+		for(VideoAbstracto elem: this.getElementos()) {
+			aRetornar.addAll(elem.buscar(f));
+		}
+		return aRetornar;
+	}
+
+
+
+}

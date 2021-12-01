@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+
+public class GrupoSponsoreado extends Grupo {
+
+	private Video video;
+	
+	public GrupoSponsoreado(int demoraCarga, Video video) {
+		super(demoraCarga);
+		this.video = video;
+	}
+	
+	
+
+
+
+}

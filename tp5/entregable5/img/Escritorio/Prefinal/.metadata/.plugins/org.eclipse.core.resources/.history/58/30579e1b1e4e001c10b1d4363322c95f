@@ -1,0 +1,10 @@
+
+public class FiltroVisualizacionesMayor implements Filtro{
+
+	@Override
+	public boolean cumple(Video video) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

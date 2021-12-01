@@ -1,0 +1,8 @@
+package Filtros;
+
+
+public interface Filtro {
+
+	boolean cumple (Video video);
+	
+}

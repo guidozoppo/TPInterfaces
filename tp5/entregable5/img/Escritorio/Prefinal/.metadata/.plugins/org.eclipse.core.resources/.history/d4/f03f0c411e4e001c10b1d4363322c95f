@@ -1,0 +1,15 @@
+
+public class FiltroVisualizacionesMayor implements Filtro{
+
+	private int cant;
+	
+	public FiltroVisualizacionesMayor (int cant) {
+		this.cant = cant;
+	}
+	
+	@Override
+	public boolean cumple(Video video) {
+		return video.getCantVisualizaciones() > cant;
+	}
+
+}

@@ -1,0 +1,84 @@
+import java.util.ArrayList;
+
+public class Grupo extends VideoAbstracto{
+
+	private ArrayList<VideoAbstracto> elementos;
+	private int demoraCarga;
+	
+	public Grupo(int demoraCarga) {
+		this.demoraCarga = demoraCarga;
+	}
+	
+	
+	
+	@Override
+	public ArrayList<Video> buscar(Filtro f) {
+		ArrayList<Video> aRetornar = new ArrayList<>();
+		for(VideoAbstracto elem: elementos) {
+			aRetornar.addAll(elem.buscar(f));
+		}
+		return aRetornar;
+	}
+	
+	@Override
+	public ArrayList<String> getPalabrasClave() {
+		ArrayList<String> palabrasClave = new ArrayList<>();
+		for(VideoAbstracto elem: elementos) {
+			ArrayList<String> palabrasClave2 = elem.getPalabrasClave();
+			for(String palabra: palabrasClave2) {
+				if(!palabrasClave.contains(palabra)) {
+					palabrasClave.add(palabra);
+				}
+			}
+			
+		}
+		return palabrasClave;
+	}
+	
+	@Override
+	public int cantVideos() {
+		int total = 0;
+		for(VideoAbstracto elem: elementos) {
+			total += elem.cantVideos();
+		}
+		return total;
+	}
+	
+	@Override
+	public int getDuracion() {
+		int total = 0;
+		for(VideoAbstracto elem:elementos) {
+			total +=elem.getDuracion();
+		}
+		return total + demoraCarga;
+	}
+	
+	
+	
+	
+	public void addElemento(VideoAbstracto elemento) {
+		if(!elementos.contains(elemento)) {
+			elementos.add(elemento);
+		}
+	}
+	public int getDemoraCarga() {
+		return demoraCarga;
+	}
+	public void setDemoraCarga(int demoraCarga) {
+		this.demoraCarga = demoraCarga;
+	}
+	public ArrayList<VideoAbstracto> getElementos() {
+		ArrayList<VideoAbstracto> aRetornar = new ArrayList<>(elementos);
+		return aRetornar;
+	}
+
+
+
+	
+
+
+
+	
+
+	
+}

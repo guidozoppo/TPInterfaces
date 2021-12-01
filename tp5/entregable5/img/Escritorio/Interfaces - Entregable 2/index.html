@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <title>X en linea</title>
+</head>
+
+<body style="background-color: rgb(17, 17, 66); color: white;">
+    <div id="game" class="gameIntro">
+
+        <h3>X EN LINEA</h3>
+
+        <div class="dropdown inicio">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Iniciar Juego
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="btn-iniciarJuego" objetivo="4" href="#">4 en linea</a></li>
+              <li><a class="btn-iniciarJuego" objetivo="6" href="#">6 en linea</a></li>
+              <li><a class="btn-iniciarJuego" objetivo="7" href="#">7 en linea</a></li>
+            </ul>
+        </div>
+
+        <button id="reset" class="btn btn-danger">Resetear</button>
+        <div class="inicio">
+            <p>Fichas Jugador 1</p>
+            <select name="" id="fichaJ1">
+                <option value="images/fichaNegra.png">Ficha Negra</option>
+                <option value="images/fichaRoja.png">Ficha Roja</option>
+            </select>
+        </div>
+        <div class="inicio">
+            <p>Fichas Jugador 2</p>
+            <select name="" id="fichaJ2">
+                <option value="images/fichaBlanca.png">Ficha Blanca</option>
+                <option value="images/fichaAzul.png">Ficha Azul</option>
+            </select>
+        </div>
+        <h5 id="msj"></h5>
+        <h5 id="temporizador"> </h5> 
+    </div>
+
+    <section> <canvas id="canvas" width="1080" height="600" style="background-color: rgb(17, 17, 66)"> </canvas> </section>
+
+    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/tablero.js"></script>
+    <script src="js/juego.js"></script>
+    <script src="js/ficha.js"></script>
+    <script src="js/ranura.js"></script>
+    <script src="js/principal.js"></script>
+</body>
+
+</html>

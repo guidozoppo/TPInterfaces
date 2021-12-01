@@ -1,0 +1,95 @@
+import java.util.ArrayList;
+
+public class Video extends VideoAbstracto{
+
+	private Usuario usuario;
+	private int duracion;
+	private int cantVisualizaciones;
+	private int cantMeGusta;
+	private int cantNoMeGusta;
+	private int anioPublicacion;
+	private ArrayList<String> palabrasClave;
+	
+	public Video(Usuario usuario, int duracion, int cantVisualizaciones, int cantMeGusta, int cantNoMeGusta,
+			int anioPublicacion) {
+		super();
+		this.usuario = usuario;
+		this.duracion = duracion;
+		this.cantVisualizaciones = cantVisualizaciones;
+		this.cantMeGusta = cantMeGusta;
+		this.cantNoMeGusta = cantNoMeGusta;
+		this.anioPublicacion = anioPublicacion;
+	}
+	
+	
+	@Override
+	public ArrayList<Video> buscar(Filtro f) {
+		ArrayList<Video> aRetornar = new ArrayList<>();
+		if(f.cumple(this)) {
+			aRetornar.add(this);
+		}
+		return aRetornar;
+	}
+	
+	@Override
+	public int cantVideos() {
+		return 1;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public boolean contienePalabra(String palabra) {
+		return palabrasClave.contains(palabra);
+	}
+	public String getEmailUsuario() {
+		return this.usuario.getEmail();
+	}
+	public String getAutor() {
+		return this.usuario.getNombreUsuario();
+	}
+	
+	public int getCantVisualizaciones() {
+		return cantVisualizaciones;
+	}
+	public void setCantVisualizaciones(int cantVisualizaciones) {
+		this.cantVisualizaciones = cantVisualizaciones;
+	}
+	public int getCantMeGusta() {
+		return cantMeGusta;
+	}
+	public void setCantMeGusta(int cantMeGusta) {
+		this.cantMeGusta = cantMeGusta;
+	}
+	public int getCantNoMeGusta() {
+		return cantNoMeGusta;
+	}
+	public void setCantNoMeGusta(int cantNoMeGusta) {
+		this.cantNoMeGusta = cantNoMeGusta;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public int getDuracion() {
+		return duracion;
+	}
+	public int getAnioPublicacion() {
+		return anioPublicacion;
+	}
+	public ArrayList<String> getPalabrasClave() {
+		ArrayList<String> aRetornar = new ArrayList<>(palabrasClave);
+		return aRetornar;
+	}
+	public void addPalabra (String palabra) {
+		if(!palabrasClave.contains(palabra)) {
+			palabrasClave.add(palabra);
+		}
+	}
+
+
+
+	
+}

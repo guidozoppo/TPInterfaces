@@ -1,0 +1,30 @@
+#game {
+    display: flex;
+}
+
+.gameIntro {
+    flex-direction: column;
+    width: 30%;
+    text-align: center;
+    margin: auto;
+    transition-duration: 1s;
+}
+
+.gameIntro:hover {
+    -ms-transform: translateY(130px); /* IE 9 */
+    -webkit-transform: translateY(130px); /* Safari */
+    transform: translateY(130px);
+}
+
+#game > * {
+    margin: 20px;
+}
+
+.inicioShow {
+    display: none;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: black;
+}

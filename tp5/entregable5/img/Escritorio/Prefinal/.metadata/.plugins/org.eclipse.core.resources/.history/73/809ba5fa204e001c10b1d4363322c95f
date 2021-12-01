@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+public class VideoCompuesto extends VideoAbstracto{
+
+	private ArrayList<VideoAbstracto> elementos;
+	
+	public VideoCompuesto() {
+		
+	}
+	
+	
+	
+	@Override
+	public ArrayList<Video> buscar(Filtro f) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	public void addElemento(VideoAbstracto elemento) {
+		if(!elementos.contains(elemento)) {
+			elementos.add(elemento);
+		}
+	}
+
+	
+}

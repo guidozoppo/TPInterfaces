@@ -4,9 +4,235 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/publicacion.css">
+    <link rel="stylesheet" href="css/perfil.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>ESTE ES EL PERFIL</h1>
+    <nav>
+        <ul class="menu">
+            <li>
+                <a href="home.html"><img src="img/logo.png" alt="Logo"></a>
+            </li>
+            <li>
+                <form action="">
+                  <input class="input-buscar" type="text" placeholder="Buscar">
+                </form>
+            </li>
+            <li>
+                <section>
+                    <a href="chat.html"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                    <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
+                    <div id="desplegablePerfil" class="dropdown-content">
+                        <a href="#">Perfil</a>
+                        <a href="#">Configuracion</a>
+                        <a href="index.html">Cerrar sesion</a>
+                    </div>
+                </section>
+            </li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="Perfil">
+            <img src="img/fotoPerfil.png" alt="Foto de Perfil">
+            <div class="informacionPerfil">
+            <h3>Agustin Montes</h3>
+                <div>
+                    <p>2 Publicaciones</p>
+                    <p>0 Seguidos</p>
+                    <p>0 Seguidores</p>
+                </div> 
+            </div>
+        </div>
+        
+        
+    </header>
+
+    <div class="container">
+
+        <div class="informacionPersonal">
+            <h3>Informacion Personal</h3>
+
+            <h4>Fecha de Nacimiento</h4>
+            <h6>17/7/1997</h6>
+
+            <h4>Profesion</h4>
+            <h6>Veterinario</h6>
+
+            <h4>Institucion</h4>
+            <h6>Facultad de Veterinaria - Unicen</h6> 
+
+            <h4>Año de graduacion</h4>
+            <h6>2020</h6>
+
+            <h4>Telefono</h4>
+            <h6>2494 155609</h6>
+
+            <div class="editarPerfil">
+                <img src="img/iconoLapiz.png" alt="Lapiz">
+                <h6>Editar Perfil</h6>
+            </div>
+
+        </div>
+
+        <div class="publicaciones">
+            <div class="container">
+                <section class="crearPost">
+                  <form action="#">
+                    <div class="headerPublicacion">
+                      <img src="img/fotoPerfil4.png" alt="Foto de perfil">
+                      <div class="details">
+                        <p>Veterinaria El Refugio</p>
+                      </div>
+                    </div>
+                    <div class="contenido">
+                      <p>Una foto con un amigo antes de la operacion!!</p>
+                      <img class="imgPublicacion" src="img/fotoPublicacion3.jpg" alt="">
+                    </div>
+                    <div class="reacciones">
+                      <ul class="list">
+                        <li id="like"><img src="img/likeoff.jpg" alt="gallery">
+                          <p>15</p>
+                        </li>
+                        
+                        <li id="dislike"><img src="img/dislikeoff.jpg" alt="gallery">
+                          <p>10</p>
+                        </li>
+    
+                        <li class="comentar"><img src="img/comentar.png" alt="gallery">
+                          <p>Comentar</p>
+                        </li>
+                        
+                        <li><img src="img/share.png" alt="gallery">
+                          <p>Compartir</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </form>
+                  <!-- COMENTARIOS -->
+                  <div class="comments-container">
+                    <ul id="comments-list" class="comments-list">
+                      <li>
+                        <div class="comment-avatar">
+                          <img src="img/fotoPerfil.png" alt="">
+                        </div>
+                        <div class="create-comment-box">
+                          <div class="create-comment-content">
+                            <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
+                            <button>Publicar comentario</button>
+                          </div>
+                        </div>
+                    </li>
+                      <li>
+                          <div class="comment-avatar">
+                            <img src="img/fotoPerfil5.png" alt="">
+                          </div>
+                          <div class="comment-box">
+                            <div class="comment-head">
+                              <h4>Luz Fernandez Veterinaria</h4>
+                            </div>
+                            <div class="comment-content">
+                              <p> Pobrecito, se lo ve con mucho miedo!! No sabe que está en buenas manos</p>
+                            </div>
+                            <div class="infoComentario">
+                              <span>hace 20 minutos</span>
+                              <i class="fa fa-reply"></i>
+                              <i class="fa fa-heart"></i>
+                          </div>
+                          </div>
+                      </li>
+    
+                      <li>          
+                          <div class="comment-avatar">
+                            <img src="img/fotoPerfil5.png" alt="">
+                          </div>               
+                          <div class="comment-box">
+                            <div class="comment-head">
+                              <h4>Luz Fernandez Veterinaria</h4>
+                            </div>
+                            <div class="comment-content">
+                              <p> Muchos saludos ":)"</p>
+                            </div>
+                              <div class="infoComentario">
+                                <span>hace 20 minutos</span>
+                                <i class="fa fa-reply"></i>
+                                <i class="fa fa-heart"></i>
+                            </div>
+                          </div>       
+                      </li>
+    
+                      
+                    </ul>
+                  </div>
+                </section>
+            </div>
+              
+              
+    
+            <div class="container">
+                <section class="crearPost">
+                  <form action="#">
+                    <div class="headerPublicacion">
+                      <img src="img/fotoPerfil6.png" alt="logo">
+                      <div class="details">
+                        <p>Veterinaria Mirta</p>
+                      </div>
+                    </div>
+                    <div class="contenido">
+                      <p> Amigos, aca les dejo un videito de un gran colega, el Doctor Romero, 
+                        que habla sobre que hacer cuando nuestros perros muerden
+                      </p>
+                      <iframe width="560" height="315" src="https://www.youtube.com/embed/j3ORnB_0CCw" 
+                      title="YouTube video player" frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen></iframe>
+                    </div>
+                    <div class="reacciones">
+                      <ul class="list">
+                        <li id="like"><img src="img/likeoff.jpg" alt="gallery">
+                          <p>5</p>
+                        </li>
+                        
+                        <li id="dislike"><img src="img/dislikeoff.jpg" alt="gallery">
+                          <p>100</p>
+                        </li>
+    
+                        <li class="comentar"><img src="img/comentar.png" alt="gallery">
+                          <p>Comentar</p>
+                        </li>
+                        
+                        <li><img src="img/share.png" alt="gallery">
+                          <p>Compartir</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </form>
+                  <!-- COMENTARIOS -->
+                  <div class="comments-container">
+                    <ul id="comments-list" class="comments-list">
+                      <li>
+                        <div class="comment-avatar">
+                          <img src="img/fotoPerfil.png" alt="">
+                        </div>
+                        <div class="create-comment-box">
+                          <div class="create-comment-content">
+                            <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
+                            <button>Publicar comentario</button>
+                          </div>
+                        </div>
+                      </li> 
+                    </ul>
+                  </div>
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="js/js.js"></script>
+    <script src="js/publicacion.js"></script>
 </body>
 </html>
