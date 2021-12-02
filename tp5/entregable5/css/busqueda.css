@@ -48,6 +48,10 @@ h5 {
     width: 10px;
 } */
 
+.details h3 {
+    border-bottom: 0;
+}
+
 .filtro img {
     width: 15px;
     height: 15px;

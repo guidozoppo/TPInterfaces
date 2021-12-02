@@ -6,10 +6,11 @@ window.addEventListener("DOMContentLoaded", _=>{
     document.querySelector("#imgPerfil").addEventListener("click", desplegablePerfil);
 
     function abrirMsjPrivado(e){
-      e.target.closest(".listadoChats").style.display = "none";
-      //e.target.closest(".chatIndividual").querySelector("chatIndividual");
-      document.querySelector(".chatIndividual").style.display = "block";
-      //e.path[3].childNodes[3].style.display = "block";
+      console.log(screen.width)
+      if(screen.width < 900){
+        e.target.closest(".listadoChats").style.display = "none";
+        document.querySelector(".chatIndividual").style.display = "block";
+      }
     }
     
     function abrirListado(e){

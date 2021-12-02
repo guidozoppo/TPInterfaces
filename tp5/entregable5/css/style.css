@@ -77,7 +77,7 @@ li a #imgMensaje {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fdfdff;
+    /* background-color: #fdfdff; */
     min-width: 180px;
     box-shadow: 0px 1px 6px 0px #6a6e6f;
 }

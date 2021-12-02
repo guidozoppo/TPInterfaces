@@ -135,6 +135,31 @@ input {
     height: 25px;        
 }
 
+/*----------- MENSAJE DE CONFIRMACION -------------*/
+.msj-confirmacion {
+    display: none;
+}
+
+.msj-confirmacion-visible {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.msj-confirmacion p {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.msj-confirmacion img {
+    padding-bottom: 20px;
+}
+
+.msj-confirmacion a {
+    padding-bottom: 20px;
+}
+
 @keyframes movebgIzquierda { /* Animacion del fondo con efecto parallaz */
     0% {
         background-position: 0;

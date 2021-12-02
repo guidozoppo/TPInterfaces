@@ -94,8 +94,9 @@ comentar.forEach(e => {
     function buscar(e) {
       if(e.code === "Enter") {
         if(e.target.value.toLowerCase() === "jorge") {
+          console.log("hola");
           e.target.value = "";
-          spinnerHome("busqueda");
+          spinnerConteiner("busqueda");
         } else {
           console.log("redidrigir a busqueda sin resultados");
         }

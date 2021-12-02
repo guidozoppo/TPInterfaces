@@ -13,6 +13,7 @@
 
 /* DIV CENTRAL, PUBLICACIONES Y CREAR */
 .publicaciones {
+  margin-left: 25%;
     width: 50%;
     
   }
@@ -33,6 +34,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
 }
 
 .publicidad div {
@@ -61,7 +63,7 @@
   background-color: white;
   border-radius: 10%;
   margin: 2vh 0;
-  height: 170px;
+  height: 190px;
   width: 50%;
   padding-top: 10px;
   
@@ -80,6 +82,8 @@
 .sugerenciaIndividual p {
   position: absolute;
   right: 10px;
+  cursor: pointer;
+  top: 1px;
   color: black;
   font-weight: bold;
 }

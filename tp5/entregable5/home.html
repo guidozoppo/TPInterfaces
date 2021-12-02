@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/logo.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
@@ -28,8 +29,8 @@
                     <a onclick="spinnerHome('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
                     <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
                     <div id="desplegablePerfil" class="dropdown-content">
-                        <a href="#" onclick="spinnerHome('perfil')">Perfil</a>
-                        <a href="#">Configuracion</a>
+                        <a onclick="spinnerHome('perfil')">Perfil</a>
+                        <a>Configuracion</a>
                         <a href="index.html" onclick="spinnerHome('index')">Cerrar sesion</a>
                     </div>
                 </section>
@@ -60,17 +61,17 @@
                 <div class="headerPublicacion">
                   <img src="img/fotoPerfil.png" alt="foto de perfil">
                   <div class="details">
-                    <p>Veterinario Juan Carlos</p>
+                    <h3>Veterinario Juan Carlos</h3>
                     <div class="privacy">
                       <i class="fas fa-user-friends"></i>
-                      <span>Friends</span>
+                      <span>Amigos</span>
                       <i class="fas fa-caret-down"></i>
                     </div>
                   </div>
                 </div>
                 <textarea placeholder="¿Que estás pensando?" spellcheck="false" required></textarea>
                 <div class="adicionales">
-                  <p>Adjuntar</p>
+                  <p>Agregar a la publicacion</p>
                   <ul class="list">
                     <li><img src="img/post/gallery.svg" alt="gallery"></li>
                     <li><img src="img/post/emoji.svg" alt="gallery"></li>
@@ -88,8 +89,8 @@
                 <div class="headerPublicacion">
                   <img src="img/fotoPerfil4.png" alt="Foto de perfil">
                   <div class="details">
-                    <p>Veterinaria El Refugio</p>
-                    <h5>Hace 2 min</h5>
+                    <h3>Veterinaria El Refugio</h3>
+                    <p class="fecha">Hace 2 min</p>
                   </div>
                 </div>
                 <div class="contenido">
@@ -180,8 +181,8 @@
                 <div class="headerPublicacion">
                   <img src="img/fotoPerfil5.png" alt="Foto de perfil">
                   <div class="details">
-                    <p>Luz Fernandez Veterinaria</p>
-                    <h5>Hoy a las 13:00</h5>
+                    <h3>Luz Fernandez Veterinaria</h3>
+                    <p class="fecha">Hoy a las 13:00</p>
                   </div>
                 </div>
                 <div class="contenido">
@@ -235,12 +236,12 @@
                 <div class="headerPublicacion">
                   <img src="img/fotoPerfil.png" alt="logo">
                   <div class="details">
-                    <p>Veterinario Juan Carlos</p>
-                    <h5>Ayer a las 9:15</h5>
+                    <h3>Veterinario Juan Carlos</h3>
+                    <p class="fecha">Ayer a las 9:15</p>
                   </div>
                 </div>
                 <div class="contenido">
-                  <p> Amigos, aca les dejo un videito de un gran colega, el Doctor Romero, 
+                  <p> Amigos, aca les dejo un videito de un gran colega, el Doctor Jorge Romero, 
                     que habla sobre que hacer cuando nuestros perros muerden
                   </p>
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/j3ORnB_0CCw" 
@@ -291,10 +292,10 @@
             <section class="crearPost">
               <form action="#">
                 <div class="headerPublicacion">
-                  <img src="img/fotoPerfil7.png" alt="Foto de perfil">
+                  <img src="img/fotoPerfil.png" alt="Foto de perfil">
                   <div class="details">
-                    <p>Veterinario Maxi Erdocia</p>
-                    <h5>29/11 a las 13:00</h5>
+                    <h3>Veterinario Juan Carlos</h3>
+                    <p class="fecha">29/11 a las 13:00</p>
                   </div>
                 </div>
                 <div class="contenido">
@@ -406,6 +407,59 @@
             </section>
           </div>
 
+          <div class="container">
+            <section class="crearPost">
+              <form action="#">
+                <div class="headerPublicacion">
+                  <img src="img/fotoPerfil7.png" alt="logo">
+                  <div class="details">
+                    <h3>Veterinario Jorge Erdocia</h3>
+                    <p class="fecha">28/11 a las 20:15</p>
+                  </div>
+                </div>
+                <div class="contenido">
+                  <p> Recuerden amigos: en estas fiestas, no a la pirotecnia!! Ellos la sufren mucho
+                  </p>
+                  <img src="img/pirotecnia.jpg" alt="">
+                </div>
+                <div class="reacciones">
+                  <ul class="list">
+                    <li id="like"><img src="img/likeoff.jpg" alt="gallery">
+                      <p>55</p>
+                    </li>
+                    
+                    <li id="dislike"><img src="img/dislikeoff.jpg" alt="gallery">
+                      <p>0</p>
+                    </li>
+
+                    <li class="comentar"><img src="img/comentar.png" alt="gallery">
+                      <p>Comentar</p>
+                    </li>
+                    
+                    <li><img src="img/share.png" alt="gallery">
+                      <p>Compartir</p>
+                    </li>
+                  </ul>
+                </div>
+              </form>
+              <!-- COMENTARIOS -->
+              <div class="comments-container">
+                <ul id="comments-list" class="comments-list">
+                  <li>
+                    <div class="comment-avatar">
+                      <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                    </div>
+                    <div class="create-comment-box">
+                      <div class="create-comment-content">
+                        <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
+                        <button>Publicar comentario</button>
+                      </div>
+                    </div>
+                  </li> 
+                </ul>
+              </div>
+            </section>
+          </div>
 
         </article>
 

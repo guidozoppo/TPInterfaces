@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/chat.css">
+    <link rel="icon" href="img/logo.png">
     <script src="js/chat.js"></script>
     <title>Garolfa - Chat</title>
 </head>
@@ -17,11 +18,11 @@
                 <a onclick="spinnerConteiner('home')"><img src="img/logo.png" alt="Logo"></a>
             </li>
             <li>
-                <!--   -->
                 <input class="input-buscar" type="text" placeholder="Buscar">
             </li>
             <li>
                 <section>
+                    <img id="img-lupa" src="img/search.svg" alt="">
                     <a onclick="spinnerConteiner('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
                     <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
                     <div id="desplegablePerfil" class="dropdown-content">
@@ -145,11 +146,15 @@
             <div class="footerChat">
                 <!-- <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil"> -->
                 <div class="escribirMensaje">
-                    <img src="img/iconoCamara.png" alt="Camara">
-                    <input type="text" placeholder="Escribe un mensaje">
-                    <img src="img/iconoMicrofono.png" alt="Microfono">
-                    <img src="img/iconoGaleria.png" alt="Galeria">
-                    <img src="img/iconoIconos.png" alt="Iconos">
+                    <div class="div-uno">   
+                        <img src="img/iconoCamara.png" alt="Camara">    
+                        <input type="text" placeholder="Escribe un mensaje">
+                    </div>
+                    <div class="div-dos">
+                        <img src="img/iconoMicrofono.png" alt="Microfono">
+                        <img src="img/iconoGaleria.png" alt="Galeria">
+                        <img src="img/iconoIconos.png" alt="Iconos">
+                    </div>
                 </div>
                 
             </div>

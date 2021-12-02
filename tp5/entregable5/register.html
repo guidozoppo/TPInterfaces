@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400" rel="stylesheet">
+    <link rel="icon" href="img/logo.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
     <script src="js/register.js"></script>
@@ -42,14 +43,20 @@
                                     <input id="input-contraseña" minlength="8" required type="password">
                                     <p id="requisitoContraseña">- Minimo 8 caracteres</p>
                                 </div>
-                                <button onclick="spinnerConteiner('confirmaMail')" id="btn-crear-cuenta" disabled>Crear Cuenta</button>
+                                <button id="btn-crear-cuenta" disabled>Crear Cuenta</button>
                             </form>
                         </div>
                         <div onclick="spinnerConteiner('index')" class="registrar">
                             <a><p>¿Ya tienes cuenta?</p></a>
-                            <a ><button id="btn-ingresar">Ingresa</button></a>
+                            <a onclick="spinnerConteiner('home')"><button id="btn-ingresar">Ingresa</button></a>
                         </div>
                         <h4>* Campos Obligatorios</h4>
+                        <div class="msj-confirmacion">
+                            <img src="img/logo.png" alt="Foto de perfil">
+                            <h1>CONFIRMA TU CUENTA</h1>
+                            <p>¡Segui las instrucciones enviadas a tu correo para empezar a usar la cuenta!</p>
+                            <a onclick="spinnerConteiner('index')"><button id="btn-ingresar">Ingresa</button></a>
+                        </div>
                     </div>
                 </div>
             </div>

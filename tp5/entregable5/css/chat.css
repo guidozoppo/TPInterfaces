@@ -9,7 +9,7 @@ body{
 
 .container {
     display: flex;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 40px);
     width: 100%;
     overflow-y: auto;
     border: 1px;
@@ -38,7 +38,7 @@ body{
 .chat .txt-fecha {
     position: absolute;
     top: 23px;
-    left: 230px;
+    left: 80%;
     
 }
 
@@ -65,14 +65,14 @@ body{
     background-color: white;
     /* left: 50px; */
     /* overflow-y:scroll; */
-    /*overflow-x: hidden; */
+    overflow-x: hidden;
     /* overflow: hidden; */
-    overflow: auto;
+    /* overflow: auto; */
     filter: drop-shadow(7px 7px 4px rgba(0, 0, 0, 0.25));
 }
 
 .listadoChats h4 {
-    background-color: rgb(175, 175, 175);
+    background-color: #c9c9c9;
     text-align: center;
     padding: 10px;
 }
@@ -89,7 +89,8 @@ body{
 }
 
 .chatSeleccionado {
-    background-color: #8447FF;
+    background-color: white;
+    /* AD85FF */
 }
 
 .chat:hover {
@@ -100,7 +101,7 @@ body{
 .chatIndividual {
     display: none;
     width: 100%;
-    height: 580px;
+    height: calc(100vh - 40px);
     background-color: white;
     position: relative;
 } 
@@ -112,7 +113,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-color: #e5e5e5;
+    background-color: #c9c9c9;
    /*  margin-top: 5px;
     margin-bottom: 5px; */
 }
@@ -123,7 +124,7 @@ body{
 }
 
 .headerChat .imgVideoLlamada {
-    width: 30px;
+    width: 24px;
     height: auto;
 }
 
@@ -172,10 +173,31 @@ body{
     /* padding-bottom: 10px; */
 }
 
-.footerChat .escribirMensaje img {
-    width: 25px;
-    height: 25px;
-    margin: 10px;
+.div-uno, .div-dos {
+    display: flex;
+    align-items: center;
+}
+
+.div-uno {
+    width: calc(100% - 60px);
+}
+
+.footerChat .escribirMensaje .div-dos img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.footerChat .escribirMensaje .div-uno img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+
+.footerChat .escribirMensaje .div-uno input {
+    width: calc(100% - 34px);
+    padding: 4px 0;
 }
 
 .footerChat #imgPerfil {
@@ -183,12 +205,13 @@ body{
 }
 
 .footerChat .escribirMensaje {
-    background-color: #c4c4c4;
-    border-radius: 15px;
+    /* background-color: #c9c9c9;
+    border-radius: 15px; */
     height: 35px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    border-top: 1px solid black;
+    /* justify-content: space-between; */
     align-items: center;
     padding: 5px;
 }
@@ -213,22 +236,92 @@ html {
     padding-left: 15px;
 }
 
+.menu li img{
+    width: 26px;
+    height: 26px;
+}
+
 nav .menu li .input-buscar{
-    width: 90%;
-    margin: 10px;
+    display: none;
 }
 
 nav {
     background-color: #8447FF;
     padding: 5px 20px;
     position: absolute;
-    top: 90%;
+    top: 94%;
     z-index: 1000;
     width: 100%;
 }
 
+#img-lupa {
+    margin-right: 10px;
+}
+
+
+.dropdown-content {
+    bottom: 40px;
+    background-color: white;
+    right: 20px;
+}
+
+
 @media only screen and (min-width: 900px) {
+    .dropdown-content {
+        /* top: 64px; */
+        bottom: -130px;
+        background-color: white;
+        right: 20px;
+    }
+
+    .menu li section {
+        display: flex;
+        align-items: center;
+    }
+    #imgMensaje {
+        height: 30px;
+        width: 30px;
+    }
+
+    .menu li img{
+        height: 50px;
+        width: auto;
+    }
+
+    .headerChat .imgVideoLlamada {
+        width: 30px;
+        height: auto;
+    }
+
+    .footerChat {
+        /* height: 60px; */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        /* padding-bottom: 10px; */
+    }
+    
+    .footerChat .escribirMensaje .div-dos img {
+        width: 24px;
+        height: 24px;
+        margin-left: 10px;
+        /* margin: 10px; */
+    }
+    
+    .footerChat .escribirMensaje .div-uno img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+    }
+    
+    
+    .footerChat .escribirMensaje .div-uno input {
+        width: calc(100% - 34px);
+        padding: 4px 0;
+    }
+
     nav .menu li .input-buscar{
+        display: block;
         height: 35px;
         border-radius: 10px;
         border: 0;
@@ -238,14 +331,40 @@ nav {
         top: -1px;
         z-index: 1000;
     }
-
+    .container {
+        display: flex;
+        height: calc(100vh - 60px);
+        width: 100%;
+        overflow-y: auto;
+        border: 1px;
+    }
     nav {
+        background-color: #8447FF;
+        padding: 5px 20px;
+        position: absolute;
+        z-index: 1000;
+        width: 100%;
         position: sticky;
         top: -1px;
     }
+
+    .chatSeleccionado {
+        background-color: #8447FF;
+    }
+
+    #img-lupa {
+        display: none;
+    }
+
+    .div-uno {
+        width: calc(100% - 93px);
+    }
+
+    
 /*---------------- CHAT INDIVIDUAL -------------------*/
 .chatIndividual {
     width: 650px;
+    height: 100%;
     left: 200px;
     filter: drop-shadow(7px 7px 4px rgba(0, 0, 0, 0.432));
 } 
@@ -253,8 +372,6 @@ nav {
 .headerChat .volverListado {
     display: none;
 }
-
-
 
 .headerContacto {
     width: calc(65% - 30px);
@@ -265,13 +382,13 @@ nav {
     padding-bottom: 10px;
 }
 
-.footerChat .escribirMensaje {
-    width: 60%;
-}
+/* .footerChat .escribirMensaje {
+    width: 100%;
+} */
 
     .listadoChats {
         width: 300px;
-        height: 580px;
+        height: 100%;
         position: relative;
         left: 50px;
         overflow-y:scroll;

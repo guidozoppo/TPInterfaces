@@ -1,5 +1,8 @@
 window.addEventListener("DOMContentLoaded", _=>{ 
 
+
+    document.querySelector("#btn-crear-cuenta").addEventListener("click", confirmaCuenta);
+
     let inputNombre = document.getElementById("input-nombre");
     let inputApellido = document.getElementById("input-apellido");
     let inputFechaNac = document.getElementById("input-fechaNac");
@@ -34,6 +37,13 @@ window.addEventListener("DOMContentLoaded", _=>{
             document.getElementById("btn-crear-cuenta").disabled = true;
             document.getElementById("btn-crear-cuenta").classList.remove("botonActivado"); 
         }
+    }
+
+    function confirmaCuenta(){
+        document.querySelector(".conteiner-form").style.display = "none";
+        document.querySelector(".registrar").style.display = "none";
+        document.querySelector("h4").style.display = "none";
+        document.querySelector(".msj-confirmacion").classList.add("msj-confirmacion-visible");
     }
 })
 
