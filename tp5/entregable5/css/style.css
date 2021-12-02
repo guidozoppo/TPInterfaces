@@ -21,13 +21,16 @@
 
 /* ESTILOS GENERALES */
 body{
-    font-family: sans-serif;
+    font-family: 'Montserrat';
     background-color: #DAD9D9;
 }
 
 nav {
     background-color: #8447FF;
     padding: 5px 20px;
+    position: sticky;
+    top: -1px;
+    z-index: 1000;
 }
 
 ul {

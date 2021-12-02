@@ -213,7 +213,36 @@ html {
     padding-left: 15px;
 }
 
+nav .menu li .input-buscar{
+    width: 90%;
+    margin: 10px;
+}
+
+nav {
+    background-color: #8447FF;
+    padding: 5px 20px;
+    position: absolute;
+    top: 90%;
+    z-index: 1000;
+    width: 100%;
+}
+
 @media only screen and (min-width: 900px) {
+    nav .menu li .input-buscar{
+        height: 35px;
+        border-radius: 10px;
+        border: 0;
+        width: 300px;
+        padding: 10px;
+        position: sticky;
+        top: -1px;
+        z-index: 1000;
+    }
+
+    nav {
+        position: sticky;
+        top: -1px;
+    }
 /*---------------- CHAT INDIVIDUAL -------------------*/
 .chatIndividual {
     width: 650px;
