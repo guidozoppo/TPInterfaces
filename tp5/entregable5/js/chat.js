@@ -3,10 +3,13 @@ window.addEventListener("DOMContentLoaded", _=>{
     document.querySelector(".chat").addEventListener("click", abrirMsjPrivado);
     document.querySelector(".volverListado").addEventListener("click", abrirListado);
     document.querySelector(".input-buscar").addEventListener("keydown", buscar);
-    document.querySelector("#imgPerfil").addEventListener("click", desplegablePerfil);
+    document.querySelector("#mensaje-enviar").addEventListener("input", enviarOn);
+    let imgPerfil = document.querySelectorAll(".target-desplegable");
+  imgPerfil.forEach(e => {
+    e.addEventListener("click", desplegablePerfil);
+  });
 
     function abrirMsjPrivado(e){
-      console.log(screen.width)
       if(screen.width < 900){
         e.target.closest(".listadoChats").style.display = "none";
         document.querySelector(".chatIndividual").style.display = "block";
@@ -25,11 +28,26 @@ window.addEventListener("DOMContentLoaded", _=>{
           e.target.value = "";
           spinnerConteiner("busqueda");
         } else {
-          console.log("redidrigir a busqueda sin resultados");
+          window.location.href = "busqueda-sin-rdo.html";
         }
       }
     }
 
+    function enviarOn(e){
+      let icons = document.querySelectorAll(".iconChat");
+      
+      if (document.querySelector("#mensaje-enviar").value !== "") {
+        icons.forEach(e => {
+          e.style.display = "none";
+        });
+        document.querySelector("#enviar-msj").style.display = "block";
+      } else {
+        icons.forEach(e => {
+          e.style.display = "block";
+        });
+        document.querySelector("#enviar-msj").style.display = "none";
+      }
+    }
  })
 
  function spinnerConteiner(seccion) {
@@ -42,6 +60,10 @@ window.addEventListener("DOMContentLoaded", _=>{
   }, 300);
 }
 
-function desplegablePerfil() {
-  document.getElementById("desplegablePerfil").classList.toggle("show");
+function desplegablePerfil(e) {
+  if(screen.width > 900){
+    e.path[4].childNodes[1].childNodes[7].childNodes[1].childNodes[7].classList.toggle("show");
+  } else {
+    document.getElementById("desplegablePerfil").classList.toggle("show");
+  }
 }

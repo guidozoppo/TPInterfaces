@@ -113,6 +113,7 @@
 
   form textarea::placeholder {
     color: #858585;
+    font-family: 'Montserrat';
   }
 
   form textarea:focus::placeholder {
@@ -425,8 +426,9 @@ form .reacciones .list {
   padding-left: 5px;
 }
 
-.create-comment-content textarea::placeholder {  /* Placeholder del textarea */
+.create-comment-content textarea::placeholder {  
   padding-left: 5px;
+  font-family: 'Montserrat';
   color: #858585;
 }
 

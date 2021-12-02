@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;;
+}
+
+::placeholder {
+    font-family: 'Montserrat';
 }
 
 .boton {
@@ -64,6 +69,11 @@ li input {
     text-align: center; */
 }
 
+#imgMensaje {
+    height: 30px;
+    width: 30px;
+}
+
 li a #imgMensaje {
     margin-right: 10px;
 }
@@ -76,8 +86,10 @@ li a #imgMensaje {
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
+    right: 20px;
+    bottom: -130px;
     position: absolute;
-    /* background-color: #fdfdff; */
+    background-color: white;
     min-width: 180px;
     box-shadow: 0px 1px 6px 0px #6a6e6f;
 }

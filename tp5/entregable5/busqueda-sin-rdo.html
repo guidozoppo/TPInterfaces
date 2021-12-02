@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/logo.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/publicacion.css">
+    <link rel="stylesheet" href="css/busqueda.css">
+    <title>Garolfa - Buscar</title>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li>
+                <a onclick="spinnerConteiner('home')"><img src="img/logo.png" alt="Logo"></a>
+            </li>
+            <li>
+                <!--   -->
+                <input class="input-buscar" type="text" placeholder="Buscar">
+            </li>
+            <li>
+                <section>
+                    <a onclick="spinnerConteiner('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                    <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
+                    <div id="desplegablePerfil" class="dropdown-content">
+                        <a onclick="spinnerConteiner('perfil')">Perfil</a>
+                        <a href="#">Configuracion</a>
+                        <a onclick="spinnerConteiner('index')">Cerrar sesion</a>
+                    </div>
+                </section>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="filtros">
+            <div class="input">
+                <h4>Ciudad</h4>
+                <input type="text" placeholder="Ciudad" value="Tandil">
+                <div class="filtro">
+                  <img src="img/iconoPinche.png" alt="Filtro fijado">
+                  <h5>Tandil</h5>
+                </div>
+            </div>
+            <div class="input">
+                <h4>Profesion</h4>
+                <input type="text" placeholder="Profesion">
+            </div>
+            <div class="input">
+                <h4>Año de graduacion</h4>
+                <input id="filtro-anio" type="number" placeholder="Año de graduacion">
+            </div>
+            <button class="boton">Filtrar</button>
+        </div>
+        <div class="resultados">
+            <h5>No se han encontrado resultados para tu busqueda.</h5>
+            
+            <h3>Personas</h3>
+          
+            <h3>Publicaciones</h3>
+            
+        </div>
+<!--         <div class="sin-resultados">
+            <h5>No se han encontrado resultados</h5>
+        </div> -->
+    </div>
+    <div class="spinner"></div>
+
+    <script src="js/busqueda.js"></script>
+    <script src="js/js.js"></script>
+</body>
+</html>

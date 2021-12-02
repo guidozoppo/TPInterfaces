@@ -14,17 +14,28 @@
 <body>
     <nav>
         <ul class="menu">
+            <li class="li-responsive">
+                <a onclick="spinnerConteiner('home')"><img src="img/logo.png" alt="Logo"></a>
+                <img onclick="spinnerConteiner('busqueda')" id="img-lupa" src="img/search.svg" alt="">
+                <a onclick="spinnerConteiner('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                <img id="imgPerfil" class="target-desplegable" src="img/fotoPerfil.png" alt="Foto de Perfil">
+                <div id="desplegablePerfil" class="dropdown-content">
+                    <a onclick="spinnerConteiner('perfil')">Perfil</a>
+                    <a href="#">Configuracion</a>
+                    <a onclick="spinnerConteiner('index')">Cerrar sesion</a>
+                </div>
+            </li>
             <li>
                 <a onclick="spinnerConteiner('home')"><img src="img/logo.png" alt="Logo"></a>
             </li>
-            <li>
+            <li class="li-input-buscar">
                 <input class="input-buscar" type="text" placeholder="Buscar">
             </li>
             <li>
                 <section>
                     <img id="img-lupa" src="img/search.svg" alt="">
                     <a onclick="spinnerConteiner('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
-                    <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
+                    <img id="imgPerfil" class="target-desplegable" src="img/fotoPerfil.png" alt="Foto de Perfil">
                     <div id="desplegablePerfil" class="dropdown-content">
                         <a onclick="spinnerConteiner('perfil')">Perfil</a>
                         <a href="#">Configuracion</a>
@@ -148,12 +159,13 @@
                 <div class="escribirMensaje">
                     <div class="div-uno">   
                         <img src="img/iconoCamara.png" alt="Camara">    
-                        <input type="text" placeholder="Escribe un mensaje">
+                        <input id="mensaje-enviar" type="text" placeholder="Escribe un mensaje">
                     </div>
                     <div class="div-dos">
-                        <img src="img/iconoMicrofono.png" alt="Microfono">
-                        <img src="img/iconoGaleria.png" alt="Galeria">
-                        <img src="img/iconoIconos.png" alt="Iconos">
+                        <img class="iconChat" src="img/iconoMicrofono.png" alt="Microfono">
+                        <img class="iconChat" src="img/iconoGaleria.png" alt="Galeria">
+                        <img class="iconChat" src="img/iconoIconos.png" alt="Iconos">
+                        <p id="enviar-msj">Enviar</p>
                     </div>
                 </div>
                 

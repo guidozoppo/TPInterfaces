@@ -33,7 +33,58 @@
             </li>
         </ul>
     </nav>
-
+    <div style="display: none" class="conteiner-form-edit-perfil">
+      <div id="form-edit-perfil">
+          <div class="input input-datos-personales">
+            <h3>Datos Personales</h3>
+            <div class="edit-person">
+              <label>Nombre</label>
+              <input id="input-nombre" type="text">
+            </div>
+            <div class="edit-person">
+              <label>Apellido</label>
+              <input id="input-apellido" type="text">
+            </div>
+            <div class="edit-person">
+              <label>Fecha de nacimiento</label>
+              <input id="input-fechaNac" type="text">
+            </div>
+          </div>
+          <div class="input input-datos-profesionales">
+            <h3>Datos Profesionales</h3>
+              <label>Profesion</label>
+              <input id="input-profesion" type="text">
+              <label>Universidad</label>
+              <input id="input-universidad" type="text">
+              <label>Año de graduacion</label>
+              <input id="input-anio-grad" type="number">
+          </div>
+          <div class="input input-cuenta">
+            <h3>Cuenta</h3>
+              <label>Email</label>
+              <input id="input-email" type="email">
+              <label>Contraseña Vieja</label>
+              <input id="input-contraseña" minlength="8" type="password">
+              <label>Contraseña Nueva</label>
+              <input id="input-contraseña" minlength="8" type="password">
+              <p id="requisitoContraseña">- Minimo 8 caracteres</p>
+          </div>
+          <div class="input input-contacto">
+            <h3>Contacto</h3>
+              <label>Direccion</label>
+              <input id="input-email" type="text">
+              <label>Ciudad</label>
+              <input id="input-contraseña" type="text">
+              <label>Telefono</label>
+              <input id="input-contraseña" type="number">
+          </div>
+          <div class="btn-action-form">
+            <button id="btn-guardar-cambios">Guardar Cambios</button>
+            <button id="btn-cancelar" onclick="cancelarCambios()">Cancelar</button>
+          </div>
+          <p id="msj-cambios-guardados">¡Cambios guardados con exito!</p>
+      </div>
+    </div>
     <header id="header-perfil">
         <div class="Perfil">
             <img src="img/fotoPerfil.png" alt="Foto de Perfil">
@@ -78,7 +129,8 @@
         </div>
 
         <div class="publicaciones">         
-            <div class="container">
+            
+          <div class="container">
                 <section class="crearPost">
                   <form action="#">
                     <div class="headerPublicacion">
@@ -147,7 +199,7 @@
                     </div>
                   </div>
                   <div class="contenido">
-                    <div class="slideshow-container">
+                      <div class="slideshow-container">
   
                       <div class="mySlides fade">
                         <div class="numbertext">1 / 3</div>
@@ -175,7 +227,7 @@
                         <span class="dot" onclick="currentSlide(2)"></span> 
                         <span class="dot" onclick="currentSlide(3)"></span> 
                       </div>
-                  
+                    </div>
                     <div class="reacciones">
                     <ul class="list">
                       <li id="like"><img src="img/likeoff.jpg" alt="gallery">
@@ -209,47 +261,7 @@
                           <button>Publicar comentario</button>
                         </div>
                       </div>
-                  </li>
-                    <li>
-                        <div class="comment-avatar">
-                          <img src="img/fotoPerfil5.png" alt="Foto de perfil">
-                        </div>
-                        <div class="comment-box">
-                          <div class="comment-head">
-                            <h4>Luz Fernandez Veterinaria</h4>
-                            <h5>29/11</h5>
-                          </div>
-                          <div class="comment-content">
-                            <p> Pobrecito, se lo ve con mucho miedo!! No sabe que está en buenas manos</p>
-                          </div>
-                          <div class="infoComentario">
-                            <span>hace 20 minutos</span>
-                            <i class="fa fa-reply"></i>
-                            <i class="fa fa-heart"></i>
-                        </div>
-                        </div>
                     </li>
-  
-                    <li>          
-                        <div class="comment-avatar">
-                          <img src="img/fotoPerfil5.png" alt="Foto de perfil">
-                        </div>               
-                        <div class="comment-box">
-                          <div class="comment-head">
-                            <h4>Luz Fernandez Veterinaria</h4>
-                          </div>
-                          <div class="comment-content">
-                            <p> Muchos saludos ":)"</p>
-                          </div>
-                            <div class="infoComentario">
-                              <span>hace 20 minutos</span>
-                              <i class="fa fa-reply"></i>
-                              <i class="fa fa-heart"></i>
-                          </div>
-                        </div>       
-                    </li>
-  
-                    
                   </ul>
                 </div>
               </section>

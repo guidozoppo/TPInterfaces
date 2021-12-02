@@ -46,6 +46,12 @@ header {
     margin-top: 10px;
 }
 
+.container-secondary {
+    display: flex;
+    margin-top: 10px;
+    filter: blur(1px);
+}
+
 .informacionPersonal {
     position: relative;
     left: 100px;
@@ -72,6 +78,7 @@ header {
     position: absolute;
     left: 150px;
     bottom: 20px;
+    cursor: pointer;
 }
 
 .editarPerfil img {
@@ -82,6 +89,75 @@ header {
 
 .publicaciones {
     position: relative;
-    left: 200px;
-    
+    left: 200px;   
+}
+
+/*------- EDITAR PERIL ----------*/
+.conteiner-form-edit-perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 100;
+    background-color: #e5e5e5;
+    left: 28%;
+    bottom: -167px;
+}
+
+#form-edit-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px;
+}
+
+.input input, .edit-person input {
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid #898989;
+}
+
+.input h3 {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid darkgrey;
+}
+
+.edit-person {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-action-form {
+    display: flex;
+}
+
+.btn-action-form button {
+    margin: 10px;
+    width: 200px;
+    filter: drop-shadow(7px 7px 4px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
+}
+
+#btn-guardar-cambios {
+    background-color: #8447FF;
+    color: white;
+}
+
+#btn-cancelar {
+    background-color: darkgray;
+    color: white;
+}
+
+#msj-cambios-guardados {
+    color: green;
+    display: none;
 }

@@ -6,7 +6,7 @@ function buscar(e) {
         e.target.value = "";
         spinnerConteiner("busqueda");
       } else {
-        console.log("redidrigir a busqueda sin resultados");
+        window.location.href = "busqueda-sin-rdo.html";
       }
     }
   }
