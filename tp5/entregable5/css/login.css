@@ -3,8 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
+    height: 100vh;
 }
 
 .layer { /* Clase comun de todas las capas */
@@ -42,7 +41,7 @@
     background: rgba(102, 96, 107, 0.863);
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    margin-top: 10%;
+    /* margin-top: 10%; */
 }
 
 .conteiner-form, .registrar {
