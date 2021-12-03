@@ -50,7 +50,7 @@ header {
 .container-secondary {
     display: flex;
     margin-top: 10px;
-    filter: blur(1px);
+    filter: blur(3px);
 }
 
 .informacionPersonal {
