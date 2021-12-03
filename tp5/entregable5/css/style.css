@@ -10,18 +10,23 @@
 }
 
 .boton {
-    background-color: #8447FF;
+    background-color: white;
     cursor: pointer;
-    color: white;
-    border-radius: 15px;
-    border: none;
+    color: #8447FF;
+    border-radius: 10px;
+    border: 1px solid;
     width: 110px;
     height: 30px;
     filter: drop-shadow(7px 7px 4px rgba(0, 0, 0, 0.25));
 }
 
 .boton:hover {
-    background-color: #57349e;
+    background-color: #661AFF;
+    color: white;
+}
+
+textarea:focus, input:focus{
+    outline: none;
 }
 
 /* ESTILOS GENERALES */

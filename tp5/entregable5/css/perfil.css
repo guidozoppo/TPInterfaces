@@ -70,15 +70,20 @@ header {
 
 .informacionPersonal h4 {
     margin-top: 20px;
+    margin-bottom: 3px;
+    font-size: 14px;
 }
 
+.informacionPersonal span {
+    font-size: 16px;
+}
 .editarPerfil {
     display: flex;
     align-items: center;
-    position: absolute;
     left: 150px;
     bottom: 20px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .editarPerfil img {
@@ -101,7 +106,8 @@ header {
     z-index: 100;
     background-color: #e5e5e5;
     left: 28%;
-    bottom: -167px;
+    bottom: -335px;
+    padding: 22px;
 }
 
 #form-edit-perfil {
@@ -109,7 +115,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 100%;
 }
 
 .input {
@@ -121,7 +127,8 @@ header {
 
 .input input, .edit-person input {
     width: 300px;
-    border-radius: 8px;
+    border-radius: 4px;
+    padding: 4px;
     border: 1px solid #898989;
 }
 
@@ -129,6 +136,15 @@ header {
     padding-bottom: 5px;
     margin-bottom: 5px;
     border-bottom: 2px solid darkgrey;
+}
+
+.input label {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.input-cuenta p {
+    font-size: 12px;
 }
 
 .edit-person {
@@ -143,18 +159,28 @@ header {
 .btn-action-form button {
     margin: 10px;
     width: 200px;
-    filter: drop-shadow(7px 7px 4px rgba(0, 0, 0, 0.25));
     cursor: pointer;
+    color: white;
+    height: 30px;
+    border-radius: 10px;
 }
 
 #btn-guardar-cambios {
     background-color: #8447FF;
-    color: white;
+    border: 1px solid;
+}
+
+#btn-guardar-cambios:hover {
+    background-color: #661AFF;
 }
 
 #btn-cancelar {
-    background-color: darkgray;
-    color: white;
+    background-color: grey;
+    border: 1px solid;
+}
+
+#btn-cancelar:hover {
+    background-color: rgb(97, 96, 96);
 }
 
 #msj-cambios-guardados {

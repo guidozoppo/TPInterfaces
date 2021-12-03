@@ -109,10 +109,13 @@
     resize: none;
     font-size: 18px;
     min-height: 70px;
+    margin-left: 15px;
+    width: calc(100% - 15px);
   }
 
   form textarea::placeholder {
     color: #858585;
+    
     font-family: 'Montserrat';
   }
 
@@ -171,16 +174,16 @@
 
   form button {
     display: block;
-    margin: 5px auto;
-    width: 50%;
-    height: 53px;
+    margin: 5px;
+    width: calc(100% - 10px);
+    height: 43px;
     color: #fff;
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
     color: #BCC0C4;
     cursor: no-drop;
-    border-radius: 7px;
+    border-radius: 10px;
     background: #e2e5e9;
     transition: all 0.3s ease;
   }
@@ -192,7 +195,7 @@
   }
 
   form textarea:valid ~ button:hover {
-    background: #57349e;
+    background: #661AFF;
   }
 
 
@@ -275,8 +278,8 @@ form .reacciones .list {
 .comment-box {
   display: flex;
   flex-direction: column;
-  background-color: #e5e5e5;
-  border-radius: 5px;
+  border-top: 1px solid #B9B9B9;
+  width: 100%;
 }
 
 .comment-content {
@@ -298,6 +301,7 @@ form .reacciones .list {
 	margin-bottom: 15px;
 	display: flex;
 	position: relative;
+  padding-right: 10px;
 }
 
 /**  * Avatar */
@@ -348,6 +352,9 @@ form .reacciones .list {
 }
 
 /*------------------------- CREAR COMENTARIO --------------------- */
+.create-comment-box {
+  width: 100%;
+}
 
 .create-comment-box .comment-head {
 	padding: 10px 10px 5px 5px;
@@ -379,6 +386,7 @@ form .reacciones .list {
 	font-size: 15px;
 	color: black;
 	border-radius: 0 0 4px 4px;
+  width: 100%;
 }
 
 .create-comment-content {
@@ -403,20 +411,30 @@ form .reacciones .list {
   color: #ffffff; 
   cursor: pointer;
   background: #8447FF;
+  border-radius: 4px;
+  margin: 5px 0;
+  width: 100%;
+  padding: 5px 0;
 }
 
 .create-comment-content textarea:valid ~ button:hover { /* Hover boton de publicar comentario */
-  background: #57349e;
+  background: #661AFF;
 }
 
-.create-comment-content :where(button) { /* Detalles del boton de publicar comentario */
+/* Detalles del boton de publicar comentario */
+.create-comment-content :where(button) { 
   width: 100%;
   outline: none;
-  border: none;
+  border: none; 
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 5px 0;
+  width: 100%;
+  padding: 5px 0;
 }
 
 .create-comment-content textarea { /* textarea para publicar comentario */
-  width: 27vw;
+  width: 100%;
   background-color: #e5e5e5;
   outline: none;
   border: none;
@@ -424,6 +442,7 @@ form .reacciones .list {
   font-size: 15px;
   min-height: 14px;
   padding-left: 5px;
+  border-radius: 4px;
 }
 
 .create-comment-content textarea::placeholder {  

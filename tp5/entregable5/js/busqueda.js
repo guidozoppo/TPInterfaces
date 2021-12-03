@@ -1,12 +1,12 @@
 document.querySelector(".input-buscar").addEventListener("keydown", buscar);
 
 function buscar(e) {
-    if(e.code === "Enter") {
-      if(e.target.value.toLowerCase() === "jorge") {
-        e.target.value = "";
+  if(e.code === "Enter") {
+    e.preventDefault();
+    if(e.target.value.toLowerCase() === "jorge") {
         spinnerConteiner("busqueda");
       } else {
-        window.location.href = "busqueda-sin-rdo.html";
+        spinnerConteiner("busqueda-sin-rdo");
       }
     }
   }
