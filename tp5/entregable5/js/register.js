@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", _=>{
 
     document.querySelector("#btn-crear-cuenta").addEventListener("click", confirmaCuenta);
 
-    /* let inputNombre = document.getElementById("input-nombre");
+    let inputNombre = document.getElementById("input-nombre");
     let inputApellido = document.getElementById("input-apellido");
     let inputFechaNac = document.getElementById("input-fechaNac");
     let inputEmail = document.getElementById("input-email");
@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", _=>{
     inputFechaNac.addEventListener("input", checkCampos);
     inputEmail.addEventListener("input", checkCampos);
     inputContraseña.addEventListener("input", checkContraseña);
-    inputContraseña.addEventListener("input", checkCampos); */
+    inputContraseña.addEventListener("input", checkCampos);
 
 
     function checkContraseña(e){
