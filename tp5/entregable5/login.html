@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/logo.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/login.js"></script>
+    <title>Garolfa - Ingresar</title>
+</head>
+
+<body>
+    <div class="l0">
+        <div class="conteiner-login">
+            <div class="conteiner-form">
+                <img src="img/logo.png" alt="Logo Garolfa">
+                <h2>Ingresá con tu cuenta</h2>
+                <form>
+                    <div class="form-field">
+                        <label>Usuario</label>
+                        <input id="input-usuario" type="text">
+                    </div>
+                    <div class="form-field">
+                        <label>Contraseña</label>
+                        <input id="input-contraseña" type="password">
+                        <p id="msj-error">Contraseña Incorrecta</p>
+                    </div>
+                    <a id="link-home" href="" target="_blank"><button id="btn-iniciar-sesion" disabled>INGRESAR</button></a>
+                    <!-- <a href="" id="olvidasteContraseña"> -->
+                    <p id="olvidasteContraseña">¿Olvidaste tu contraseña?</p>
+                    <!-- </a> -->
+                </form>
+            </div>
+            <div class="registrar">
+                <p>¿No tienes cuenta?</p>
+                <a onclick="spinnerConteiner('index')" target="_blank" id="link-crear-cuenta"> CREAR CUENTA
+                    <!-- <button id="btn-registrar">CREAR CUENTA</button> -->
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="spinner"></div>
+</body>
+
+</html>

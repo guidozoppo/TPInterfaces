@@ -22,7 +22,7 @@ document.getElementById("btnBorrar").addEventListener("click", borrar);
 document.getElementById("btnBorrarTodo").addEventListener("click", borrarTodo);
 document.getElementById("color").addEventListener("input", setColor);
 document.getElementById("grosor").addEventListener("input", setGrosor);
-document.getElementById("bw").addEventListener("click", binarizacion);
+document.getElementById("gris").addEventListener("click", gris);
 document.getElementById("negativo").addEventListener("click", negativo);
 
 function setColor(){
@@ -33,11 +33,8 @@ function setGrosor(){
     grosor = document.getElementById("grosor").value;
 }
 
-//CUANDO APRETO CLICK DENTRO DEL CANVAS LE ASIGNO LAS COORDENADAS Y CAMBIO EL FLAG PINTANDO A TRUE
 function apretoClick(e){
     pintando = true;
-    /* xInicial = e.layerX;
-    yInicial = e.layerY; */
     ctx.moveTo(e.layerX, e.layerY);
     ctx.beginPath();
     ctx.lineWidth = grosor;
@@ -45,51 +42,21 @@ function apretoClick(e){
     ctx.strokeStyle = color;
 }
 
-//MIENTRAS MUEVO EL MOUSE (CON CLICK APRETADO) LLAMO A LA FUNCION DIBUJAR Y LE PASO X1 Y1 X2 Y2
 function movioClick(e){
     if(pintando){
-        /* console.log(e);
-        console.log(canvRect);
-        console.log("----------------------------------------------")
-        console.log(xInicial, yInicial, e.clientX - canvRect.left, e.clientY - canvRect.top) */
-
-        //dibujar(xInicial, yInicial, e.clientX - canvRect.left, e.clientY - canvRect.top)
-        
-        /* xInicial = e.layerX;
-        yInicial = e.layerY; */
         ctx.lineTo(e.layerX, e.layerY);
         ctx.stroke();   
-        //console.log(xInicial, yInicial, e.clientX - canvRect.left, e.clientY - canvRect.top)
     }
 }
 
 function soltoClick(e){
     pintando = false;
-    /* if(pintando){
-        dibujar(xInicial, yInicial, e.clientX - canvRect.left, e.clientY - canvRect.top);
-        xInicial = 0;
-        yInicial = 0;
-        pintando = false;
-    } */
 }
 
-/* function dibujar(xInicial, yInicial, xFinal, yFinal){
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = grosor;
-    ctx.moveTo(xInicial, yInicial); //COORDENADA DONDE EMPIEZA LA LINEA
-    ctx.lineTo(xFinal, yFinal);     //COORDENADA DONDE TERMINA LA LINEA
-    ctx.stroke();                   //TRAZA LA RUTA
-    ctx.closePath();                
-} */
 
 function borrar(){
-    /* if(color != "white"){
-        color = document.getElementById("color").value = "#FFFFFF";
-    } */
     grosor = grosor;
     color = "#FFFFFF";
-    console.log(ctx.fillStyle);
 }
 
 function borrarTodo(){
@@ -116,7 +83,7 @@ document.getElementById('file').onchange=function(e){
 }
 
 
-/* function bw() {
+/* function gris() {
     let imageData = getImgData();
     let pixels = imageData.data;
     let numPixels = imageData.width * imageData.height;
@@ -139,7 +106,7 @@ document.getElementById('file').onchange=function(e){
     ctx.putImageData( imageData, 0, 0 );
 };*/
 
-function binarizacion() {
+function gris() {
     let imageData = getImgData();
     drawRect(imageData, r, g, b, a);
     
@@ -164,11 +131,7 @@ function binarizacion() {
         imageData.data[index + 0] = gris;
         imageData.data[index + 1] = gris;
         imageData.data[index + 2] = gris;
-
     }
-
-
-    
     ctx.putImageData(imageData, 0, 0);
 };
 
@@ -198,7 +161,5 @@ function negativo() {
 
     }
 
-
-    
     ctx.putImageData(imageData, 0, 0);
 };

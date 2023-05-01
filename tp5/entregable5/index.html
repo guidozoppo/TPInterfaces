@@ -1,52 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garolfa</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
-    <script src="js/login.js"></script>
-    <title>Garolfa - Ingresar</title>
+    <link rel="stylesheet" href="css/style.css" >
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="icon" href="img/logo.png">
+    <script src="js/register.js"></script>
 </head>
+
 <body>
-    <div class="l0 layer">
-        <div class="l1 layer">
-            <div class="l2 layer">
-                <div class="conteiner-gral-login">
-                    <div class="conteiner-login">
-                        <div class="conteiner-form">
-                            <img src="img/logo.png" alt="Logo Garolfa">
-                            <h1>BIENVENIDO A GAROLFA</h1>
-                            <p style="text-align: center;">La red social donde todos los amantes de los animales se encontrarán y compartirán contenido</p>
-                            <h2>¡Ingresa!</h2>
-                            <form>
-                                <div class="input">
-                                    <label>Usuario</label>
-                                    <input id="input-usuario" type="text">
-                                </div>
-                                <div class="input">
-                                    <label>Contraseña</label>
-                                    <input id="input-contraseña" type="password">
-                                    <p id="msj-error">Contraseña Incorrecta</p>
-                                </div>
-                                <a id="link-home" href="" target="_blank"><button id="btn-iniciar-sesion" disabled>Iniciar Sesion</button></a>
-                                <a href="" id="olvidasteContraseña"><p>¿Olvidaste tu contraseña?</p></a>
-                            </form>
-                        </div>
-                        <div class="registrar">
-                            <p>¿No tienes cuenta?</p>
-                            <a onclick="spinnerConteiner('register')" target="_blank"><button id="btn-registrar">Registrate</button></a>
-                        </div>
+    <div class="indice-gral">
+        <section class="seccion-media">
+            <div class="container">
+                <header>    
+                    <div id="logo">
+                        <img src='img/logo.png'/>
+                    </div>
+                    <div class="conteiner-btn-login">
+                        <a href="login.html"><button id="btn-ingresa">INGRESAR</button></a>
+                        <a href="#crear-cuenta"><button id="btn-registrar">CREAR CUENTA</button></a>
+                    </d>
+                </header>
+                <div id="txt-introduction">
+                    <div>
+                        <h1>BIENVENIDO A GAROLFA</h1>
+                        <p>La red social donde todos los amantes de los animales se encontrarán y compartirán contenido</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
+        <section id="crear-cuenta" class="conteiner-gral-login">
+            <div class="informacion-secundaria">
+                <h3>Registrá tu cuenta y disfrutá de Garolfa</h3>
+                <div class="garolfa-info">
+                    <img class="pet-icon" src="./img/paw.svg" alt="Pet">
+                    <h4>Conocé gente mascotera</h4>
+                    <p>En Garolfa está lleno de gente amante de las mascotas compartiendo multimedia, consejos e información para tus mascotas.</p>
+                </div>
+                <div class="garolfa-info">
+                    <img class="pet-icon" src="./img/paw.svg" alt="Pet">
+                    <h4>Encontrá profesionales</h4>
+                    <p>Buscá los mejores profesionales para el cuidado de tus mascotas: guarderias, veterinarios, peluqueros y más.</p>
+                </div>
+                <div class="garolfa-info">
+                    <img class="pet-icon" src="./img/paw.svg" alt="Pet">
+                    <h4>Gana premios para tus mascotas</h4>
+                    <p>Todas las semanas realizamos concursos tematicos premiando las publicaciones que más le gustaron a la comunidad.</p>
+                </div>
+            </div>
+            <div class="conteiner-login">
+                <span id="campos-obligatorios">* Campos Obligatorios</span>
+                <form id="form-registro">
+                    <div class="form-field">
+                        <label>Nombre *</label>
+                        <input id="input-nombre" type="text">
+                    </div>
+                    <div class="form-field">
+                        <label>Apellido *</label>
+                        <input id="input-apellido" type="text">
+                    </div>
+                    <div class="form-field">
+                        <label>Fecha de nacimiento *</label>
+                        <input id="input-fechaNac" type="date">
+                    </div>
+                    <div class="form-field">
+                        <label>Email *</label>
+                        <input id="input-email" type="email">
+                    </div>
+                    <div class="form-field">
+                        <label>Contraseña *</label>
+                        <input id="input-contraseña" type="password">
+                        <p id="requisitoContraseña">- Minimo 8 caracteres</p>
+                    </div>
+                    <button type="button" id="btn-crear-cuenta" disabled>CREAR CUENTA</button>
+                </form>
+                <div class="msj-confirmacion">
+                    <img src="img/logo.png" alt="Logo Garolfa">
+                    <h1>CONFIRMÁ TU CUENTA</h1>
+                    <p>¡Segui las instrucciones enviadas a tu correo para empezar a usar la cuenta!</p>
+                    <a onclick="spinnerIndice('login')"><button id="btn-ingresar">INGRESÁ</button></a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
     <div class="spinner"></div>
-<script src="js/parallax.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    
 </body>
+
 </html>

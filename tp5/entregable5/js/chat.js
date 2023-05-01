@@ -61,9 +61,20 @@ window.addEventListener("DOMContentLoaded", _=>{
 }
 
 function desplegablePerfil(e) {
+  let desplegables = document.querySelectorAll("#desplegablePerfil");
   if(screen.width > 900){
-    e.path[4].childNodes[1].childNodes[7].childNodes[1].childNodes[7].classList.toggle("show");
+    desplegables[0].style.display = "none";
+    if(desplegables[1].style.display == "" || desplegables[1].style.display == "none") {
+      desplegables[1].style.display = "block";
+    } else {
+      desplegables[1].style.display = "none";
+    }
   } else {
-    document.getElementById("desplegablePerfil").classList.toggle("show");
+    desplegables[1].style.display = "none";
+    if(desplegables[0].style.display == "" || desplegables[0].style.display == "none") {
+      desplegables[0].style.display = "block";
+    } else {
+      desplegables[0].style.display = "none";
+    }
   }
 }

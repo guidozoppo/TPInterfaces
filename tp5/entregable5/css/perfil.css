@@ -12,7 +12,7 @@ header {
 }
 
 .Perfil {
-    background-color: rgba(173, 173, 173, 0.473);
+    background-color: rgba(173, 173, 173, 0.6);
     border-radius: 15px;
     /* width: 40%; */
     display: flex;
@@ -55,16 +55,16 @@ header {
 
 .informacionPersonal {
     left: 100px;
-    top: 50px;
+    top: 100px;
 }
 
 .estadisticas {
-    left: 280px;
+    left: 1140px;
     top: 100px
 }
 
 .informacion {
-    position: relative;
+    position: sticky;
     width: 20%;
     height: 100%;
     background-color: white;
@@ -195,5 +195,10 @@ header {
 
 #msj-cambios-guardados {
     color: green;
+    display: none;
+}
+
+#msj-contraseña {
+    color: red;
     display: none;
 }

@@ -21,12 +21,13 @@
             </li>
             <li>
                 <!-- <form action=""> -->
-                  <input class="input-buscar" type="text" placeholder="Buscar">
+                  <input class="input-buscar" type="search" placeholder="Buscar">
                 <!-- </form> -->
             </li>
             <li>
                 <section>
                     <a onclick="spinnerHome('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                    <a><img id="imgMensaje" src="img/bell.svg" alt="Notificaciones"></a>
                     <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
                     <div id="desplegablePerfil" class="dropdown-content">
                         <a onclick="spinnerHome('perfil')">Perfil</a>
@@ -78,7 +79,7 @@
                     <li><img src="img/post/more.svg" alt="gallery"></li>
                   </ul>
                 </div>
-                <button>Publicar</button>
+                <button>PUBLICAR</button>
               </form>
             </section>
           </div>
@@ -86,11 +87,16 @@
           <div class="container">
             <section class="crearPost">
               <form action="#">
-                <div class="headerPublicacion">
-                  <img src="img/fotoPerfil4.png" alt="Foto de perfil">
-                  <div class="details">
-                    <h3>Veterinaria El Refugio</h3>
-                    <p class="fecha">Hace 2 min</p>
+                <div class="super-head-publicacion">
+                  <div class="headerPublicacion">
+                    <img src="img/fotoPerfil4.png" alt="Foto de perfil">
+                    <div class="details">
+                      <h3>Veterinaria El Refugio</h3>
+                      <p class="fecha">Hace 2 min</p>
+                    </div>
+                  </div>
+                  <div class="conteiner-more">
+                    <img src="img/post/more.svg" alt="more">
                   </div>
                 </div>
                 <div class="contenido">
@@ -122,12 +128,12 @@
                 <ul id="comments-list" class="comments-list">
                   <li>
                     <div class="comment-avatar">
-                      <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                      <img id="foto-create-comment" src="img/fotoPerfil.png" alt="Foto de perfil">
                     </div>
                     <div class="create-comment-box">
                       <div class="create-comment-content">
                         <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
-                        <button>Publicar comentario</button>
+                        <button>COMENTAR</button>
                       </div>
                     </div>
                 </li>
@@ -174,11 +180,16 @@
           <div class="container">
             <section class="crearPost">
               <form action="#">
-                <div class="headerPublicacion">
-                  <img src="img/fotoPerfil5.png" alt="Foto de perfil">
-                  <div class="details">
-                    <h3>Luz Fernandez Veterinaria</h3>
-                    <p class="fecha">Hoy a las 13:00</p>
+                <div class="super-head-publicacion">
+                  <div class="headerPublicacion">
+                    <img src="img/fotoPerfil5.png" alt="Foto de perfil">
+                    <div class="details">
+                      <h3>Luz Fernandez Veterinaria</h3>
+                      <p class="fecha">Hoy a las 13:00</p>
+                    </div>
+                  </div>
+                  <div class="conteiner-more">
+                    <img src="img/post/more.svg" alt="more">
                   </div>
                 </div>
                 <div class="contenido">
@@ -212,12 +223,12 @@
                 <ul id="comments-list" class="comments-list">
                   <li>
                     <div class="comment-avatar">
-                      <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                      <img id="foto-create-comment" src="img/fotoPerfil.png" alt="Foto de perfil">
                     </div>
                     <div class="create-comment-box">
                       <div class="create-comment-content">
                         <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
-                        <button>Publicar comentario</button>
+                        <button>COMENTAR</button>
                       </div>
                     </div>
                   </li>
@@ -229,11 +240,16 @@
           <div class="container">
             <section class="crearPost">
               <form action="#">
-                <div class="headerPublicacion">
-                  <img src="img/fotoPerfil.png" alt="logo">
-                  <div class="details">
-                    <h3>Veterinario Juan Carlos</h3>
-                    <p class="fecha">Ayer a las 9:15</p>
+                <div class="super-head-publicacion">
+                  <div class="headerPublicacion">
+                    <img src="img/fotoPerfil.png" alt="logo">
+                    <div class="details">
+                      <h3>Veterinario Juan Carlos</h3>
+                      <p class="fecha">Ayer a las 9:15</p>
+                    </div>
+                  </div>
+                  <div class="conteiner-more">
+                    <img src="img/post/more.svg" alt="more">
                   </div>
                 </div>
                 <div class="contenido">
@@ -270,12 +286,12 @@
                 <ul id="comments-list" class="comments-list">
                   <li>
                     <div class="comment-avatar">
-                      <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                      <img id="foto-create-comment" src="img/fotoPerfil.png" alt="Foto de perfil">
                     </div>
                     <div class="create-comment-box">
                       <div class="create-comment-content">
                         <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
-                        <button>Publicar comentario</button>
+                        <button>COMENTAR</button>
                       </div>
                     </div>
                   </li> 
@@ -287,11 +303,17 @@
           <div class="container">
             <section class="crearPost">
               <form action="#">
-                <div class="headerPublicacion">
-                  <img src="img/fotoPerfil.png" alt="Foto de perfil">
-                  <div class="details">
-                    <h3>Veterinario Juan Carlos</h3>
-                    <p class="fecha">29/11 a las 13:00</p>
+                <div class="super-head-publicacion">
+
+                  <div class="headerPublicacion">
+                    <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                    <div class="details">
+                      <h3>Veterinario Juan Carlos</h3>
+                      <p class="fecha">29/11 a las 13:00</p>
+                    </div>
+                  </div>
+                  <div class="conteiner-more">
+                    <img src="img/post/more.svg" alt="more">
                   </div>
                 </div>
                 <div class="contenido">
@@ -349,12 +371,12 @@
                 <ul id="comments-list" class="comments-list">
                   <li>
                     <div class="comment-avatar">
-                      <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                      <img id="foto-create-comment" src="img/fotoPerfil.png" alt="Foto de perfil">
                     </div>
                     <div class="create-comment-box">
                       <div class="create-comment-content">
                         <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
-                        <button>Publicar comentario</button>
+                        <button>COMENTAR</button>
                       </div>
                     </div>
                 </li>
@@ -367,11 +389,17 @@
           <div class="container">
             <section class="crearPost">
               <form action="#">
-                <div class="headerPublicacion">
-                  <img src="img/fotoPerfil7.png" alt="logo">
-                  <div class="details">
-                    <h3>Veterinario Jorge Erdocia</h3>
-                    <p class="fecha">28/11 a las 20:15</p>
+                <div class="super-head-publicacion">
+
+                  <div class="headerPublicacion">
+                    <img src="img/fotoPerfil7.png" alt="logo">
+                    <div class="details">
+                      <h3>Veterinario Jorge Erdocia</h3>
+                      <p class="fecha">28/11 a las 20:15</p>
+                    </div>
+                  </div>
+                  <div class="conteiner-more">
+                    <img src="img/post/more.svg" alt="more">
                   </div>
                 </div>
                 <div class="contenido">
@@ -404,12 +432,12 @@
                 <ul id="comments-list" class="comments-list">
                   <li>
                     <div class="comment-avatar">
-                      <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                      <img id="foto-create-comment" src="img/fotoPerfil.png" alt="Foto de perfil">
                     </div>
                     <div class="create-comment-box">
                       <div class="create-comment-content">
                         <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
-                        <button>Publicar comentario</button>
+                        <button>COMENTAR</button>
                       </div>
                     </div>
                   </li> 
@@ -425,19 +453,19 @@
             <p>x</p>
             <img src="img/fotoPerfil6.png" alt="Foto de perfil">
             <h4>Veterinaria Mirta</h4>
-            <button class="boton btn-seguir">Seguir</button>
+            <button class="boton btn-seguir">SEGUIR</button>
           </div>
           <div class="sugerenciaIndividual">
             <p>x</p>
             <img src="img/fotoPerfil11.png" alt="Foto de perfil">
             <h4>Luis Zarate</h4>
-            <button class="boton btn-seguir">Seguir</button>
+            <button class="boton btn-seguir">SEGUIR</button>
           </div>
           <div class="sugerenciaIndividual">
             <p>x</p>
             <img src="img/fotoPerfil12.png" alt="Foto de perfil">
             <h4>Cesar Milan</h4>
-            <button class="boton btn-seguir">Seguir</button>
+            <button class="boton btn-seguir">SEGUIR</button>
           </div>
         </div>
         </div>

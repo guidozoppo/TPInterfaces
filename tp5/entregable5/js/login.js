@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", _=>{
         e.preventDefault();
         if(contador == 0){
             document.getElementById("msj-error").style.display = "block";
-            document.getElementById("input-contraseña").style.border = "2px solid red";
+            document.getElementById("input-contraseña").style.border = "2px solid rgb(241, 203, 209)";
             contador++;
         } else {
             spinnerConteiner("home");
@@ -28,13 +28,13 @@ window.addEventListener("DOMContentLoaded", _=>{
 
     function camposCompletos(){
         return document.getElementById("input-usuario").value.length > 0 
-                && document.getElementById("input-contraseña").value.length > 0;
+                && document.getElementById("input-contraseña").value.length > 7;
     }
 
 })
 
 function spinnerConteiner(seccion) {
-    document.querySelector(".conteiner-gral-login").style.display = "none";
+    document.querySelector(".conteiner-login").style.display = "none";
     document.querySelector(".spinner").style.display = "block";
     // Con esta función logramos que se ejecute despues de 2 segundos (2000 milisegundos)}
     let direccion = seccion + ".html";

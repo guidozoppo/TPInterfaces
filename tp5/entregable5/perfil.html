@@ -18,11 +18,12 @@
                 <a onclick="spinnerConteiner('home')"><img src="img/logo.png" alt="Logo"></a>
             </li>
             <li>
-                  <input class="input-buscar" type="text" placeholder="Buscar">
+                  <input class="input-buscar" type="search" placeholder="Buscar">
             </li>
             <li>
                 <section>
                     <a onclick="spinnerConteiner('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                    <a><img id="imgMensaje" src="img/bell.svg" alt="Notificaciones"></a>
                     <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
                     <div id="desplegablePerfil" class="dropdown-content">
                         <a href="perfil.html">Perfil</a>
@@ -40,36 +41,36 @@
             <h3>Datos Personales</h3>
             <div class="edit-person">
               <label>Nombre</label>
-              <input id="input-nombre" type="text">
+              <input id="input-nombre" type="text" value="Veterinario">
             </div>
             <div class="edit-person">
               <label>Apellido</label>
-              <input id="input-apellido" type="text">
+              <input id="input-apellido" type="text" value="Juan Carlos">
             </div>
             <div class="edit-person">
               <label>Fecha de nacimiento</label>
-              <input id="input-fechaNac" type="text">
+              <input id="input-fechaNac" type="date" value="1997-07-17">
             </div>
           </div>
 
           <div class="input input-datos-profesionales">
             <h3>Datos Profesionales</h3>
               <label>Profesion</label>
-              <input id="input-profesion" type="text">
+              <input id="input-profesion" type="text" value="Veterinario">
               <label>Universidad</label>
-              <input id="input-universidad" type="text">
+              <input id="input-universidad" type="text" value="Facultad de Veterinaria - Unicen">
               <label>Año de graduacion</label>
-              <input id="input-anio-grad" type="number">
+              <input id="input-anio-grad" type="number" value="2020">
           </div>
 
           <div class="input input-cuenta">
             <h3>Cuenta</h3>
               <label>Email</label>
-              <input id="input-email" type="email">
+              <input id="input-email" type="email" value="juancarlosvet@gmail.com">
               <label>Contraseña Actual</label>
-              <input id="input-contraseña" minlength="8" type="password">
+              <input id="input-contraseña" class="pass-actual" minlength="8" type="password" value="asdasdasd">
               <label>Contraseña Nueva</label>
-              <input id="input-contraseña" minlength="8" type="password">
+              <input id="input-contraseña" class="pass-nueva" minlength="8" type="password">
               <p id="requisitoContraseña">- Minimo 8 caracteres</p>
           </div>
 
@@ -80,7 +81,7 @@
               <label>Ciudad</label>
               <input id="input-contraseña" type="text">
               <label>Telefono</label>
-              <input id="input-contraseña" type="number">
+              <input id="input-contraseña" type="number" value="2494155609">
           </div>
 
           <div class="btn-action-form">
@@ -88,6 +89,7 @@
             <button id="btn-cancelar" onclick="cancelarCambios()">Cancelar</button>
           </div>
           <p id="msj-cambios-guardados">¡Cambios guardados con exito!</p>
+          <p id="msj-contraseña">¡La contraseña no cumple con los requisitos!</p>
       </div>
     </div>
     <header id="header-perfil">
@@ -138,11 +140,17 @@
           <div class="container">
                 <section class="crearPost">
                   <form action="#">
-                    <div class="headerPublicacion">
-                      <img src="img/fotoPerfil.png" alt="Foto de perfil">
-                      <div class="details">
-                        <h3>Veterinario Juan Carlos</h3>
-                        <p class="fecha">Ayer a las 9:15</p>
+                    <div class="super-head-publicacion">
+
+                      <div class="headerPublicacion">
+                        <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                        <div class="details">
+                          <h3>Veterinario Juan Carlos</h3>
+                          <p class="fecha">Ayer a las 9:15</p>
+                        </div>
+                      </div>
+                      <div class="conteiner-more">
+                        <img src="img/post/more.svg" alt="more">
                       </div>
                     </div>
                     <div class="contenido">
@@ -179,12 +187,12 @@
                     <ul id="comments-list" class="comments-list">
                       <li>
                         <div class="comment-avatar">
-                          <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                          <img id="foto-create-comment" src="img/fotoPerfil.png" alt="Foto de perfil">
                         </div>
                         <div class="create-comment-box">
                           <div class="create-comment-content">
                             <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
-                            <button>Publicar comentario</button>
+                            <button>COMENTAR</button>
                           </div>
                         </div>
                       </li> 
@@ -196,11 +204,17 @@
             <div class="container">
               <section class="crearPost">
                 <form action="#">
-                  <div class="headerPublicacion">
-                    <img src="img/fotoPerfil.png" alt="Foto de perfil">
-                    <div class="details">
-                      <h3>Veterinario Juan Carlos</h3>
-                      <p class="fecha">29/11 a las 13:00</p>
+                  <div class="super-head-publicacion">
+
+                    <div class="headerPublicacion">
+                      <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                      <div class="details">
+                        <h3>Veterinario Juan Carlos</h3>
+                        <p class="fecha">29/11 a las 13:00</p>
+                      </div>
+                    </div>
+                    <div class="conteiner-more">
+                      <img src="img/post/more.svg" alt="more">
                     </div>
                   </div>
                   <div class="contenido">
@@ -258,12 +272,12 @@
                   <ul id="comments-list" class="comments-list">
                     <li>
                       <div class="comment-avatar">
-                        <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                        <img id="foto-create-comment" src="img/fotoPerfil.png" alt="Foto de perfil">
                       </div>
                       <div class="create-comment-box">
                         <div class="create-comment-content">
                           <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
-                          <button>Publicar comentario</button>
+                          <button>COMENTAR</button>
                         </div>
                       </div>
                     </li>

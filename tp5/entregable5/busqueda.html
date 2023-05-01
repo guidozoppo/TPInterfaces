@@ -18,11 +18,12 @@
                 <a onclick="spinnerConteiner('home')"><img src="img/logo.png" alt="Logo"></a>
             </li>
             <li>
-                <input class="input-buscar" type="text" placeholder="Buscar">
+                <input class="input-buscar" type="search" placeholder="Buscar">
             </li>
             <li>
                 <section>
                     <a onclick="spinnerConteiner('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                    <a><img id="imgMensaje" src="img/bell.svg" alt="Notificaciones"></a>
                     <img id="imgPerfil" src="img/fotoPerfil.png" alt="Foto de Perfil">
                     <div id="desplegablePerfil" class="dropdown-content">
                         <a onclick="spinnerConteiner('perfil')">Perfil</a>
@@ -51,22 +52,22 @@
                 <h4>Año de graduacion</h4>
                 <input id="filtro-anio" type="number" placeholder="Año">
             </div>
-            <button class="boton">Filtrar</button>
+            <button class="boton">FILTRAR</button>
         </div>
         <div class="resultados">
-            <h5>Se han encontrado 5 resultados para 'Jorge'</h5>
+            <h5>Se han encontrado 3 resultados para 'Jorge'</h5>
             
             <h3>Personas</h3>
             <div class="personas">
                 <div class="sugerencia">
                     <img id="imgPerfil" src="img/fotoPerfil14.png" alt="Foto de Perfil">
                     <p>Jorge Bermudez</p>
-                    <button class="boton btn-seguir">Seguir</button>
+                    <button class="boton btn-seguir">SEGUIR</button>
                 </div>
                 <div class="sugerencia">
                     <img id="imgPerfil" src="img/fotoPerfil15.png" alt="Foto de Perfil">
                     <p>Jorge Martinez</p>
-                    <button class="boton btn-seguir">Seguir</button>
+                    <button class="boton btn-seguir">SEGUIR</button>
                 </div>
             </div>
             
@@ -76,11 +77,17 @@
                 <div class="container">
                     <section class="crearPost">
                       <form action="#">
-                        <div class="headerPublicacion">
-                          <img src="img/fotoPerfil.png" alt="logo">
-                          <div class="details">
-                            <h3>Veterinario Juan Carlos</h3>
-                            <p>Ayer a las 9:15</p>
+                        <div class="super-head-publicacion">
+
+                          <div class="headerPublicacion">
+                            <img src="img/fotoPerfil.png" alt="logo">
+                            <div class="details">
+                              <h3>Veterinario Juan Carlos</h3>
+                              <p>Ayer a las 9:15</p>
+                            </div>
+                          </div>
+                          <div class="conteiner-more">
+                            <img src="img/post/more.svg" alt="more">
                           </div>
                         </div>
                         <div class="contenido">
@@ -117,12 +124,12 @@
                         <ul id="comments-list" class="comments-list">
                           <li>
                             <div class="comment-avatar">
-                              <img src="img/fotoPerfil.png" alt="Foto de perfil">
+                              <img id="foto-create-comment" src="img/fotoPerfil.png" alt="Foto de perfil">
                             </div>
                             <div class="create-comment-box">
                               <div class="create-comment-content">
                                 <textarea placeholder="Escribe un comentario" spellcheck="false" required></textarea>
-                                <button>Publicar comentario</button>
+                                <button>COMENTAR</button>
                               </div>
                             </div>
                           </li> 

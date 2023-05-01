@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/chat.css">
@@ -18,6 +19,7 @@
                 <a onclick="spinnerConteiner('home')"><img src="img/logo.png" alt="Logo"></a>
                 <img onclick="spinnerConteiner('busqueda')" id="img-lupa" src="img/search.svg" alt="">
                 <a onclick="spinnerConteiner('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                <a><img id="imgMensaje" src="img/bell.svg" alt="Notificaciones"></a>
                 <img id="imgPerfil" class="target-desplegable" src="img/fotoPerfil.png" alt="Foto de Perfil">
                 <div id="desplegablePerfil" class="dropdown-content">
                     <a onclick="spinnerConteiner('perfil')">Perfil</a>
@@ -29,14 +31,15 @@
                 <a onclick="spinnerConteiner('home')"><img src="img/logo.png" alt="Logo"></a>
             </li>
             <li class="li-input-buscar">
-                <input class="input-buscar" type="text" placeholder="Buscar">
+                <input class="input-buscar" type="search" placeholder="Buscar">
             </li>
             <li>
                 <section>
                     <img id="img-lupa" src="img/search.svg" alt="">
                     <a onclick="spinnerConteiner('chat')"><img id="imgMensaje" src="img/mensajes.png" alt="Mensajes"></a>
+                    <a><img id="imgMensaje" src="img/bell.svg" alt="Notificaciones"></a>
                     <img id="imgPerfil" class="target-desplegable" src="img/fotoPerfil.png" alt="Foto de Perfil">
-                    <div id="desplegablePerfil" class="dropdown-content">
+                    <div id="desplegablePerfil" alt="asd" class="dropdown-content">
                         <a onclick="spinnerConteiner('perfil')">Perfil</a>
                         <a href="#">Configuracion</a>
                         <a onclick="spinnerConteiner('index')">Cerrar sesion</a>
@@ -168,7 +171,6 @@
                         <p id="enviar-msj">Enviar</p>
                     </div>
                 </div>
-                
             </div>
         </div>
 

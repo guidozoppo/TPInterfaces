@@ -58,6 +58,7 @@
   .crearPost form .headerPublicacion img {
     cursor: default;
     max-width: 52px;
+    height: 52px;
   }
 
   .crearPost form .headerPublicacion .details {
@@ -267,6 +268,15 @@ form .reacciones .list {
   height: auto;
 }
 
+.super-head-publicacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.super-head-publicacion .conteiner-more img {
+  margin: 10px;
+}
 
 /*---------------- COMENTARIOS ----------------*/
 
@@ -305,6 +315,9 @@ form .reacciones .list {
 }
 
 /**  * Avatar */
+#foto-create-comment {
+  padding-top: 0;
+}
 .comments-list .comment-avatar {
 	height: auto;
 	position: relative;

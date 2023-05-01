@@ -123,3 +123,7 @@ h5 {
 .fotosVideos img {
     cursor: pointer;
 }
+.btn-siguiendo {
+    background-color: #661AFF;
+    color: white;
+}

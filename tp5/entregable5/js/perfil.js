@@ -1,6 +1,6 @@
 document.querySelector(".input-buscar").addEventListener("keydown", buscar);
-document.querySelector(".editarPerfil").addEventListener("click", editPerfil);
-document.querySelector("#btn-guardar-cambios").addEventListener("click", guardarCambios);
+//document.querySelector(".editarPerfil").addEventListener("click", editPerfil);
+//document.querySelector("#btn-guardar-cambios").addEventListener("click", guardarCambios);
 
 function buscar(e) {
     if(e.code === "Enter") {
@@ -13,6 +13,14 @@ function buscar(e) {
   }
 
 function guardarCambios(){
+  /* let nueva = document.querySelector(".pass-nueva").value;
+  let actual = document.querySelector(".pass-actual").value;
+  if( (nueva.length === 0 || nueva.length < 8)  || ( actual.length < 8)){
+    document.querySelector("#msj-contraseña").style.display = "block"
+    document.querySelector("#msj-cambios-guardados").style.display = "none"
+  } else {
+    document.querySelector("#msj-contraseña").style.display = "none"
+  } */
   document.querySelector("#msj-cambios-guardados").style.display = "block"
 }
 

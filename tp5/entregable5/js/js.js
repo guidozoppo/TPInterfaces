@@ -85,9 +85,12 @@ comentar.forEach(e => {
     function seguir(e) {
       let txtButton = e.path[0].childNodes[0];
       if (txtButton.nodeValue == "Seguir") {
-        txtButton.nodeValue = "Dejar de seguir";
+        txtButton.nodeValue = "Siguiendo";
+        e.path[0].classList.add("btn-siguiendo");
       } else {
         txtButton.nodeValue = "Seguir";
+        e.path[0].classList.remove("btn-siguiendo");
+        e.path[0].classList.add("boton");
       }
     }
 

@@ -9,6 +9,9 @@ window.addEventListener("DOMContentLoaded", _=>{
     let inputEmail = document.getElementById("input-email");
     let inputContraseña = document.getElementById("input-contraseña");
     
+    let valorAnterior = 0;
+    let valorActual = 0;
+
     inputNombre.addEventListener("input", checkCampos);
     inputApellido.addEventListener("input", checkCampos);
     inputFechaNac.addEventListener("input", checkCampos);
@@ -21,6 +24,8 @@ window.addEventListener("DOMContentLoaded", _=>{
         let length = document.getElementById("input-contraseña").value.length;
         if(length >= 8) {
             document.getElementById("requisitoContraseña").style.color = "#00ff3f";
+        } else {
+            document.getElementById("requisitoContraseña").style.color = "rgb(241, 203, 209)";
         }
     }
     
@@ -40,15 +45,44 @@ window.addEventListener("DOMContentLoaded", _=>{
     }
 
     function confirmaCuenta(){
-        document.querySelector(".conteiner-form").style.display = "none";
-        document.querySelector(".registrar").style.display = "none";
-        document.querySelector("h4").style.display = "none";
+        document.querySelector("#form-registro").style.display = "none";
+        document.querySelector("#campos-obligatorios").style.display = "none";
         document.querySelector(".msj-confirmacion").classList.add("msj-confirmacion-visible");
     }
+
+    window.addEventListener('scroll', () => {
+        let seccionSuperior = document.querySelector(".container"); //Logo - Garolfa - Intro - Registrate
+
+        valorActual = window.pageYOffset;
+
+        if (valorAnterior < valorActual && valorActual >= 300) {
+            seccionSuperior.classList.remove("appear-animation");
+            seccionSuperior.classList.add("dissapear-animation");
+            console.log(valorActual)
+           
+        } else if (valorAnterior > valorActual) {
+            seccionSuperior.classList.remove("dissapear-animation");
+            seccionSuperior.classList.add("appear-animation");
+        }
+        valorAnterior = valorActual;
+        
+      
+        
+    });
 })
 
 function spinnerConteiner(seccion) {
     document.querySelector(".conteiner-gral-login").style.display = "none";
+    document.querySelector(".spinner").style.display = "block";
+    // Con esta función logramos que se ejecute despues de 2 segundos (2000 milisegundos)}
+    let direccion = seccion + ".html";
+    setTimeout(function () {
+      window.location.href = direccion;
+    }, 300);
+}
+
+function spinnerIndice(seccion) {
+    document.querySelector(".indice-gral").style.display = "none";
     document.querySelector(".spinner").style.display = "block";
     // Con esta función logramos que se ejecute despues de 2 segundos (2000 milisegundos)}
     let direccion = seccion + ".html";

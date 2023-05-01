@@ -1,24 +1,11 @@
-.conteiner-gral-login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.layer { /* Clase comun de todas las capas */
-    width: 100%;
-    height: 100%;
-    background-size: auto;
-    background-repeat: repeat-x;
-    position: absolute;
-}
-
 .l0 {
     background-image: url("../img/fondoLogin.png");
     background-size: cover;
     width: 100%;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .l1 {
@@ -27,21 +14,18 @@
 
 .l2 {
     background-image: url('../img/capa2.png'); 
-  }
-
-
+}
 
 .conteiner-login {
-/*     display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; */
-    height: auto;
-    width: 30%;
-    background: rgba(102, 96, 107, 0.863);
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+    align-items: center;
+    padding: 58px 58px 28px;
+    width: 450px;
+    background-color: #8447FF;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
     border-radius: 20px;
-    /* margin-top: 10%; */
 }
 
 .conteiner-form, .registrar {
@@ -52,7 +36,7 @@
 }
 
 .conteiner-form {
-    padding-bottom: 15px;
+    width: 100%;
 }
 
 .conteiner-login img {
@@ -63,10 +47,14 @@
 .conteiner-login form {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
 }
 
 #olvidasteContraseña {
+    font-size: 14px;
     margin-top: 5px;
+    text-align: center;
 }
 
 h1, h2, label, p {
@@ -78,28 +66,43 @@ h1, h2, label, p {
 }
 
 .registrar {
-    margin: 10px 0px 30px 0px;
+    margin-top: 24px;
 }
 
 a {
     text-decoration: none;
 }
 
-.input {
+.form-field {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 2px;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+}
+
+.form-field label {
+    font-size: 13px;
+    color: black;
+    margin-bottom: 4px;
+}
+
+.form-field input {
+    width: 100%;
+    color: black;
+    padding: 2px 4px;
 }
 
 #msj-error {
+    font-size: 14px;
     display: none;
-    color: red;
+    color: rgb(241, 203, 209);
+
 }
 
 #requisitoContraseña{
     list-style: circle;
-    color: red;
+    color: rgb(241, 203, 209);
+
 }
 
 /* BOTONES */
@@ -110,23 +113,32 @@ button {
     cursor: pointer;
 }
 
+#btn-iniciar-sesion {
+    margin-top: 14px;
+    width: 100%;
+}
+
 .botonActivado/* , #btn-iniciar-sesion */ {
-    color: white;
-    background-color: #8447FF;
-}
-
-.botonActivado:hover/* ,#btn-iniciar-sesion:hover */ {
-    background-color: #661AFF;
-}
-
-#btn-ingresar, #btn-registrar {
-    color: #474747;
+    color: black;
     background-color: #8CFFDA;
 }
 
-#btn-ingresar:hover, #btn-registrar:hover {
+.botonActivado:hover/* ,#btn-iniciar-sesion:hover */ {
     background-color: #57CBA8;
 }
+
+#btn-ingresar, #btn-registrar {
+    color: black;
+    background-color: #8CFFDA;
+}
+
+#link-crear-cuenta {
+    font-weight: bold;
+    color: #57CBA8;
+}
+/* #btn-ingresar:hover, #btn-registrar:hover {
+    background-color: #57CBA8;
+} */
 
 /* INPUTS */
 input {

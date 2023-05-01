@@ -157,12 +157,19 @@ body{
     max-width: 50%;
 }
 
+.mensaje .check {
+    max-width: 15px;
+}
 .mensajeEnviado p {
     background-color: #57CBA8;
 }
 
 .mensajeRecibido p {
     background-color: #C9C9C9;
+}
+
+.mensaje p span {
+    font-size: 12px;
 }
 
 .mensaje #imgPerfil {
@@ -218,7 +225,7 @@ body{
     border-top: 1px solid black;
     /* justify-content: space-between; */
     align-items: center;
-    padding: 5px;
+    padding: 5px 5px 0 5px;
 }
 
 .escribirMensaje input {
