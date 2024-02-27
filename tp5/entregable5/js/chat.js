@@ -17,7 +17,6 @@ window.addEventListener("DOMContentLoaded", _=>{
     }
     
     function abrirListado(e){
-      console.log(e.path[3].childNodes);
       e.path[3].childNodes[1].style.display = "block";
       e.path[3].childNodes[3].style.display = "none";
     }

@@ -30,52 +30,65 @@ comentar.forEach(e => {
     
 
     function like(e){
-      let texto = e.path[1].childNodes[2];
-      let imagen = e.path[1].childNodes[0].attributes[0];
+      let elementParent = e.srcElement.parentNode
 
-      let imagendislike = e.path[2].childNodes[3].childNodes[0].attributes[0];
-      let textodislike = e.path[2].childNodes[3].childNodes[2];
+      if (elementParent.tagName === "LI") {
+        
+        let texto = e.srcElement.parentNode.querySelector("p")
+        let imagen = e.srcElement.parentNode.querySelector("img");
+        let imagePath = imagen.src;
+        let imageFile = imagePath.split("img/")[1]
 
-   
-
-      if(imagen.nodeValue == "img/likeoff.jpg"){
-
-        texto.innerHTML = parseInt(texto.innerHTML) + 1;
-        imagen.nodeValue = "img/likeon.jpg";
-
-          if( imagendislike.nodeValue == "img/dislikeon.jpg"){
-            imagendislike.nodeValue = "img/dislikeoff.jpg";
-            textodislike.innerHTML = parseInt(textodislike.innerHTML) - 1;
+        if (imageFile == "likeoff.jpg") {
+          let ulParent = e.srcElement.parentNode.parentNode;
+          let liDislike = ulParent.childNodes[3];
+          let imagenDislike = liDislike.childNodes[0]
+          let textoDislike = liDislike.childNodes[2]
+          
+          texto.innerHTML = parseInt(texto.innerHTML) + 1;
+          e.srcElement.parentNode.querySelector("img").src = "img/likeon.jpg";
+          
+          if (imagenDislike.src.split("img/")[1] == "dislikeon.jpg"){
+            imagenDislike.src = "img/dislikeoff.jpg";
+            textoDislike.innerHTML = parseInt(textoDislike.innerHTML) - 1;
           }
-
-      } else {
-        texto.innerHTML = parseInt(texto.innerHTML) - 1;
-        imagen.nodeValue = "img/likeoff.jpg";
-      }  
-      
+  
+        } else {
+          texto.innerHTML = parseInt(texto.innerHTML) - 1;
+          e.srcElement.parentNode.querySelector("img").src = "img/likeoff.jpg";
+        }  
+      }
     }
 
     function dislike(e){
-      let imagenlike = e.path[2].childNodes[1].childNodes[0].attributes[0];
-      let textolike = e.path[2].childNodes[1].childNodes[2];
+      let elementParent = e.srcElement.parentNode
 
-      let texto = e.path[1].childNodes[2];
-      let imagen = e.path[1].childNodes[0].attributes[0];
+      if (elementParent.tagName === "LI") {
+        let texto = e.srcElement.parentNode.querySelector("p")
+        let imagen = e.srcElement.parentNode.querySelector("img");
+        let imagePath = imagen.src;
+        let imageFile = imagePath.split("img/")[1]
+        
+        
+        if (imageFile == "dislikeoff.jpg") {
+          imagen.src = "img/dislikeon.jpg";
+          texto.innerHTML = parseInt(texto.innerHTML) + 1;
 
-      
-     if(imagen.nodeValue == "img/dislikeoff.jpg"){
-       console.log("ahora")
-       imagen.nodeValue = "img/dislikeon.jpg";
-        texto.innerHTML = parseInt(texto.innerHTML) + 1;
-          if(imagenlike.nodeValue == "img/likeon.jpg"){
-            imagenlike.nodeValue = "img/likeoff.jpg";
-            textolike.innerHTML = parseInt(textolike.innerHTML) - 1;
+          let ulParent = e.srcElement.parentNode.parentNode;
+          let liLike = ulParent.childNodes[1];
+          let imagenLike = liLike.childNodes[0];
+          let textoLike = liLike.childNodes[2];
+        
+          if(imagenLike.src.split("img/")[1] == "likeon.jpg"){
+            imagenLike.src = "img/likeoff.jpg";
+            textoLike.innerHTML = parseInt(textoLike.innerHTML) - 1;
           }
-      } else {
-        texto.innerHTML = parseInt(texto.innerHTML) - 1;
-        imagen.nodeValue = "img/dislikeoff.jpg";
-      }  
-      
+
+        } else {
+          texto.innerHTML = parseInt(texto.innerHTML) - 1;
+          imagen.src = "img/dislikeoff.jpg";
+        }  
+      }
     }
    
     function mostrarComentarios(e){
@@ -83,21 +96,19 @@ comentar.forEach(e => {
     }
 
     function seguir(e) {
-      let txtButton = e.path[0].childNodes[0];
-      if (txtButton.nodeValue == "Seguir") {
-        txtButton.nodeValue = "Siguiendo";
-        e.path[0].classList.add("btn-siguiendo");
+      let txtButton = e.srcElement;
+      if (txtButton.innerHTML == "SEGUIR") {
+        txtButton.innerHTML = "Siguiendo";
+        e.srcElement.className = "boton btn-siguiendo";
       } else {
-        txtButton.nodeValue = "Seguir";
-        e.path[0].classList.remove("btn-siguiendo");
-        e.path[0].classList.add("boton");
+        txtButton.innerHTML = "SEGUIR";
+        e.srcElement.className = "boton btn-seguir"
       }
     }
 
     function buscar(e) {
       if(e.code === "Enter") {
         if(e.target.value.toLowerCase() === "jorge") {
-          console.log("hola");
           e.target.value = "";
           spinnerConteiner("busqueda");
         } else {

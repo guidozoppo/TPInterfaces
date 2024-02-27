@@ -58,7 +58,6 @@ window.addEventListener("DOMContentLoaded", _=>{
         if (valorAnterior < valorActual && valorActual >= 300) {
             seccionSuperior.classList.remove("appear-animation");
             seccionSuperior.classList.add("dissapear-animation");
-            console.log(valorActual)
            
         } else if (valorAnterior > valorActual) {
             seccionSuperior.classList.remove("dissapear-animation");
