@@ -7,13 +7,6 @@
     width: 30%;
     text-align: center;
     margin: auto;
-    transition-duration: 1s;
-}
-
-.gameIntro:hover {
-    -ms-transform: translateY(130px); /* IE 9 */
-    -webkit-transform: translateY(130px); /* Safari */
-    transform: translateY(130px);
 }
 
 #game > * {
@@ -27,4 +20,18 @@
 .dropdown-menu li a {
     text-decoration: none;
     color: black;
+}
+
+.game-config {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game-config select {
+    padding: 5px;
+}
+
+.btn-iniciarJuego {
+    padding-left: 5px;
 }

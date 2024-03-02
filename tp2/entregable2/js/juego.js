@@ -105,8 +105,7 @@ class Juego {
         if (this.ultFichaClickeada != null) {
             this.ultFichaClickeada = null;
         }
-
-        let clickedFigure = this.findClickedFigure(e.layerX, e.layerY);
+        let clickedFigure = this.findClickedFigure(e.clientX, e.clientY);
         if (clickedFigure != null && this.verificarTurno(clickedFigure)) {
             this.ultFichaClickeada = clickedFigure;
         }

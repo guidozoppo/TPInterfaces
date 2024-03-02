@@ -15,31 +15,33 @@
 
         <h3>X EN LINEA</h3>
 
-        <div class="dropdown inicio">
+        <div class="dropdown inicio dropdown-inicio">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Iniciar Juego
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <ul class="dropdown-menu ul-iniciarJuego" aria-labelledby="dropdownMenuButton1">
               <li><a class="btn-iniciarJuego" objetivo="4" href="#">4 en linea</a></li>
               <li><a class="btn-iniciarJuego" objetivo="6" href="#">6 en linea</a></li>
               <li><a class="btn-iniciarJuego" objetivo="7" href="#">7 en linea</a></li>
             </ul>
         </div>
 
-        <button id="reset" class="btn btn-danger">Resetear</button>
-        <div class="inicio">
-            <p>Fichas Jugador 1</p>
-            <select name="" id="fichaJ1">
-                <option value="images/ficha_negra.png">Ficha Negra</option>
-                <option value="images/ficha_roja.png">Ficha Roja</option>
-            </select>
-        </div>
-        <div class="inicio">
-            <p>Fichas Jugador 2</p>
-            <select name="" id="fichaJ2">
-                <option value="images/ficha_blanca.png">Ficha Blanca</option>
-                <option value="images/ficha_azul.png">Ficha Azul</option>
-            </select>
+        <button id="reset" class="btn btn-danger btn-reset" hidden>Resetear</button>
+        <div class="game-config">
+            <div class="inicio">
+                <p>Fichas Jugador 1</p>
+                <select name="" id="fichaJ1">
+                    <option value="images/ficha_negra.png">Ficha Negra</option>
+                    <option value="images/ficha_roja.png">Ficha Roja</option>
+                </select>
+            </div>
+            <div class="inicio">
+                <p>Fichas Jugador 2</p>
+                <select name="" id="fichaJ2">
+                    <option value="images/ficha_blanca.png">Ficha Blanca</option>
+                    <option value="images/ficha_azul.png">Ficha Azul</option>
+                </select>
+            </div>
         </div>
         <h5 id="msj"></h5>
         <h5 id="temporizador"> </h5> 

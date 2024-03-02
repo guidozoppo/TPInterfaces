@@ -52,7 +52,7 @@ class Ficha{
             y: this.posY
         }
     }
-    
+
     //deshabilito las fichas del noturno
     setDeshabilito() {
         this.habilitada = false;

@@ -2,12 +2,12 @@
 document.addEventListener("DOMContentLoaded", function () {
     let canvas = document.querySelector("#canvas");
     let ctx = canvas.getContext("2d");
-
+    let botonReset = document.querySelector("#reset");
     //se crea el juego con filas y columnas en null ya que dichos valores se van a asignar en la clase juego
     let juego = new Juego(canvas, ctx, null, null);
     
     
-    document.querySelector("#reset").addEventListener("click", reset);
+    botonReset.addEventListener("click", reset);
     document.querySelector("#canvas").addEventListener("mouseup", onMouseUp);
     document.querySelector("#canvas").addEventListener("mousedown", onMouseDown);
     document.querySelector("#canvas").addEventListener("mousemove", onMouseMove);
@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
             for(var i = 0; i < elemento.length; i++) {
                 elemento[i].classList.add("inicioShow");
             }
+            botonReset.removeAttribute("hidden")
             var elemento2 = document.getElementById("game").classList.remove("gameIntro");   
             });
            
